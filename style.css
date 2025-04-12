@@ -1,0 +1,147 @@
+/* Estilos base – mobile first */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #000;
+    background-color: #fff;
+  }
+  
+  /* Encabezado y navegación */
+  header {
+    color: white;
+    background-color: black;
+    border-bottom: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo img {
+    width: 120px;
+    height: auto;
+  }
+  
+  nav {
+    position: relative;
+  }
+  
+  nav button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  #menu-list {
+    list-style: none;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+  
+  #menu-list li {
+    border-top: 1px solid #ccc;
+  }
+  
+  #menu-list li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color:white;
+    text-decoration: none;
+  }
+  
+  /* Mostrar menú en desktop */
+  @media (min-width: 768px) {
+    nav button {
+      display: none;
+    }
+    #menu-list {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      margin: 0;
+    }
+    #menu-list li {
+      border: none;
+    }
+    #menu-list li a {
+      padding: 0.5rem 1rem;
+    }
+  }
+  
+  /* Main */
+  main {
+    padding: 1rem;
+  }
+  
+  /* Container para las cards */
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Card */
+  .card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    border-radius: 4px;
+  }
+  
+  .card h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .card p {
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .btn:hover,
+  .btn:focus {
+    background-color: #333;
+  }
+  
+  /* Footer */
+  footer {
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid #ccc;
+    margin-top: 1rem;
+    background-color: black;
+  }
+  
+  /* Ajustes responsivos para pantallas medianas y grandes */
+  @media (min-width: 600px) {
+    .card-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .card-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
