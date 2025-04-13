@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Latidos Sin Tierra</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <!-- p5.js y p5.sound desde CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js"></script>
   <!-- <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script> -->
 </head>
 
+
+
 <body>
+  <header>
+    <div class="logo">
+      <h1>ARTERIA</h1>
+    </div>
+    <nav>
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">&#9776;</button>
+      <ul id="menu-list">
+        <li><a href="/pages/ensayos.html">Ensayos</a></li>
+        <li><a href="/pages/poesia.html">Poesía</a></li>
+        <li><a href="/pages/posdata.html">Posdata</a></li>
+        <li><a href="/pages/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
     <h1>Latidos Sin Tierra</h1>
     <p>Toca la pantalla para comenzar</p>
     <div id="canvas-container"></div>
   </main>
-  <script src="/poema-sintierra.js"></script>
+
+  <footer>
+    <p>ARTERIA</p>
+    <p>Laboratorio de Arte Electrónico-Digital.</p>
+  </footer>
+
+
+  <script src="/poesia/poema-sintierra.js"></script>
 </body>
-</html>
+
+
+
+

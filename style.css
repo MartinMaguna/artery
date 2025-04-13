@@ -1,147 +1,181 @@
 /* Estilos base – mobile first */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #000;
-    background-color: #fff;
-  }
-  
-  /* Encabezado y navegación */
-  header {
-    color: white;
-    background-color: black;
-    border-bottom: 1px solid #ccc;
-    padding: 0.5rem 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .logo img {
-    width: 120px;
-    height: auto;
-  }
-  
-  nav {
-    position: relative;
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%; /* Asegura que el cuerpo y el html ocupen toda la altura de la pantalla */
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* Usamos una tipografía más moderna y elegante */
+  line-height: 1.8; /* Mejor legibilidad */
+  color: #333; /* Texto oscuro para mejor contraste */
+  background-color: #f4f4f4; /* Fondo ligeramente gris para mayor suavidad */
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem; /* Espaciado lateral */
+}
+
+header {
+  color: white;
+  background-color: #222; /* Fondo oscuro para el header */
+  border-bottom: 2px solid #333; /* Línea sutil debajo */
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.logo h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white; /* Se asegura de que el color del H1 sea blanco */
+}
+
+nav button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+#menu-list {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+#menu-list li {
+  border-top: 1px solid #444;
+}
+
+#menu-list li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+#menu-list li a:hover {
+  background-color: #555;
+}
+
+/* Mostrar menú en desktop */
+@media (min-width: 768px) {
   nav button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: inline-block;
-  }
-  
-  #menu-list {
-    list-style: none;
-    width: 100%;
     display: none;
-    flex-direction: column;
-    margin-top: 0.5rem;
   }
-  
+  #menu-list {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    margin: 0;
+  }
   #menu-list li {
-    border-top: 1px solid #ccc;
+    border: none;
   }
-  
   #menu-list li a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color:white;
-    text-decoration: none;
-  }
-  
-  /* Mostrar menú en desktop */
-  @media (min-width: 768px) {
-    nav button {
-      display: none;
-    }
-    #menu-list {
-      display: flex;
-      flex-direction: row;
-      width: auto;
-      margin: 0;
-    }
-    #menu-list li {
-      border: none;
-    }
-    #menu-list li a {
-      padding: 0.5rem 1rem;
-    }
-  }
-  
-  /* Main */
-  main {
     padding: 1rem;
   }
-  
-  /* Container para las cards */
+}
+
+main {
+  flex-grow: 1;
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+main h1 {
+  font-size: 3rem;
+  color: #111;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+main p {
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+
+/* Container para las cards */
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+}
+
+.card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  margin-bottom: 1rem;
+}
+
+.card .btn {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.card .btn:hover,
+.card .btn:focus {
+  background-color: #333;
+}
+
+/* Footer */
+footer {
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #333;
+  background-color: #222;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+/* Sombra en el footer */
+footer {
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes responsivos para pantallas medianas y grandes */
+@media (min-width: 600px) {
   .card-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* Card */
-  .card {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    background-color: #f7f7f7;
-    border-radius: 4px;
+}
+
+@media (min-width: 992px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .card p {
-    margin-bottom: 1rem;
-  }
-  
-  .btn {
-    display: inline-block;
-    background-color: #000;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-  
-  .btn:hover,
-  .btn:focus {
-    background-color: #333;
-  }
-  
-  /* Footer */
-  footer {
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    border-top: 1px solid #ccc;
-    margin-top: 1rem;
-    background-color: black;
-  }
-  
-  /* Ajustes responsivos para pantallas medianas y grandes */
-  @media (min-width: 600px) {
-    .card-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .card-container {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
+}
