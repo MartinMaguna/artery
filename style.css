@@ -3,6 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 html, body {
@@ -21,8 +22,7 @@ body {
 
 header {
   color: white;
-  background-color: #222; /* Fondo oscuro para el header */
-  border-bottom: 2px solid #333; /* Línea sutil debajo */
+  background-color: black; /* Fondo oscuro para el header */
   padding: 1rem 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -89,10 +89,10 @@ nav button {
 
 main {
   flex-grow: 1;
-  padding: 3rem 2rem;
   max-width: 800px;
   margin: 0 auto;
 }
+
 
 main h1 {
   font-size: 3rem;
@@ -150,10 +150,9 @@ main p {
 /* Footer */
 footer {
   color: white;
+  background-color: #000;
   text-align: center;
   padding: 1rem;
-  border-top: 2px solid #333;
-  background-color: #222;
   margin-top: 2rem;
   font-size: 1.2rem;
 }
