@@ -26,7 +26,7 @@ header {
   flex-wrap: wrap;
   align-items: center;
   justify-content:space-around;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.397); /* Sombra sutil */
 }
 
 .logo h1 {
