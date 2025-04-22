@@ -3,11 +3,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-}
-
-html, body {
-  height: 100%; /* Asegura que el cuerpo y el html ocupen toda la altura de la pantalla */
 }
 
 body {
@@ -89,10 +84,19 @@ nav button {
 
 main {
   flex-grow: 1;
-  max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem;
 }
 
+
+#main-inicio {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+a{
+text-decoration: none;  
+}
 
 main h1 {
   font-size: 3rem;
@@ -153,17 +157,7 @@ footer {
   background-color: #000;
   text-align: center;
   padding: 1rem;
-  margin-top: 2rem;
   font-size: 1.2rem;
-}
-
-footer p {
-  margin: 0.5rem 0;
-}
-
-/* Sombra en el footer */
-footer {
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Ajustes responsivos para pantallas medianas y grandes */
