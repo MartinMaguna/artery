@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto', sans-serif; /* Usamos una tipografía más moderna y elegante */
   line-height: 1.8; /* Mejor legibilidad */
@@ -12,7 +16,6 @@ body {
   background-color: #f4f4f4; /* Fondo ligeramente gris para mayor suavidad */
   display: flex;
   flex-direction: column;
-  padding: 0 2rem; /* Espaciado lateral */
 }
 
 header {
@@ -22,7 +25,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content:space-around;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
@@ -61,7 +64,9 @@ nav button {
 
 #menu-list li a:hover {
   background-color: #555;
+  border-radius: 0.25rem;
 }
+
 
 /* Mostrar menú en desktop */
 @media (min-width: 768px) {
@@ -82,17 +87,34 @@ nav button {
   }
 }
 
+
+canvas.p5Canvas {
+  display: block;      /* elimina espacios fantasmas tipo inline */
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent; /* si no querés que tenga fondo */
+}
+
+#art-generativo {
+  position: relative;
+  width: 100%;
+  background: black; /* Opcional: da contraste si el canvas es transparente */
+}
+
+
+
 main {
   flex-grow: 1;
   margin: 2rem;
 }
-
 
 #main-inicio {
   margin: 0;
   padding: 0;
   border: 0;
 }
+
 
 a{
 text-decoration: none;  
@@ -159,6 +181,7 @@ footer {
   padding: 1rem;
   font-size: 1.2rem;
 }
+
 
 /* Ajustes responsivos para pantallas medianas y grandes */
 @media (min-width: 600px) {

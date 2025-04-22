@@ -6,8 +6,20 @@ let baseSwirlFactor = 0.1;
 let zNoiseOffset = 0.02;
 let t = 0;
 
+let headerHeight = 0;
+let footerHeight = 0;
+let canvasHeight = 0;
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // Tomamos la altura real del header y footer
+  headerHeight = document.querySelector('header')?.offsetHeight || 0;
+  footerHeight = document.querySelector('footer')?.offsetHeight || 0;
+
+  canvasHeight = windowHeight - headerHeight - footerHeight;
+
+  let canvas = createCanvas(windowWidth, canvasHeight);
+  canvas.parent('art-generativo');
+
   stroke(255, 255, 255, 40);
   strokeWeight(0.5);
   noFill();
@@ -16,13 +28,20 @@ function setup() {
 function draw() {
   background(0, 10);
 
-  // Valores interactivos mapeados al mouse o touch
-  let interactiveX = mouseX || touches[0]?.x || width / 2;
-  let interactiveY = mouseY || touches[0]?.y || height / 2;
+  // Centro relativo al canvas (que ahora tiene margen superior por el header)
+  let centerX = width / 2;
+  let centerY = height / 2;
+
+  let interactiveX = mouseX || touches[0]?.x || centerX;
+  let interactiveY = mouseY || touches[0]?.y || centerY;
 
   let noiseScale = baseNoiseScale + map(interactiveX, 0, width, 0, 1.0);
   let swirlFactor = baseSwirlFactor + map(interactiveY, 0, height, 0, 0.3);
-  let maxRadius = baseMaxRadius + map(interactiveX + interactiveY, 0, width + height, -100, 100);
+
+  // Calculamos un radio máximo que asegure que no se sale del canvas
+  let safeRadius = Math.min(width, height) * 0.45;
+
+  let maxRadius = Math.min(baseMaxRadius + map(interactiveX + interactiveY, 0, width + height, -100, 100), safeRadius);
 
   for (let i = 0; i < ringCount - 1; i++) {
     beginShape();
@@ -40,7 +59,7 @@ function draw() {
       let r = baseRadius + n * 100;
       let x = r * cos(angle + swirl);
       let y = r * sin(angle + swirl);
-      vertex(x + width / 2, y + height / 2);
+      vertex(x + centerX, y + centerY);
     }
     endShape(CLOSE);
   }
@@ -49,5 +68,8 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  headerHeight = document.querySelector('header')?.offsetHeight || 0;
+  footerHeight = document.querySelector('footer')?.offsetHeight || 0;
+  canvasHeight = windowHeight - headerHeight - footerHeight;
+  resizeCanvas(windowWidth, canvasHeight);
 }
