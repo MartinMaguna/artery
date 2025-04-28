@@ -9,12 +9,13 @@
 
     <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
+    
     <link rel="stylesheet" href="/style.css">
-    <script src="/script.js" defer></script>
+    
+    <script src="script.js" defer></script>
 
-    <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/addons/p5.sound.min.js"></script>    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="/posdata/posdata-migrante.js"></script>
 </head>
 
 <body>
@@ -23,8 +24,7 @@
             <a href="/index.html"><h1>ARTERIA</h1></a>
         </div>
         <nav>
-            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
-                aria-controls="menu-list">&#9776;</button>
+            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">&#9776;</button>
             <ul id="menu-list">
                 <li><a href="/pages/ensayos.html">Ensayos</a></li>
                 <li><a href="/pages/poesia.html">Poesía</a></li>
@@ -33,16 +33,17 @@
             </ul>
         </nav>
     </header>
-    
-  <main>
-    <div id="canvas-container"></div>
-  </main>
 
-  <footer>
-    <p>ARTERIA
-    <p></p>Laboratorio de Arte Electrónico-Digital</p>
-  </footer>
+    <main>
+        <h1>Posdata - Mapa de Migrantes</h1>
+        <div id="map"></div> <!-- Contenedor para el mapa -->
+        <div id="info"></div> <!-- Contenedor para la información de cada migrante -->
+    </main>
 
-  <script src="poema-transfronterizo.js"></script>
+    <footer>
+        <p>ARTERIA</p> 
+        <p>Laboratorio de Arte Electrónico-Digital</p>
+    </footer>
 </body>
+
 </html>

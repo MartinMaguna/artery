@@ -1,0 +1,36 @@
+[
+    {
+      "nombre": "Juan Pérez",
+      "edad": 30,
+      "pais_origen": "Venezuela",
+      "pais_destino": "Argentina",
+      "fecha_migracion": "2020-05-15",
+      "lat_origen": 10.4806,
+      "lon_origen": -66.9036,
+      "lat_destino": -34.6037,
+      "lon_destino": -58.3816
+    },
+    {
+      "nombre": "Maria González",
+      "edad": 25,
+      "pais_origen": "Honduras",
+      "pais_destino": "México",
+      "fecha_migracion": "2021-07-22",
+      "lat_origen": 13.9250,
+      "lon_origen": -83.2544,
+      "lat_destino": 19.4326,
+      "lon_destino": -99.1332
+    },
+    {
+      "nombre": "Carlos Rodríguez",
+      "edad": 40,
+      "pais_origen": "El Salvador",
+      "pais_destino": "Estados Unidos",
+      "fecha_migracion": "2019-12-05",
+      "lat_origen": 13.7942,
+      "lon_origen": -88.8965,
+      "lat_destino": 40.7128,
+      "lon_destino": -74.0060
+    }
+  ]
+  
