@@ -2,27 +2,35 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
 
     <title>ARTERIA - Criptograma</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style.css" />
 
-    <link rel="stylesheet" href="/style.css">
-    <script src="script.js" defer></script>
-    <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
+    <!-- p5.js -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+
+
+    <!-- Tu sketch generativo -->
+    <script src="/poesia/poema-criptograma.js"></script>
 </head>
+
 
 <body>
     <header>
         <div class="logo">
-            <h1>ARTERIA</h1>
+            <a href="/index.html">
+                <h1>ARTERIA</h1>
+            </a>
         </div>
         <nav>
-            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
-                aria-controls="menu-list">&#9776;</button>
+            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">
+                &#9776;
+            </button>
             <ul id="menu-list">
                 <li><a href="/pages/ensayos.html">Ensayos</a></li>
                 <li><a href="/pages/poesia.html">Poesía</a></li>
@@ -32,9 +40,17 @@
         </nav>
     </header>
 
+    <main class="main-poesia">
+        <section class="section-poesia">
+            <!-- Aquí se montará el canvas de p5 -->
+            <div id="sketch-container"></div>
+        </section>
+    </main>
+
     <footer>
         <p>ARTERIA</p>
         <p>Laboratorio de Arte Electrónico-Digital.</p>
     </footer>
-
 </body>
+
+</html>

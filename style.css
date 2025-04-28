@@ -144,6 +144,13 @@ main p {
   margin-top: 1rem;
 }
 
+.sketch-container {
+  width: 100%;
+  height: 10em; /* o el alto que quieras */
+  margin-bottom: 1rem;
+}
+
+
 .card {
   border: 1px solid #ccc;
   padding: 1rem;
