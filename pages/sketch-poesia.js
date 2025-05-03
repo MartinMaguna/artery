@@ -18,6 +18,7 @@ function sketchPoema1(p) {
     };
   }
   
+  
   function sketchPoema2(p) {
     let chars = "CRIPTOGRAMA";
     

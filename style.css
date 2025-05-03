@@ -106,13 +106,15 @@ canvas.p5Canvas {
 
 main {
   flex-grow: 1;
-  margin: 2rem;
+  margin: 0rem;
 }
 
 #main-inicio {
   margin: 0;
   padding: 0;
   border: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 
@@ -142,6 +144,7 @@ main p {
   grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .sketch-container {
@@ -179,6 +182,39 @@ main p {
 .card .btn:focus {
   background-color: #333;
 }
+
+
+.portada-superpuesta {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.titulo-superpuesto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  z-index: 10;
+  border-radius: 0.25rem;
+}
+
+.portada-superpuesta .sketch-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 /* Footer */
 footer {

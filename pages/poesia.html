@@ -2,65 +2,73 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
 
-    <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/style.css">
-    <script src="/script.js" defer></script>
-    <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
-    <script src="/pages/sketch-poesia.js" defer></script>    
+  <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+  <script src="/pages/sketch-poesia.js" defer></script>
+  <script src="/pages/sketch-portada-poesia.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <a href="/index.html"><h1>ARTERIA</h1></a>
-        </div>
-        <nav>
-            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
-                aria-controls="menu-list">&#9776;</button>
-            <ul id="menu-list">
-                <li><a href="/pages/ensayos.html">Ensayos</a></li>
-                <li><a href="/pages/poesia.html">Poesía</a></li>
-                <li><a href="/pages/posdata.html">Posdata</a></li>
-                <li><a href="/pages/about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">
+      <a href="/index.html">
+        <h1>ARTERIA</h1>
+      </a>
+    </div>
+    <nav>
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">
+        &#9776;
+      </button>
+      <ul id="menu-list">
+        <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+        <li><a href="/pages/poesia.html">POESIA</a></li>
+        <li><a href="/pages/posdata.html">POSDATA</a></li>
+        <li><a href="/pages/about.html">ABOUT</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
+    <div class="portada-superpuesta">
+      <div class="sketch-container" id="sketchPortadaPoesia"></div>
+    </div>
+    <div>
+        <h1>P0ES1A</h1>
+    </div>
+    <div class="card-container">
+      <article class="card">
+        <div class="sketch-container" id="sketchPoema1"></div>
+        <h2>Poéticas Transfronterizas</h2>
+        <p>Obra poética generada con datos y p5.js, que explora la conexión sin fronteras.</p>
+        <a href="/poesia/poema-transfronterizo.html" class="btn">Ver Obra</a>
+      </article>
+      <article class="card">
+        <div class="sketch-container" id="sketchPoema2"></div>
+        <h2>Criptograma</h2>
+        <p>Intersección entre enigma y poesía digital.</p>
+        <a href="/poesia/poema-criptograma.html" class="btn">Ver Obra</a>
+      </article>
+      <article class="card">
+        <div class="sketch-container" id="sketchPoema3"></div>
+        <h2>Poesía sin Tierra</h2>
+        <p>Una obra que reflexiona sobre la deslocalización en la era digital.</p>
+        <a href="/poesia/poema-sintierra.html" class="btn">Ver Obra</a>
+      </article>
+    </div>
+  </main>
 
-    <main>
-        <h1>Poesía</h1>
-        <div class="card-container">
-            <article class="card">
-                <div class="sketch-container" id="sketchPoema1"></div>
-                <h2>Poéticas Transfronterizas</h2>
-                <p>Obra poética generada con datos y p5.js, que explora la conexión sin fronteras.</p>
-                <a href="/poesia/poema-transfronterizo.html" class="btn">Ver Obra</a>
-            </article>
-            <article class="card">
-                <div class="sketch-container" id="sketchPoema2"></div>
-                <h2>Criptograma</h2>
-                <p>Intersección entre enigma y poesía digital.</p>
-                <a href="/poesia/poema-criptograma.html" class="btn">Ver Obra</a>
-            </article>
-            <article class="card">
-                <div class="sketch-container" id="sketchPoema3"></div>
-                <h2>Poesía sin Tierra</h2>
-                <p>Una obra que reflexiona sobre la deslocalización en la era digital.</p>
-                <a href="/poesia/poema-sintierra.html" class="btn">Ver Obra</a>
-            </article>
-        </div>
-    </main>
-    <footer>
-        <p>ARTERIA</p> 
-        <p>Laboratorio de Arte Electrónico-Digital</p>
-    </footer>
+  <footer>
+    <p>ARTERIA</p>
+    <p>Laboratorio de Arte Electrónico-Digital</p>
+  </footer>
 </body>
 
 </html>
