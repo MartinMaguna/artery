@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/script.js" defer></script>
     <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
-    <script src="/pages/sketch-ensayos.js" defer></script>    
+    <script src="/pages/sketch-ensayos.js" defer></script>
+    <script src="/pages/sketch-portada-ensayos.js"></script>    
 </head>
 
 <body>
@@ -25,16 +26,21 @@
             <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
                 aria-controls="menu-list">&#9776;</button>
             <ul id="menu-list">
-                <li><a href="/pages/ensayos.html">Ensayos</a></li>
-                <li><a href="/pages/poesia.html">Poesía</a></li>
-                <li><a href="/pages/posdata.html">Posdata</a></li>
-                <li><a href="/pages/about.html">About</a></li>
+                <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+                <li><a href="/pages/poesia.html">POESIA</a></li>
+                <li><a href="/pages/posdata.html">POSDATA</a></li>
+                <li><a href="/pages/about.html">ABOUT</a></li>
             </ul>
         </nav>
     </header>
 
   <main>
-    <h1>Ensayos</h1>
+    <div class="portada-superpuesta">
+      <div class="sketch-container" id="sketchPortadaEnsayos"></div>
+    </div>
+    <div>
+        <h1>ENSAYOS</h1>
+    </div>
     <div class="card-container">
       <article class="card">
         <div class="sketch-container" id="sketchEnsayo1"></div>

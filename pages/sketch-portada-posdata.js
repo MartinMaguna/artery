@@ -2,49 +2,60 @@ function sketchPortadaPosdata(p) {
   let particles = [];
   let maxParticles = 300;
   let connectDist = 50;
-  let arrowY = 440; // Posición inicial de la flecha
-  let arrowDirection = 1; // Dirección del movimiento de la flecha
+  let arrowY = 440;
+  let arrowDirection = 1;
+  let lastMouseMove = 0;
 
   p.setup = function () {
     const containerWidth = document.getElementById('sketchPortadaPosdata').offsetWidth;
     let canvas = p.createCanvas(containerWidth, 500);
     canvas.parent('sketchPortadaPosdata');
-    p.colorMode(p.HSB, 360, 100, 100, 100);
-    p.noStroke();
-    p.background(0); // Fondo completamente negro
+    p.colorMode(p.RGB, 255);
+    p.noCursor();
   };
 
   p.draw = function () {
-    p.background(0); // Limpia todo, sin estelas
+    p.background(0);
 
-    // Crear nuevas partículas
-    if (p.frameCount % 3 === 0 && particles.length < maxParticles) {
+    // Crear nuevas partículas cerca del cursor
+    if (p.frameCount - lastMouseMove > 20 && particles.length < maxParticles) {
       const distToMouse = p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2);
-      const satNearMouse = p.map(distToMouse, 0, p.width / 2, 100, 30, true);
+      const brightnessNearMouse = p.map(distToMouse, 0, p.width / 2, 255, 180, true);
 
       particles.push({
         x: p.mouseX + p.random(-80, 80),
         y: p.mouseY + p.random(-80, 80),
-        r: p.random(2, 5),
-        hue: p.random(300, 340), // todo el espectro de colores
-        sat: satNearMouse + p.random(-5, -4),
-        bri: p.random(60, 100),
-        alpha: p.random(70, 100),
+        r: p.random(3, 7),
+        brightness: brightnessNearMouse + p.random(-10, 10),
+        alpha: p.random(100, 200),
         life: 200,
-        vx: p.random(-0.6, 0.6),
-        vy: p.random(-0.6, 0.6)
+        vx: p.random(-0.2, 0.2),
+        vy: p.random(-0.2, 0.2)
       });
+
+      lastMouseMove = p.frameCount;
     }
+
+    // Agregar el cursor como una partícula más (no se agota)
+    const cursorParticle = {
+      x: p.mouseX,
+      y: p.mouseY,
+      r: 6,
+      brightness: 255,
+      alpha: 255
+    };
 
     // Dibujar partículas
     for (let i = particles.length - 1; i >= 0; i--) {
       let pt = particles[i];
+      const distToMouse = p.dist(pt.x, pt.y, p.mouseX, p.mouseY);
+      pt.brightness = p.map(distToMouse, 0, p.width / 2, 255, 180, true);
 
-      p.fill(pt.hue, pt.sat, pt.bri, pt.alpha);
+      p.fill(pt.brightness, pt.brightness, pt.brightness, pt.alpha);
       p.ellipse(pt.x, pt.y, pt.r);
 
-      pt.vx += p.sin(p.frameCount * 0.005 + i) * 0.01;
-      pt.vy += p.cos(p.frameCount * 0.005 + i) * 0.01;
+      pt.vx += p.sin(p.frameCount * 0.005 + i) * 0.005;
+      pt.vy += p.cos(p.frameCount * 0.005 + i) * 0.005;
       pt.x += pt.vx;
       pt.y += pt.vy;
 
@@ -54,40 +65,54 @@ function sketchPortadaPosdata(p) {
       }
     }
 
-    // Dibujar conexiones entre partículas
-    p.strokeWeight(1);
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        let a = particles[i];
-        let b = particles[j];
+    // Agregar cursor a la lista temporal para conexiones
+    let allParticles = [...particles, cursorParticle];
+
+    // Dibujar conexiones expandidas y más visibles
+    p.strokeWeight(2);
+    let expandedConnectDist = p.map(p.frameCount, 0, 300, 50, 150);
+
+    for (let i = 0; i < allParticles.length; i++) {
+      for (let j = i + 1; j < allParticles.length; j++) {
+        let a = allParticles[i];
+        let b = allParticles[j];
         let d = p.dist(a.x, a.y, b.x, b.y);
-        if (d < connectDist) {
-          let alpha = p.map(d, 0, connectDist, 30, 0);
-          p.stroke(a.hue, a.sat, a.bri, alpha);
+
+        if (d < expandedConnectDist) {
+          let alpha = p.map(d, 0, expandedConnectDist, 50, 0);
+          p.stroke(255, alpha);
           p.line(a.x, a.y, b.x, b.y);
         }
       }
     }
 
-    // Dibujar la flecha de scroll (ajustada al estilo del Código 1)
+    // Dibujar el cursor como un círculo brillante con halo pulsante
+    let pulse = p.sin(p.frameCount * 0.1) * 2;
+    p.noFill();
+    p.stroke(255, 100);
+    p.strokeWeight(2);
+    p.ellipse(p.mouseX, p.mouseY, 30 + pulse, 30 + pulse); // halo
+
+    p.fill(255);
+    p.noStroke();
+    p.ellipse(p.mouseX, p.mouseY, 8, 8); // centro sólido
+
+    // Flecha de scroll
     p.push();
-    p.stroke(255, 120); // Opacidad más alta para la flecha (similar al Código 1)
-    p.strokeWeight(1.2); // Grosor intermedio (similar al Código 1)
+    p.stroke(255, 120);
+    p.strokeWeight(1.2);
     p.noFill();
     p.translate(p.width / 2, arrowY);
 
-    let arrowSize = 8; // Tamaño más grande para mayor visibilidad
-    p.line(-arrowSize, -arrowSize, 0, 0); // Línea izquierda
-    p.line(arrowSize, -arrowSize, 0, 0);  // Línea derecha
+    let arrowSize = 8;
+    p.line(-arrowSize, -arrowSize, 0, 0);
+    p.line(arrowSize, -arrowSize, 0, 0);
     p.pop();
 
-    // Animación sutil de rebote
-    arrowY += arrowDirection * 0.2; // Movimiento suave
+    arrowY += arrowDirection * 0.2;
     if (arrowY > 458 || arrowY < 442) {
-      arrowDirection *= -1; // Cambio de dirección al llegar a los límites
+      arrowDirection *= -1;
     }
-
-    p.noStroke();
   };
 }
 
