@@ -138,6 +138,17 @@ main p {
   margin-bottom: 2rem;
 }
 
+
+/*poesia*/
+
+#main-poesia {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 /* Container para las cards */
 .card-container {
   display: grid;
