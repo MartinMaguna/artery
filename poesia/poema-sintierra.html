@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Latidos Sin Tierra</title>
   <link rel="stylesheet" href="/style.css" />
-  <!-- p5.js y p5.sound desde CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js"></script>
-  <!-- <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script> -->
+   
+  <!-- p5.js -->
+   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js"></script>
+
 </head>
 
 
@@ -22,25 +23,18 @@
     <nav>
       <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">&#9776;</button>
       <ul id="menu-list">
-        <li><a href="/pages/ensayos.html">Ensayos</a></li>
-        <li><a href="/pages/poesia.html">Poesía</a></li>
-        <li><a href="/pages/posdata.html">Posdata</a></li>
-        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+        <li><a href="/pages/poesia.html">POESIA</a></li>
+        <li><a href="/pages/posdata.html">POSDATA</a></li>
+        <li><a href="/pages/about.html">ABOUT</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h1>Latidos Sin Tierra</h1>
-    <p>Toca la pantalla para comenzar</p>
-    <div id="canvas-container"></div>
-  </main>
-
-  <footer>
-    <p>ARTERIA</p>
-    <p>Laboratorio de Arte Electrónico-Digital.</p>
-  </footer>
-
+  <main class="main-poesia">
+    <!-- Aquí se montará el canvas de p5 -->
+    <div id="sketch-container"></div>
+</main>
 
   <script src="/poesia/poema-sintierra.js"></script>
 </body>

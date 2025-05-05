@@ -14,13 +14,15 @@
     <script src="/script.js" defer></script>
 
     <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.2.0/dist/p5.sound.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.2.0/dist/p5.sound.min.js"></script>
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <a href="/index.html"><h1>ARTERIA</h1></a>
+            <a href="/index.html">
+                <h1>ARTERIA</h1>
+            </a>
         </div>
         <nav>
             <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
@@ -33,24 +35,23 @@
             </ul>
         </nav>
     </header>
-    
-  <main>
-    <div id="canvas-container"></div>
-    <section>
-        <div>
+
+    <main>
+        <section>
+            <div id="canvas-container">
+                <div id="sketch-container"></div>
+            </div>
+        </section>
+
+        <section>
             <h2>Poéticas Transfronterizas</h2>
             <p>No elegí migrar
                 me llevó el azar
             </p>
-        </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>ARTERIA
-    <p></p>Laboratorio de Arte Electrónico-Digital</p>
-  </footer>
-
-  <script src="poema-transfronterizo.js"></script>
+        </section>
+    </main>
+    
+    <script src="poema-transfronterizo.js"></script>
 </body>
+
 </html>

@@ -7,8 +7,6 @@ let hotspots = [];
 let flows = [];
 
 function preload() {
-  // Carga del mapa mundial (world-map.jpg)
-  mapImg = loadImage('world-map.jpg');
   // Carga del audio
   audio = loadSound('poeticastransfronterizas.mp3');
   // Carga de los versos desde JSON

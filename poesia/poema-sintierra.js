@@ -1,58 +1,104 @@
-let osc;
-let fft;
-let playing = false;
+let video, img, audio, fuente;
+let shaderDisplace;
+let versoIndex = 0;
+let versos = [
+  "Reforma Agrária", "É palavra", "Que dói na alma", "Que grita na calma",
+  "De quem", "Não se levanta", "Reforma Agrária", "É bandeira", "Que clama",
+  "Revolta", "E apenas reclama", "“na lei ou na marra”", "Com uma palavra:", "Terra!"
+];
+let tiempoUltimoVerso = 0;
+let intervaloVerso = 3000; // tiempo entre versos en ms
+
+// Shader para glitch de color
+const displaceColorsSrc = `
+precision highp float;
+
+uniform sampler2D tex0;
+varying vec2 vTexCoord;
+
+vec2 zoom(vec2 coord, float amount) {
+  vec2 relativeToCenter = coord - 0.5;
+  relativeToCenter /= amount;
+  return relativeToCenter + 0.5;
+}
+
+void main() {
+  gl_FragColor = vec4(
+    texture2D(tex0, vTexCoord).r,
+    texture2D(tex0, zoom(vTexCoord, 1.05)).g,
+    texture2D(tex0, zoom(vTexCoord, 1.1)).b,
+    texture2D(tex0, vTexCoord).a
+  );
+}
+`;
+
+function preload() {
+  img = loadImage('../asset/poesiasintierra.jpg');
+  video = createVideo(['../asset/videosintierra.mp4']);
+  audio = loadSound('../asset/voz_poesiasintierra.mp3');
+
+  // Fuente opcional, puedes comentar estas dos líneas si no tienes una fuente propia
+  fuente = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf'); // Asegúrate de colocar el archivo en esa ruta
+}
 
 function setup() {
-  let cnv = createCanvas(400, 400);
-  cnv.parent('canvas-container');
-  textAlign(CENTER, CENTER);
+  let canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+  canvas.elt.getContext('webgl', { willReadFrequently: true });
 
-  osc = new p5.Oscillator('sine');
-  osc.amp(0);
-  fft = new p5.FFT();
-  noStroke();
+  video.hide();
+  video.loop();
+  video.volume(0);
+
+  shaderDisplace = createFilterShader(displaceColorsSrc);
+
+  if (!audio.isPlaying()) {
+    audio.play();
+  }
+
+  textAlign(CENTER, CENTER);
+  textSize(32);
+  fill(255);
+  if (fuente) {
+    textFont(fuente);
+  }
 }
 
 function draw() {
-  background(20);
+  background(0);
 
-  let spectrum = fft.analyze();
-  let bass = fft.getEnergy("bass");
+  push();
+  imageMode(CENTER);
+  image(video, 0, 0, width, height);
+  filter(shaderDisplace);
+  pop();
 
-  // Visualización: círculo que late
-  let radius = map(bass, 0, 255, 50, 200);
-  fill(255, 100);
-  ellipse(width / 2, height / 2, radius, radius);
+  // Mostrar imagen glitcheada en esquina inferior
+  push();
+  translate(-width / 4, height / 4, 0);
+  tint(255, 100); // Transparencia para efecto glitch
+  image(img, 0, 0, width / 2, height / 3);
+  pop();
 
-  // Visualización: pequeñas estrellas de datos
-  for (let i = 0; i < 100; i++) {
-    let x = random(width);
-    let y = random(height);
-    let alpha = random(30, 100);
-    stroke(255, alpha);
-    point(x, y);
+  // Mostrar versos uno a uno
+  let tiempoActual = millis();
+  if (tiempoActual - tiempoUltimoVerso > intervaloVerso && versoIndex < versos.length) {
+    versoIndex++;
+    tiempoUltimoVerso = tiempoActual;
   }
 
-  // Poema breve (puede ser opcional o sustituido por un audio luego)
-  fill(200);
-  textSize(14);
-  text("latidos sin tierra,\nuna frecuencia en fuga", width / 2, height - 40);
+  push();
+  fill(255);
+  textSize(36);
+  if (fuente) {
+    textFont(fuente);
+  }
+
+  for (let i = 0; i < versoIndex; i++) {
+    text(versos[i], 0, -height / 3 + i * 40);
+  }
+  pop();
 }
 
-function mousePressed() {
-  if (!playing) {
-    osc.start();
-    osc.amp(0.2, 0.5);
-    playing = true;
-  } else {
-    osc.stop();
-    playing = false;
-  }
-}
-
-function mouseMoved() {
-  if (playing) {
-    let freq = map(mouseX, 0, width, 100, 800);
-    osc.freq(freq);
-  }
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
