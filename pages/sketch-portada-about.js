@@ -12,7 +12,7 @@ function setup() {
   stroke(255);
   strokeWeight(1);
 
-  genType('ART', width / 5);
+  genType('A', width / 5);
 }
 
 function draw() {
