@@ -1,4 +1,4 @@
-let video, img, audio, fuente;
+let video, audio, fuente;
 let shaderDisplace;
 let versoIndex = 0;
 let versos = [
@@ -33,12 +33,11 @@ void main() {
 `;
 
 function preload() {
-  img = loadImage('../asset/poesiasintierra.jpg');
   video = createVideo(['../asset/videosintierra.mp4']);
   audio = loadSound('../asset/voz_poesiasintierra.mp3');
 
-  // Fuente opcional, puedes comentar estas dos líneas si no tienes una fuente propia
-  fuente = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf'); // Asegúrate de colocar el archivo en esa ruta
+  // Fuente opcional
+  fuente = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');
 }
 
 function setup() {
@@ -66,17 +65,11 @@ function setup() {
 function draw() {
   background(0);
 
+  // Mostrar video con shader glitch aplicado
   push();
   imageMode(CENTER);
   image(video, 0, 0, width, height);
   filter(shaderDisplace);
-  pop();
-
-  // Mostrar imagen glitcheada en esquina inferior
-  push();
-  translate(-width / 4, height / 4, 0);
-  tint(255, 100); // Transparencia para efecto glitch
-  image(img, 0, 0, width / 2, height / 3);
   pop();
 
   // Mostrar versos uno a uno
