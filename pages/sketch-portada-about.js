@@ -1,45 +1,84 @@
-let font, points = [];
+let font;
+let letterPoints = [];
+let interactionRadius = 45;
+let canvas, isHovered = false;
+let currentChar = 'A';
 
 function preload() {
-    font = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');
-  }
+  font = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');
+}
+
 function setup() {
   const container = document.getElementById('sketchPortadaAbout');
-  const canvas = createCanvas(container.offsetWidth, 500);
+  canvas = createCanvas(container.offsetWidth, 500);
   canvas.parent('sketchPortadaAbout');
 
+  canvas.mouseOver(() => isHovered = true);
+  canvas.mouseOut(() => isHovered = false);
+
   noFill();
-  stroke(255);
   strokeWeight(1);
 
-  genType('A', width / 5);
+  generateLetter(currentChar, width / 3); // Letra A al inicio
 }
 
 function draw() {
   background(0);
   translate(width / 2, height / 2);
 
-  for (let i = 0; i < points.length; i++) {
-    let p = points[i];
-    let s = mouseY / 10 + sin(i * 0.25 + frameCount * 0.05) * 10;
-    circle(p.x, p.y, s);
+  // Dibujamos nodos con oscilación para dar cuerpo
+  for (let i = 0; i < letterPoints.length; i++) {
+    const p = letterPoints[i];
+    const osc = sin(i * 0.5 + frameCount * 0.1) * 1.5;
+    fill(255, 80);
+    noStroke();
+    circle(p.x, p.y, 3 + osc);
+  }
+
+  // Interacción rizomática
+  stroke(255, 50);
+  const hasTouch = touches.length > 0;
+  const pointerX = hasTouch ? touches[0].x - width / 2 : mouseX - width / 2;
+  const pointerY = hasTouch ? touches[0].y - height / 2 : mouseY - height / 2;
+
+  if (isHovered || hasTouch) {
+    for (let i = 0; i < letterPoints.length; i++) {
+      for (let j = i + 1; j < letterPoints.length; j++) {
+        const a = letterPoints[i];
+        const b = letterPoints[j];
+        const d = dist(a.x, a.y, b.x, b.y);
+
+        if (d < interactionRadius) {
+          const midX = (a.x + b.x) / 2;
+          const midY = (a.y + b.y) / 2;
+          const distToPointer = dist(midX, midY, pointerX, pointerY);
+          const alpha = map(distToPointer, 0, 200, 120, 0);
+          stroke(255, constrain(alpha, 0, 120));
+          line(a.x, a.y, b.x, b.y);
+        }
+      }
+    }
   }
 }
 
 function keyPressed() {
-  genType(key.toUpperCase(), width / 5); // Podés cambiar la palabra desde teclado
+  const uppercase = key.toUpperCase();
+  if (/^[A-Z]$/.test(uppercase)) {
+    currentChar = uppercase;
+    generateLetter(currentChar, width / 3);
+  }
 }
 
-function genType(txtString, txtSize) {
-  let bounds = font.textBounds(txtString, 0, 0, txtSize);
+function generateLetter(character, size) {
+  const bounds = font.textBounds(character, 0, 0, size);
 
-  points = font.textToPoints(
-    txtString,
+  letterPoints = font.textToPoints(
+    character,
     -bounds.w / 2,
     bounds.h / 2,
-    txtSize,
+    size,
     {
-      sampleFactor: 0.1,
+      sampleFactor: 0.08, // Más puntos = trazo más grueso
       simplifyThreshold: 0
     }
   );
