@@ -6,25 +6,39 @@ function sketchPortadaPosdata(p) {
   let arrowDirection = 1;
   let lastMouseMove = 0;
 
+  // Variables simuladas del mouse
+  let simMouseX, simMouseY;
+  let mouseMovedOnce = false;
+
   p.setup = function () {
     const containerWidth = document.getElementById('sketchPortadaPosdata').offsetWidth;
     let canvas = p.createCanvas(containerWidth, 500);
     canvas.parent('sketchPortadaPosdata');
     p.colorMode(p.RGB, 255);
     p.noCursor();
+
+    // Inicializar simulación del cursor en el centro
+    simMouseX = p.width / 2;
+    simMouseY = p.height / 2;
+  };
+
+  p.mouseMoved = function () {
+    simMouseX = p.mouseX;
+    simMouseY = p.mouseY;
+    mouseMovedOnce = true;
   };
 
   p.draw = function () {
     p.background(0);
 
-    // Crear nuevas partículas cerca del cursor
+    // Crear nuevas partículas cerca del cursor simulado
     if (p.frameCount - lastMouseMove > 20 && particles.length < maxParticles) {
-      const distToMouse = p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2);
+      const distToMouse = p.dist(simMouseX, simMouseY, p.width / 2, p.height / 2);
       const brightnessNearMouse = p.map(distToMouse, 0, p.width / 2, 255, 180, true);
 
       particles.push({
-        x: p.mouseX + p.random(-80, 80),
-        y: p.mouseY + p.random(-80, 80),
+        x: simMouseX + p.random(-80, 80),
+        y: simMouseY + p.random(-80, 80),
         r: p.random(3, 7),
         brightness: brightnessNearMouse + p.random(-10, 10),
         alpha: p.random(100, 200),
@@ -36,10 +50,10 @@ function sketchPortadaPosdata(p) {
       lastMouseMove = p.frameCount;
     }
 
-    // Agregar el cursor como una partícula más (no se agota)
+    // Cursor simulado como una partícula
     const cursorParticle = {
-      x: p.mouseX,
-      y: p.mouseY,
+      x: simMouseX,
+      y: simMouseY,
       r: 6,
       brightness: 255,
       alpha: 255
@@ -48,7 +62,7 @@ function sketchPortadaPosdata(p) {
     // Dibujar partículas
     for (let i = particles.length - 1; i >= 0; i--) {
       let pt = particles[i];
-      const distToMouse = p.dist(pt.x, pt.y, p.mouseX, p.mouseY);
+      const distToMouse = p.dist(pt.x, pt.y, simMouseX, simMouseY);
       pt.brightness = p.map(distToMouse, 0, p.width / 2, 255, 180, true);
 
       p.fill(pt.brightness, pt.brightness, pt.brightness, pt.alpha);
@@ -65,10 +79,8 @@ function sketchPortadaPosdata(p) {
       }
     }
 
-    // Agregar cursor a la lista temporal para conexiones
+    // Conexiones entre partículas
     let allParticles = [...particles, cursorParticle];
-
-    // Dibujar conexiones expandidas y más visibles
     p.strokeWeight(2);
     let expandedConnectDist = p.map(p.frameCount, 0, 300, 50, 150);
 
@@ -86,16 +98,16 @@ function sketchPortadaPosdata(p) {
       }
     }
 
-    // Dibujar el cursor como un círculo brillante con halo pulsante
+    // Halo pulsante del cursor
     let pulse = p.sin(p.frameCount * 0.1) * 2;
     p.noFill();
     p.stroke(255, 100);
     p.strokeWeight(2);
-    p.ellipse(p.mouseX, p.mouseY, 30 + pulse, 30 + pulse); // halo
+    p.ellipse(simMouseX, simMouseY, 30 + pulse, 30 + pulse); // halo
 
     p.fill(255);
     p.noStroke();
-    p.ellipse(p.mouseX, p.mouseY, 8, 8); // centro sólido
+    p.ellipse(simMouseX, simMouseY, 8, 8); // centro sólido
 
     // Flecha de scroll
     p.push();
