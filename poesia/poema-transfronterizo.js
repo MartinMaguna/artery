@@ -1,100 +1,68 @@
-// poema-transfronterizo.js
-
-let mapImg;
-let audio;
-let versosData;
-let hotspots = [];
-let flows = [];
+let audioBase, audioArgentina, audioUruguay, audioBrasil;
+let amp;
 
 function preload() {
-  // Carga del audio
-  audio = loadSound('poeticastransfronterizas.mp3');
-  // Carga de los versos desde JSON
-  versosData = loadJSON('poema-transfronterizo.json');
+  audioBase = loadSound('../asset/poeticastransfronterizas.mp3');
+  audioArgentina = loadSound('../asset/Argentina_Zamba_70bpm.mp3');
+  audioUruguay = loadSound('../asset/Uruguay_Candombe_70bpm.mp3');
+  audioBrasil = loadSound('../asset/Brasil_Forro_70bpm.mp3');
 }
 
 function setup() {
-  // Crear canvas dentro del contenedor
-  const canvas = createCanvas(windowWidth, windowHeight);
-  canvas.parent('canvas-container');
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  amp = new p5.Amplitude();
 
-  // Iniciar audio en bucle
-  if (audio && !audio.isPlaying()) {
+  // Reproducción en loop y volúmenes iniciales
+  [audioBase, audioArgentina, audioUruguay, audioBrasil].forEach(audio => {
     audio.loop();
-  }
-
-  textFont('Arial');
-  textLeading(24);
-
-  // Generar hotspots para cada verso en posiciones aleatorias
-  versosData.versos.forEach(texto => {
-    hotspots.push({
-      x: random(width * 0.1, width * 0.9),
-      y: random(height * 0.1, height * 0.9),
-      texto: texto
-    });
+    audio.setVolume(0);
   });
 
-  // Generar partículas de flujo de datos
-  for (let i = 0; i < 150; i++) {
-    let start = createVector(random(width), random(height));
-    let end = createVector(random(width), random(height));
-    flows.push({ pos: start.copy(), start, end, t: random(), speed: random(0.001, 0.005) });
-  }
+  audioBase.setVolume(0.6);
 }
 
 function draw() {
   background(0);
-  // Dibuja el mapa como fondo
-  image(mapImg, 0, 0, width, height);
+  orbitControl(); // permite rotar con mouse
 
-  // Animar y dibujar partículas de migración
+  let level = amp.getLevel();
+  let deform = map(level, 0, 0.3, 0, 50);
+
+  rotateY(millis() / 4000);
+  rotateX(millis() / 6000);
+
   noStroke();
-  flows.forEach(f => {
-    f.t += f.speed;
-    if (f.t >= 1) {
-      f.start = f.end.copy();
-      f.end = createVector(random(width), random(height));
-      f.t = 0;
+  fill(255); // esfera blanca
+
+  // Esfera reactiva al sonido
+  beginShape(TRIANGLES);
+  let detail = 100;
+  for (let i = 0; i < detail; i++) {
+    let theta = map(i, 0, detail, 0, PI);
+    for (let j = 0; j < detail; j++) {
+      let phi = map(j, 0, detail, 0, TWO_PI);
+
+      let r = 150 + noise(i * 0.1, j * 0.1, frameCount * 0.01) * deform;
+      let x = r * sin(theta) * cos(phi);
+      let y = r * sin(theta) * sin(phi);
+      let z = r * cos(theta);
+
+      vertex(x, y, z);
     }
-    // Interpolación suave
-    let pos = p5.Vector.lerp(f.start, f.end, easeInOutQuad(f.t));
-    fill(255, 150);
-    ellipse(pos.x, pos.y, 6);
-  });
+  }
+  endShape();
 
-  // Detección de hotspots y mostrar versos al acercar el mouse
-  hotspots.forEach(h => {
-    if (dist(mouseX, mouseY, h.x, h.y) < 30) {
-      drawVerse(h);
-    }
-  });
+  // Sonido direccional según ángulo del puntero
+  let angle = atan2(mouseY - height / 2, mouseX - width / 2);
+  let distMouse = dist(mouseX, mouseY, width / 2, height / 2);
+  let vol = map(distMouse, 0, width / 2, 0.7, 0.1, true);
+
+  audioBase.setVolume(lerp(audioBase.getVolume(), vol, 0.05));
+  audioArgentina.setVolume(lerp(audioArgentina.getVolume(), angle > 0 ? vol : 0, 0.05));
+  audioUruguay.setVolume(lerp(audioUruguay.getVolume(), abs(angle) < PI / 4 ? vol : 0, 0.05));
+  audioBrasil.setVolume(lerp(audioBrasil.getVolume(), angle < 0 ? vol : 0, 0.05));
 }
 
-function drawVerse(hotspot) {
-  const padding = 10;
-  const maxWidth = width * 0.5;
-  textSize(18);
-  textAlign(LEFT, TOP);
-  // Caja de fondo semitransparente
-  const lines = hotspot.texto.split('\n');
-  const lineHeight = textLeading();
-  const boxHeight = lines.length * lineHeight + padding * 2;
-  const boxWidth = maxWidth;
-  fill(0, 150);
-  rect(hotspot.x + padding, hotspot.y + padding, boxWidth, boxHeight, 8);
-  fill(255);
-  lines.forEach((line, i) => {
-    text(line, hotspot.x + padding * 2, hotspot.y + padding * 2 + i * lineHeight, maxWidth);
-  });
-}
-
-// Easing para interpolación suave
-function easeInOutQuad(t) {
-  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-}
-
-// Ajustar canvas al cambiar tamaño de ventana
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
