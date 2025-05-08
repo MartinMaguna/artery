@@ -6,8 +6,11 @@ function sketchPortadaPoesia(p) {
   let arrowDirection = 1;
 
   p.setup = function () {
+
     const containerWidth = document.getElementById('sketchPortadaPoesia').offsetWidth;
-    let canvas = p.createCanvas(containerWidth, 500);
+    const containerHeight = document.getElementById('sketchPortadaPoesia').offsetHeight;
+    let canvas = p.createCanvas(containerWidth, containerHeight);
+
     canvas.parent('sketchPortadaPoesia');
     p.background(0);
     p.textSize(24);

@@ -10,8 +10,11 @@ function preload() {
 
 function setup() {
   const container = document.getElementById('sketchPortadaAbout');
-  canvas = createCanvas(container.offsetWidth, 500);
-  canvas.parent('sketchPortadaAbout');
+  const containerWidth = container.offsetWidth;
+  const containerHeight = container.offsetHeight;
+
+  canvas = createCanvas(containerWidth, containerHeight);
+  canvas.parent(container);
 
   canvas.mouseOver(() => isHovered = true);
   canvas.mouseOut(() => isHovered = false);
@@ -19,14 +22,19 @@ function setup() {
   noFill();
   strokeWeight(1);
 
-  generateLetter(currentChar, width / 3); // Letra A al inicio
+  generateLetter(currentChar, width / 3);
+}
+
+function windowResized() {
+  const container = document.getElementById('sketchPortadaAbout');
+  resizeCanvas(container.offsetWidth, container.offsetHeight);
+  generateLetter(currentChar, width / 3);
 }
 
 function draw() {
   background(0);
   translate(width / 2, height / 2);
 
-  // Dibujamos nodos con oscilación para dar cuerpo
   for (let i = 0; i < letterPoints.length; i++) {
     const p = letterPoints[i];
     const osc = sin(i * 0.5 + frameCount * 0.1) * 1.5;
@@ -35,7 +43,6 @@ function draw() {
     circle(p.x, p.y, 3 + osc);
   }
 
-  // Interacción rizomática
   stroke(255, 50);
   const hasTouch = touches.length > 0;
   const pointerX = hasTouch ? touches[0].x - width / 2 : mouseX - width / 2;
@@ -78,7 +85,7 @@ function generateLetter(character, size) {
     bounds.h / 2,
     size,
     {
-      sampleFactor: 0.08, // Más puntos = trazo más grueso
+      sampleFactor: 0.08,
       simplifyThreshold: 0
     }
   );
