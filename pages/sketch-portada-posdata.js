@@ -12,7 +12,10 @@ function sketchPortadaPosdata(p) {
 
   p.setup = function () {
     const containerWidth = document.getElementById('sketchPortadaPosdata').offsetWidth;
-    let canvas = p.createCanvas(containerWidth, 500);
+    const containerHeight = document.getElementById('sketchPortadaPosdata').offsetHeight;
+    let canvas = p.createCanvas(containerWidth, containerHeight);
+    
+
     canvas.parent('sketchPortadaPosdata');
     p.colorMode(p.RGB, 255);
     p.noCursor();
