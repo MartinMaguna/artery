@@ -1,22 +1,20 @@
 let model3D;
-let mic, fft;
-let amplitude;
-let angle = 0;
+let mic, fft, amplitude;
+let zoom = 0;
+let rotation = { x: 0, y: 0 };
+let smoothedLevel = 0;
 
 function preload() {
-  // Carga el modelo GLB
-  model3D = loadModel('../assets/scene.obj', true);
+  model3D = loadModel('../asset/usdz.obj', true); // Asegúrate de que la ruta sea válida
 }
 
 function setup() {
-  let canvas = createCanvas(800, 600, WEBGL);
+  const canvas = createCanvas(windowWidth, windowHeight, WEBGL);
   canvas.parent('sketch-container');
 
-  // Iniciar micrófono
   mic = new p5.AudioIn();
   mic.start();
 
-  // Crear FFT (Fast Fourier Transform) para análisis de audio
   fft = new p5.FFT(0.8, 1024);
   fft.setInput(mic);
 
@@ -27,23 +25,56 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(10);
+  orbitControl(1, 1, 0.05); // Control de cámara con mouse (mejor que mapear manualmente)
 
-  // Luz direccional para resaltar el modelo
-  directionalLight(255, 255, 255, 0.5, 1, -0.5);
-  ambientLight(60, 60, 60);
+  // Luz ambiente y direccional
+  ambientLight(60);
+  directionalLight(255, 255, 255, 0, -1, -1);
 
-  // Obtener nivel de amplitud del sonido (entre 0 y 1)
+  // Nivel de audio para escala y color
   let level = amplitude.getLevel();
-  let scaleFactor = map(level, 0, 0.3, 1, 3); // Ajustar escala reactiva
+  smoothedLevel = lerp(smoothedLevel, level, 0.1); // suaviza la reactividad
+  let scaleFactor = map(smoothedLevel, 0, 0.3, 1, 3);
 
-  rotateY(angle);
-  rotateX(angle * 0.3);
+  // FFT para variaciones extras si se desea
+  let spectrum = fft.analyze();
+  let bass = fft.getEnergy("bass");
+
+  push();
+
+  // Zoom desde mouseWheel
+  translate(0, 0, zoom);
+
+  // Escalado reactivo
   scale(scaleFactor);
 
-  ambientMaterial(255 - level * 255, 100 + level * 100, 150 + level * 50);
+  // Material reactivo al sonido
+  let r = 200 - smoothedLevel * 200;
+  let g = 100 + smoothedLevel * 155;
+  let b = 150 + smoothedLevel * 50;
+  ambientMaterial(r, g, b);
+
+  // Rotación constante + mouseX / mouseY
+  rotateX(rotation.x + frameCount * 0.001);
+  rotateY(rotation.y + frameCount * 0.001);
 
   model(model3D);
 
-  angle += 0.01;
+  pop();
+}
+
+function mouseWheel(event) {
+  zoom += event.delta * 0.2;
+  zoom = constrain(zoom, -1000, 1000);
+}
+
+function mouseMoved() {
+  // Rotación sensible al mouse, opcional si no se usa orbitControl
+  rotation.x = map(mouseY, 0, height, -PI / 4, PI / 4);
+  rotation.y = map(mouseX, 0, width, -PI, PI);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
