@@ -1,5 +1,7 @@
-/* Estilos base – mobile first */
-* {
+/* ==== RESET Y BASE ==== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,29 +12,35 @@ html, body {
 }
 
 body {
-  font-family: 'Roboto', sans-serif; /* Usamos una tipografía más moderna y elegante */
-  line-height: 1.8; /* Mejor legibilidad */
-  color: #333; /* Texto oscuro para mejor contraste */
-  background-color: #f4f4f4; /* Fondo ligeramente gris para mayor suavidad */
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #f4f4f4;
   display: flex;
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==== HEADER ==== */
 header {
-  color: white;
-  background-color: black; /* Fondo oscuro para el header */
-  padding: 1rem 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content:space-around;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.397); /* Sombra sutil */
+  justify-content: space-around;
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4);
 }
 
 .logo h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: white; /* Se asegura de que el color del H1 sea blanco */
+  color: inherit;
 }
 
 nav button {
@@ -40,7 +48,7 @@ nav button {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: white;
+  color: inherit;
 }
 
 #menu-list {
@@ -50,8 +58,6 @@ nav button {
   margin-top: 0.5rem;
 }
 
-
-
 #menu-list li {
   border-top: 1px solid #444;
 }
@@ -59,69 +65,18 @@ nav button {
 #menu-list li a {
   display: block;
   padding: 0.5rem 1rem;
-  color: white;
-  text-decoration: none;
+  color: inherit;
   transition: background-color 0.3s;
+  border-radius: 0.25rem;
 }
 
 #menu-list li a:hover {
   background-color: #555;
-  border-radius: 0.25rem;
 }
 
-
-/* Mostrar menú en desktop */
-@media (min-width: 768px) {
-  nav button {
-    display: none;
-  }
-  #menu-list {
-    display: flex;
-    flex-direction: row;
-    width: auto;
-    margin: 0;
-  }
-  #menu-list li {
-    border: none;
-  }
-  #menu-list li a {
-    padding: 1rem;
-  }
-}
-
-
-canvas.p5Canvas {
-  display: block;      /* elimina espacios fantasmas tipo inline */
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: transparent; /* si no querés que tenga fondo */
-}
-
-#art-generativo {
-  position: relative;
-  width: 100%;
-  background: black; /* Opcional: da contraste si el canvas es transparente */
-}
-
-
-
+/* ==== MAIN ==== */
 main {
   flex-grow: 1;
-  margin: 0rem;
-}
-
-#main-inicio {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
-
-a{
-text-decoration: none;  
 }
 
 main h1 {
@@ -135,14 +90,12 @@ main h1 {
 main p {
   font-size: 1.125rem;
   color: #555;
-  line-height: 1.8;
   text-align: justify;
   margin-bottom: 2rem;
 }
 
-
-/*poesia*/
-
+/* ==== SECCIONES INICIO & POESIA ==== */
+#main-inicio,
 #main-poesia {
   margin: 0;
   padding: 0;
@@ -151,52 +104,22 @@ main p {
   overflow: hidden;
 }
 
-/* Container para las cards */
-.card-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+/* ==== CANVAS Y ARTE GENERATIVO ==== */
+canvas.p5Canvas {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
-.sketch-container {
+#art-generativo {
+  position: relative;
   width: 100%;
-  height: 10em; /* o el alto que quieras */
-  margin-bottom: 1rem;
+  background: #000;
 }
 
-
-.card {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  background-color: #f7f7f7;
-  border-radius: 4px;
-}
-
-.card h2 {
-  margin-bottom: 0.5rem;
-}
-
-.card p {
-  margin-bottom: 1rem;
-}
-
-.card .btn {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.card .btn:hover,
-.card .btn:focus {
-  background-color: #333;
-}
-
-
+/* ==== PORTADA SUPERPUESTA ==== */
 .portada-superpuesta {
   position: relative;
   width: 100%;
@@ -210,8 +133,8 @@ main p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   padding: 0.5rem 1rem;
   font-size: 3rem;
   font-weight: 700;
@@ -228,21 +151,84 @@ main p {
   height: 100%;
 }
 
+/* ==== CARDS ==== */
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
 
-/* Footer */
-footer {
-  color: white;
+.card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+}
+
+.card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  margin-bottom: 1rem;
+}
+
+.card .sketch-container {
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.card .btn {
+  display: inline-block;
   background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.card .btn:hover,
+.card .btn:focus {
+  background-color: #333;
+}
+
+/* ==== FOOTER ==== */
+footer {
+  background-color: #000;
+  color: #fff;
   text-align: center;
   padding: 1rem;
   font-size: 1.2rem;
 }
 
-
-/* Ajustes responsivos para pantallas medianas y grandes */
+/* ==== MEDIA QUERIES ==== */
 @media (min-width: 600px) {
   .card-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  nav button {
+    display: none;
+  }
+
+  #menu-list {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  #menu-list li {
+    border: none;
+  }
+
+  #menu-list li a {
+    padding: 1rem;
   }
 }
 

@@ -41,11 +41,17 @@ function sketchPoema1(p) {
   
   function sketchPoema3(p) {
     let stars = [];
+    let bgImage;
+  
+    p.preload = function() {
+      bgImage = p.loadImage('../asset/poesiasintierra_image.png'); // Ruta relativa o URL
+    };
   
     p.setup = function() {
       const containerWidth = document.getElementById('sketchPoema3').offsetWidth;
       let canvas = p.createCanvas(containerWidth, 150);
       canvas.parent('sketchPoema3');
+  
       for (let i = 0; i < 100; i++) {
         stars.push({
           x: p.random(p.width),
@@ -54,21 +60,11 @@ function sketchPoema1(p) {
           speed: p.random(0.1, 0.5)
         });
       }
-      p.background(0);
     };
   
     p.draw = function() {
-      p.background(0, 20);
-      p.noStroke();
-      p.fill(255);
-      for (let s of stars) {
-        p.circle(s.x, s.y, s.r);
-        s.y += s.speed;
-        if (s.y > p.height) {
-          s.y = 0;
-          s.x = p.random(p.width);
-        }
-      }
+      // Dibuja la imagen como fondo
+      p.image(bgImage, 0, 0, p.width, p.height);
     };
   }
   
