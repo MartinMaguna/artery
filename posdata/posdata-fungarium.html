@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <title>ARTERIA - Fungarium</title>
+    <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/script.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/index.html">
+                <h1>ARTERIA</h1>
+            </a>
+        </div>
+        <nav>
+            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+                aria-controls="menu-list">&#9776;</button>
+            <ul id="menu-list">
+                <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+                <li><a href="/pages/poesia.html">POESIA</a></li>
+                <li><a href="/pages/posdata.html">POSDATA</a></li>
+                <li><a href="/pages/about.html">ABOUT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="art-generativo" aria-label="Obra de arte generativa">
+            <!-- Aquí se insertará la obra generativa con p5.js -->
+            <div id="sketch-container"></div>
+        </section>
+
+        <h1>Fungarium</h1>
+        <p>Un espacio para la creación y el intercambio de ideas sobre arte, ciencia y tecnología.</p>
+        <p>En este espacio, exploramos la intersección entre el arte y la ciencia, utilizando la tecnología como medio
+            para crear experiencias únicas e innovadoras.</p>
+        <p>El Fungarium es un laboratorio de ideas donde artistas, científicos y tecnólogos pueden colaborar y
+            experimentar con nuevas formas de expresión artística.</p>
+        <p>Te invitamos a explorar nuestras obras y participar en nuestras actividades. Juntos, podemos crear un futuro
+            más sostenible y creativo.</p>
+        <p>¡Bienvenido al Fungarium!</p>
+
+        <div id="fungarium-container">
+            <h2>Obra Generativa</h2>
+            <p>Esta obra generativa es un ejemplo de cómo la tecnología puede ser utilizada para crear experiencias
+                artísticas únicas.</p>
+            <p>Utilizando datos en tiempo real, esta obra se adapta y evoluciona constantemente, creando una experiencia
+                única para cada espectador.</p>
+            <p>Explora la obra y descubre cómo la tecnología puede transformar nuestra percepción del arte.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>ARTERIA</p>
+        <p>Laboratorio de Arte Electrónico-Digital</p>
+    </footer>
+
+    <script src="/posdata/posdata-fungarium.js"></script>
+</body>
+
+</html>

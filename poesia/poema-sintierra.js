@@ -26,7 +26,7 @@ void main() {
 
 function preload() {
   video = createVideo(['../asset/videosintierra.mp4']);
-  audio = loadSound('../asset/jandi-poesiasintierra-02.mp3');
+  audio = loadSound('../asset/jandi-poesiasintierra-insurgentes.mp3');
 }
 
 function setup() {
