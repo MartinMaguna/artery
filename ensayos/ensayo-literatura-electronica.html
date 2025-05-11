@@ -7,30 +7,40 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>ARTERIA - Literatura Electrónica</title>
+    <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
 
     <link rel="stylesheet" href="/style.css">
-    <script src="script.js" defer></script>
+    
     <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
+    <script src="script.js" defer></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <a href="/index.html"><h1>ARTERIA</h1></a>
+            <a href="/index.html">
+                <h1>ARTERIA</h1>
+            </a>
         </div>
         <nav>
             <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
                 aria-controls="menu-list">&#9776;</button>
             <ul id="menu-list">
-                <li><a href="/pages/ensayos.html">Ensayos</a></li>
-                <li><a href="/pages/poesia.html">Poesía</a></li>
-                <li><a href="/pages/about.html">About</a></li>
-                <li><a href="/data.html">Posdata</a></li>
+                <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+                <li><a href="/pages/poesia.html">POESIA</a></li>
+                <li><a href="/data.html">POSDATA</a></li>
+                <li><a href="/pages/about.html">ABOUT</a></li>
             </ul>
         </nav>
     </header>
+
+
+    <main class="posdata-literatura-electronica">
+        <section id="timeline"></section>
+        <section id="graph"></section>
+    </main>
 
 
     <footer>
@@ -38,4 +48,8 @@
         <p>Laboratorio de Arte Electrónico-Digital.</p>
     </footer>
 
+    <script src="./ensayo-literatura-electronica.js"></script>
+
 </body>
+
+</html>

@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "lastModified": "2025-05-10",
+    "owner": "ARTERIA Lab",
+    "description": "Genealogía de prácticas de postproducción y escritura no creativa",
+    "standards": [
+      "DAMA-DMBOK v2", 
+      "ISO/IEC 11179", 
+      "Dublin Core"
+    ],
+    "fields": [
+      {"name": "autor", "type": "string", "description": "Nombre del autor o movimiento"},
+      {"name": "fechas", "type": "array<int>", "description": ["Año de inicio","Año de fin"]},
+      {"name": "conceptos", "type": "array<string>"},
+      {"name": "obras_clave", "type": "array<string>"},
+      {"name": "citas", "type": "array<string>"},
+      {"name": "enlaces_multimedia", "type": "array<string>"}
+    ]
+  },
+  "data": [
+    {
+      "autor": "Marcel Duchamp",
+      "fechas": [1887, 1968],
+      "conceptos": ["ready-made", "apropiación", "anti-arte"],
+      "obras_clave": ["Fountain (1917)"],
+      "citas": [
+        "“In the world there are many interesting objects; I don’t want to add any more.”"
+      ],
+      "enlaces_multimedia": [
+        "https://en.wikipedia.org/wiki/Fountain_(Duchamp)",
+        "https://press.philamuseum.org/marcel-duchamp-and-the-fountain-scandal/"
+      ]
+    },
+    {
+      "autor": "Movimiento Dada",
+      "fechas": [1915, 1924],
+      "conceptos": ["azar", "collage", "apropiación"],
+      "obras_clave": ["Cabaret Voltaire (1916)"],
+      "citas": [
+        "“Dadaism was an anti-establishment art movement that developed in 1915…”"
+      ],
+      "enlaces_multimedia": [
+        "https://en.wikipedia.org/wiki/Dada",
+        "https://www.smithsonianmag.com/arts-culture/a-brief-history-of-dada-115169154/"
+      ]
+    },
+    {
+      "autor": "Walter Benjamin",
+      "fechas": [1892, 1940],
+      "conceptos": ["deriva", "psicogeografía", "montaje"],
+      "obras_clave": ["The Arcades Project (1927–1940)"],
+      "citas": [
+        "“Collage techniques in literature…”"
+      ],
+      "enlaces_multimedia": [
+        "https://en.wikipedia.org/wiki/Arcades_Project"
+      ]
+    },
+    {
+      "autor": "William S. Burroughs",
+      "fechas": [1914, 1997],
+      "conceptos": ["cut-up", "fold-in", "azar controlado"],
+      "obras_clave": ["Nova Express (1964)"],
+      "citas": [
+        "“The cut-up technique is an aleatory narrative technique…”"
+      ],
+      "enlaces_multimedia": [
+        "https://en.wikipedia.org/wiki/Cut-up_technique"
+      ]
+    },
+    {
+      "autor": "Oulipo",
+      "fechas": [1960, 2025],
+      "conceptos": ["literatura potencial", "restricción formal", "algoritmos"],
+      "obras_clave": ["La Disparition (1969)"],
+      "citas": [
+        "“A lipogrammatic novel written without the letter ‘e’.”"
+      ],
+      "enlaces_multimedia": [
+        "https://en.wikipedia.org/wiki/A_Void",
+        "https://en.wikipedia.org/wiki/Oulipo"
+      ]
+    },
+    {
+      "autor": "Georges Perec",
+      "fechas": [1936, 1982],
+      "conceptos": ["lipograma", "experimentación algorítmica"],
+      "obras_clave": ["La Disparition (1969)"],
+      "citas": [
+        "“Il a écrit un roman sans la lettre e…”"
+      ],
+      "enlaces_multimedia": [
+        "https://en.wikipedia.org/wiki/A_Void"
+      ]
+    },
+    {
+      "autor": "Guy Debord",
+      "fechas": [1931, 1994],
+      "conceptos": ["détournement", "deriva"],
+      "obras_clave": ["Theory of the Dérive (1956)"],
+      "citas": [
+        "“In a dérive one or more persons during a certain period drop their relations…”"
+      ],
+      "enlaces_multimedia": [
+        "https://rohandrape.net/ut/rttcc-text/Debord2006e.pdf"
+      ]
+    },
+    {
+      "autor": "Nicolas Bourriaud",
+      "fechas": [1965, 2025],
+      "conceptos": ["postproducción", "artista como DJ"],
+      "obras_clave": ["Postproduction (2002)"],
+      "citas": [
+        "“An increasing number of artworks have been created on the basis of preexisting works…”"
+      ],
+      "enlaces_multimedia": [
+        "https://mitpress.mit.edu/9780974568898/postproduction/"
+      ]
+    },
+    {
+      "autor": "Kenneth Goldsmith",
+      "fechas": [1961, 2025],
+      "conceptos": ["escritura no creativa", "gestión de información"],
+      "obras_clave": ["Uncreative Writing (2011)"],
+      "citas": [
+        "“In the world there are many texts interesting; I don’t want to add more.”"
+      ],
+      "enlaces_multimedia": [
+        "https://www.bol.com/nl/nl/f/uncreative-writing/37392776/"
+      ]
+    },
+    {
+      "autor": "Marjorie Perloff",
+      "fechas": [1931, 2025],
+      "conceptos": ["unoriginal genius", "poesía conceptual"],
+      "obras_clave": ["Unoriginal Genius (2010)"],
+      "citas": [
+        "“The embrace of ‘unoriginal’ writing…”"
+      ],
+      "enlaces_multimedia": [
+        "https://press.uchicago.edu/ucp/books/book/chicago/U/bo5886908.html"
+      ]
+    },
+    {
+      "autor": "Claudia Kozak",
+      "fechas": [1970, 2025],
+      "conceptos": ["literatura digital", "poesía electrónica"],
+      "obras_clave": ["Digital Latin American Poetry (2019)"],
+      "citas": [
+        "“La práctica artístico-electrónico-digital que exhibe una fuerte implicación del lenguaje verbal…”"
+      ],
+      "enlaces_multimedia": [
+        "https://latinamericanliteraturetoday.org/2019/05/digital-latin-american-poetry-experimental-language-times-bits-claudia-kozak/"
+      ]
+    }
+  ]
+}

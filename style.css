@@ -196,7 +196,6 @@ canvas.p5Canvas {
   background-color: #333;
 }
 
-
 /* ==== FOOTER ==== */
 footer {
   background-color: #000;
@@ -236,5 +235,67 @@ footer {
 @media (min-width: 992px) {
   .card-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==== POSDATA LITERATURA ELECTRÓNICA ==== */
+.posdata-literatura-electronica {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+.posdata-literatura-electronica > section {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 3rem;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.posdata-literatura-electronica section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+#timeline,
+#graph {
+  position: relative;
+}
+
+#timeline {
+  overflow-x: auto;
+}
+
+#timeline svg {
+  width: 100%;
+  height: 200px;
+  display: block;
+}
+
+#graph {
+  overflow: hidden;
+}
+
+#graph svg {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .posdata-literatura-electronica {
+    padding: 1rem;
+  }
+  .posdata-literatura-electronica > section {
+    margin-bottom: 2rem;
+    padding: 1rem;
   }
 }
