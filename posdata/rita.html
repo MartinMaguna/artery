@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poema Dadaísta Generativo</title>
+    <!-- Cargar la librería Rita.js desde el CDN correcto -->
+    <script src="https://cdn.jsdelivr.net/npm/rita@2.0.0/rita.min.js"></script>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        #poema {
+            font-size: 22px;
+            white-space: pre-wrap;
+            margin: 20px;
+            color: #555;
+        }
+
+        #instrucciones {
+            font-size: 18px;
+            margin: 30px;
+            color: #444;
+        }
+
+        #boton-generar {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #222;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #boton-generar:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Poema Dadaísta Generativo</h1>
+    <p id="instrucciones">Haz clic para crear un poema dadaísta con el texto de Tristan Tzara.</p>
+
+    <div id="poema">
+        <p><strong>Texto de Tristan Tzara:</strong></p>
+        <p>Para hacer un poema dadaísta coge un periódico, unas tijeras, y escoge un artículo de longitud similar al poema que quieras hacer. Recorta el artículo. Después recorta todas las palabras que lo conforman e introdúcelas en una bolsa. Agítala suavemente. A continuación coge cada una de ellas y colócalas una tras otra en el mismo orden en el que salieron de la bolsa. Copíalas concienzudamente. El poema te definirá como eres. Aquí estás, convertido en todo un escritor. Original hasta el infinito y dotado de una encantadora sensibilidad, aunque incomprendido por los ingnorantes.</p>
+    </div>
+
+    <button id="boton-generar">Generar Poema Dadaísta</button>
+
+    <script>
+        // Texto de Tristan Tzara
+        const textoOriginal = "Para hacer un poema dadaísta coge un periódico, unas tijeras, y escoge un artículo de longitud similar al poema que quieras hacer. Recorta el artículo. Después recorta todas las palabras que lo conforman e introdúcelas en una bolsa. Agítala suavemente. A continuación coge cada una de ellas y colócalas una tras otra en el mismo orden en el que salieron de la bolsa. Copíalas concienzudamente. El poema te definirá como eres. Aquí estás, convertido en todo un escritor. Original hasta el infinito y dotado de una encantadora sensibilidad, aunque incomprendido por los ingnorantes.";
+
+        // Función para crear el poema dadaísta
+        function generarPoema() {
+            // Se separan las palabras del texto
+            let palabras = textoOriginal.split(/\s+/);
+
+            // Se barajan las palabras aleatoriamente (como si estuvieran en una bolsa)
+            let poema = [];
+            while (palabras.length > 0) {
+                let indice = Math.floor(Math.random() * palabras.length);
+                poema.push(palabras.splice(indice, 1)[0]);
+            }
+
+            // Se muestra el poema generado en la página
+            let poemaElemento = document.getElementById('poema');
+            poemaElemento.innerHTML = "<p><strong>Poema Dadaísta:</strong></p><p>" + poema.join(' ') + "</p>";
+        }
+
+        // Añadir el evento de clic al botón para generar el poema
+        document.getElementById('boton-generar').addEventListener('click', generarPoema);
+    </script>
+
+</body>
+</html>

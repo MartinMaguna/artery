@@ -1,80 +1,79 @@
-let model3D;
-let mic, fft, amplitude;
-let zoom = 0;
-let rotation = { x: 0, y: 0 };
+let scene, camera, renderer, model, mic, amplitude;
 let smoothedLevel = 0;
 
-function preload() {
-  model3D = loadModel('../asset/usdz.obj', true); // Asegúrate de que la ruta sea válida
-}
+init();
+animate();
 
-function setup() {
-  const canvas = createCanvas(windowWidth, windowHeight, WEBGL);
-  canvas.parent('sketch-container');
+function init() {
+  // Escena
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x000000);
 
+  // Cámara
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  // Renderizador
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById("sketch-container").appendChild(renderer.domElement);
+
+  // Luz
+  const ambientLight = new THREE.AmbientLight(0x666666);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(1, 1, 1).normalize();
+  scene.add(directionalLight);
+
+  // Cargar modelo
+  const mtlLoader = new THREE.MTLLoader();
+  mtlLoader.setPath('../posdata/fungarium-model/');
+  mtlLoader.load('mushroom-2.mtl', function (materials) {
+    materials.preload();
+    const objLoader = new THREE.OBJLoader();
+    objLoader.setMaterials(materials);
+    objLoader.setPath('/asset/');
+    objLoader.load('/posdata/fungarium-model/mushroom-2.obj', function (object) {
+      object.scale.set(1, 1, 1);
+      scene.add(object);
+      model = object;
+    });
+  });
+
+  // Audio
   mic = new p5.AudioIn();
   mic.start();
-
-  fft = new p5.FFT(0.8, 1024);
-  fft.setInput(mic);
-
   amplitude = new p5.Amplitude();
   amplitude.setInput(mic);
 
-  noStroke();
+  // Resize responsive
+  window.addEventListener('resize', onWindowResize);
 }
 
-function draw() {
-  background(10);
-  orbitControl(1, 1, 0.05); // Control de cámara con mouse (mejor que mapear manualmente)
+function animate() {
+  requestAnimationFrame(animate);
 
-  // Luz ambiente y direccional
-  ambientLight(60);
-  directionalLight(255, 255, 255, 0, -1, -1);
+  if (model) {
+    let level = amplitude.getLevel();
+    smoothedLevel = lerp(smoothedLevel, level, 0.1);
 
-  // Nivel de audio para escala y color
-  let level = amplitude.getLevel();
-  smoothedLevel = lerp(smoothedLevel, level, 0.1); // suaviza la reactividad
-  let scaleFactor = map(smoothedLevel, 0, 0.3, 1, 3);
+    let scale = map(smoothedLevel, 0, 0.3, 1, 3);
+    model.scale.set(scale, scale, scale);
 
-  // FFT para variaciones extras si se desea
-  let spectrum = fft.analyze();
-  let bass = fft.getEnergy("bass");
+    model.rotation.y += 0.005;
+    model.rotation.x += 0.002;
 
-  push();
+    let color = new THREE.Color(`hsl(${Math.floor(smoothedLevel * 300)}, 100%, 50%)`);
+    model.traverse(child => {
+      if (child.isMesh) child.material.color = color;
+    });
+  }
 
-  // Zoom desde mouseWheel
-  translate(0, 0, zoom);
-
-  // Escalado reactivo
-  scale(scaleFactor);
-
-  // Material reactivo al sonido
-  let r = 200 - smoothedLevel * 200;
-  let g = 100 + smoothedLevel * 155;
-  let b = 150 + smoothedLevel * 50;
-  ambientMaterial(r, g, b);
-
-  // Rotación constante + mouseX / mouseY
-  rotateX(rotation.x + frameCount * 0.001);
-  rotateY(rotation.y + frameCount * 0.001);
-
-  model(model3D);
-
-  pop();
+  renderer.render(scene, camera);
 }
 
-function mouseWheel(event) {
-  zoom += event.delta * 0.2;
-  zoom = constrain(zoom, -1000, 1000);
-}
-
-function mouseMoved() {
-  // Rotación sensible al mouse, opcional si no se usa orbitControl
-  rotation.x = map(mouseY, 0, height, -PI / 4, PI / 4);
-  rotation.y = map(mouseX, 0, width, -PI, PI);
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 }

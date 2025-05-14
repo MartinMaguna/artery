@@ -9,12 +9,23 @@ d3.json("ensayo-literatura-electronica.json").then(full => {
 
 // 2) Función para dibujar la línea de tiempo
 function drawTimeline(data) {
+  // Parámetros
   const margin = { top: 20, right: 30, bottom: 30, left: 100 },
         width = 800 - margin.left - margin.right,
-        height = data.length * 20;
+        height = data.length * 25; // separo un poco más
 
-  const svg = d3.select("#timeline")
-    .append("svg")
+  // Contenedor y overflow
+  const container = d3.select("#timeline")
+    .style("position", "relative")
+    .style("overflow-x", "auto")
+    .style("padding", "1rem")
+    .style("background-color", "#fff")
+    .style("box-shadow", "0 2px 8px rgba(0,0,0,0.1)")
+    .style("border-radius", "8px")
+    .style("margin-bottom", "2rem");
+
+  // SVG
+  const svg = container.append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -26,30 +37,37 @@ function drawTimeline(data) {
     .domain([d3.min(years), d3.max(years)])
     .range([0, width]);
 
-  // Eje inferior
+  // Eje X
   svg.append("g")
-    .attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    .attr("transform", `translate(0, ${height})`)
+    .call(d3.axisBottom(x).tickFormat(d3.format("d")))
+    .selectAll("text")
+      .style("font-size", "12px")
+      .style("fill", "#555");
 
   // Líneas por autor
-  svg.selectAll("line")
+  svg.selectAll("line.author")
     .data(data)
     .enter().append("line")
+      .attr("class", "author")
       .attr("x1", d => x(d.fechas[0]))
       .attr("x2", d => x(d.fechas[1]))
-      .attr("y1", (_, i) => i * 20)
-      .attr("y2", (_, i) => i * 20)
-      .attr("stroke", "#333")
-      .attr("stroke-width", 4);
+      .attr("y1", (_, i) => i * 25)
+      .attr("y2", (_, i) => i * 25)
+      .style("stroke", "#333")
+      .style("stroke-width", 4)
+      .style("opacity", 0.8);
 
   // Etiquetas de autor
-  svg.selectAll("text")
+  svg.selectAll("text.label")
     .data(data)
     .enter().append("text")
+      .attr("class", "label")
       .attr("x", d => x(d.fechas[0]) - 5)
-      .attr("y", (_, i) => i * 20 + 5)
+      .attr("y", (_, i) => i * 25 + 5)
       .attr("text-anchor", "end")
-      .attr("font-size", "12px")
+      .style("font-size", "12px")
+      .style("fill", "#333")
       .text(d => d.autor);
 }
 
@@ -65,70 +83,94 @@ function drawGraph(data) {
     });
   });
 
-  // Generar enlaces entre autores que comparten concepto
+  // Generar enlaces
   const links = [];
   cmap.forEach(idxs => {
-    for (let i=0; i<idxs.length; i++)
-      for (let j=i+1; j<idxs.length; j++)
+    for (let i=0; i<idxs.length; i++) {
+      for (let j=i+1; j<idxs.length; j++) {
         links.push({ source: idxs[i], target: idxs[j] });
+      }
+    }
   });
 
-  const width = 600, height = 400;
-  const svg = d3.select("#graph")
-    .append("svg")
+  // Parámetros
+  const width = 800,
+        height = 500;
+
+  // Contenedor y estilos
+  const container = d3.select("#graph")
+    .style("position", "relative")
+    .style("overflow", "hidden")
+    .style("padding", "1rem")
+    .style("background-color", "#fff")
+    .style("box-shadow", "0 2px 8px rgba(0,0,0,0.1)")
+    .style("border-radius", "8px");
+
+  // SVG
+  const svg = container.append("svg")
       .attr("width", width)
       .attr("height", height);
 
-  // Simulación de fuerza
+  // Simulación
   const sim = d3.forceSimulation(data)
-    .force("link", d3.forceLink(links).id(d=>d.index).distance(100).strength(0.5))
-    .force("charge", d3.forceManyBody().strength(-200))
+    .force("link", d3.forceLink(links).id(d=>d.index).distance(120).strength(0.4))
+    .force("charge", d3.forceManyBody().strength(-300))
     .force("center", d3.forceCenter(width/2, height/2));
 
-  // Dibujar enlaces
+  // Enlaces
   const link = svg.append("g")
-    .selectAll("line")
-    .data(links)
-    .enter().append("line")
-      .attr("stroke", "#aaa");
+      .selectAll("line")
+      .data(links)
+      .enter().append("line")
+        .style("stroke", "#aaa")
+        .style("stroke-width", 1.5)
+        .style("opacity", 0.7);
 
-  // Dibujar nodos
+  // Nodos
   const node = svg.append("g")
-    .selectAll("circle")
-    .data(data)
-    .enter().append("circle")
-      .attr("r", 10)
-      .attr("fill", "#69b3a2")
+      .selectAll("circle")
+      .data(data)
+      .enter().append("circle")
+        .attr("r", 12)
+        .style("fill", "#69b3a2")
+        .style("stroke", "#fff")
+        .style("stroke-width", 1.5)
+        .style("cursor", "grab")
       .call(d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended)
       );
 
-  // Etiquetas de nodos
+  // Etiquetas
   const label = svg.append("g")
-    .selectAll("text")
-    .data(data)
-    .enter().append("text")
-      .text(d => d.autor)
-      .attr("dx", 12).attr("dy", 4)
-      .attr("font-size", "10px");
+      .selectAll("text")
+      .data(data)
+      .enter().append("text")
+        .text(d => d.autor)
+        .attr("dx", 16)
+        .attr("dy", 4)
+        .style("font-size", "11px")
+        .style("fill", "#333");
 
+  // Tick
   sim.on("tick", () => {
     link
       .attr("x1", d=>d.source.x)
       .attr("y1", d=>d.source.y)
       .attr("x2", d=>d.target.x)
       .attr("y2", d=>d.target.y);
+
     node
       .attr("cx", d=>d.x)
       .attr("cy", d=>d.y);
+
     label
       .attr("x", d=>d.x)
       .attr("y", d=>d.y);
   });
 
-  // Funciones de drag
+  // Drag handlers
   function dragstarted(event,d) {
     if (!event.active) sim.alphaTarget(0.3).restart();
     d.fx = d.x; d.fy = d.y;
