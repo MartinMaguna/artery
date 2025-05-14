@@ -1,79 +1,66 @@
-let scene, camera, renderer, model, mic, amplitude;
-let smoothedLevel = 0;
+import * as THREE from 'three';
+import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.128/examples/jsm/loaders/OBJLoader.js';
 
-init();
-animate();
+let scene, camera, renderer;
 
 function init() {
-  // Escena
-  scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+    // Escena
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x111111);
 
-  // Cámara
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-  camera.position.z = 5;
+    // Cámara
+    camera = new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+    );
+    camera.position.set(0, 1, 3);
 
-  // Renderizador
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.getElementById("sketch-container").appendChild(renderer.domElement);
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('sketch-container').appendChild(renderer.domElement);
 
-  // Luz
-  const ambientLight = new THREE.AmbientLight(0x666666);
-  scene.add(ambientLight);
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-  directionalLight.position.set(1, 1, 1).normalize();
-  scene.add(directionalLight);
+    // Luz ambiental y direccional
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
 
-  // Cargar modelo
-  const mtlLoader = new THREE.MTLLoader();
-  mtlLoader.setPath('../posdata/fungarium-model/');
-  mtlLoader.load('mushroom-2.mtl', function (materials) {
-    materials.preload();
-    const objLoader = new THREE.OBJLoader();
-    objLoader.setMaterials(materials);
-    objLoader.setPath('/asset/');
-    objLoader.load('/posdata/fungarium-model/mushroom-2.obj', function (object) {
-      object.scale.set(1, 1, 1);
-      scene.add(object);
-      model = object;
-    });
-  });
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(0, 1, 1);
+    scene.add(directionalLight);
 
-  // Audio
-  mic = new p5.AudioIn();
-  mic.start();
-  amplitude = new p5.Amplitude();
-  amplitude.setInput(mic);
+    // Cargar archivo OBJ
+    const loader = new OBJLoader();
+    loader.load(
+        '/asset/reconstructed_base_shape.obj', // ruta relativa en el proyecto
+        function (obj) {
+            obj.scale.set(1, 1, 1);
+            obj.position.set(0, 0, 0);
+            scene.add(obj);
+        },
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% cargado');
+        },
+        function (error) {
+            console.error('Error al cargar el modelo OBJ:', error);
+        }
+    );
 
-  // Resize responsive
-  window.addEventListener('resize', onWindowResize);
+    animate();
 }
 
+// Animación
 function animate() {
-  requestAnimationFrame(animate);
-
-  if (model) {
-    let level = amplitude.getLevel();
-    smoothedLevel = lerp(smoothedLevel, level, 0.1);
-
-    let scale = map(smoothedLevel, 0, 0.3, 1, 3);
-    model.scale.set(scale, scale, scale);
-
-    model.rotation.y += 0.005;
-    model.rotation.x += 0.002;
-
-    let color = new THREE.Color(`hsl(${Math.floor(smoothedLevel * 300)}, 100%, 50%)`);
-    model.traverse(child => {
-      if (child.isMesh) child.material.color = color;
-    });
-  }
-
-  renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
 }
 
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
+// Responsive
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+init();

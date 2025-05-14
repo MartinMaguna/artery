@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="">
     <meta name="description" content="">
-
     <title>ARTERIA - Fungarium</title>
     <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
-
     <link rel="stylesheet" href="/style.css">
 
     <script src="/script.js" defer></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/MTLLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/OBJLoader.js"></script>
+    <!-- Cargar Three.js y los loaders desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 </head>
 
@@ -41,28 +38,15 @@
 
     <main>
         <section id="art-generativo" aria-label="Obra de arte generativa">
-            <!-- Aquí se insertará la obra generativa con p5.js -->
+            <!-- Aquí se insertará la obra generativa con three.js -->
             <div id="sketch-container"></div>
         </section>
+
 
         <h1>Fungarium</h1>
         <p>Un espacio para la creación y el intercambio de ideas sobre arte, ciencia y tecnología.</p>
         <p>En este espacio, exploramos la intersección entre el arte y la ciencia, utilizando la tecnología como medio
             para crear experiencias únicas e innovadoras.</p>
-        <p>El Fungarium es un laboratorio de ideas donde artistas, científicos y tecnólogos pueden colaborar y
-            experimentar con nuevas formas de expresión artística.</p>
-        <p>Te invitamos a explorar nuestras obras y participar en nuestras actividades. Juntos, podemos crear un futuro
-            más sostenible y creativo.</p>
-        <p>¡Bienvenido al Fungarium!</p>
-
-        <div id="fungarium-container">
-            <h2>Obra Generativa</h2>
-            <p>Esta obra generativa es un ejemplo de cómo la tecnología puede ser utilizada para crear experiencias
-                artísticas únicas.</p>
-            <p>Utilizando datos en tiempo real, esta obra se adapta y evoluciona constantemente, creando una experiencia
-                única para cada espectador.</p>
-            <p>Explora la obra y descubre cómo la tecnología puede transformar nuestra percepción del arte.</p>
-        </div>
 
     </main>
 
@@ -71,7 +55,8 @@
         <p>Laboratorio de Arte Electrónico-Digital</p>
     </footer>
 
-    <script src="/posdata/posdata-fungarium.js" defer></script>
+
+    <script src="/posdata/posdata-fungarium.js"></script>
 </body>
 
 </html>
