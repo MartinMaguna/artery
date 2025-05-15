@@ -1,0 +1,54 @@
+P5.js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+
+
+_____________________________________________________________________________________
+p5 Sound
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js"></script>
+
+
+
+
+_____________________________________________________________________________________
+Hydra.js
+<script src="https://unpkg.com/hydra-synth"></script>
+
+
+
+_____________________________________________________________________________________
+Rita.js
+<script src="https://cdn.jsdelivr.net/npm/rita@2.0.0/rita.min.js"></script>
+
+
+
+_____________________________________________________________________________________
+Three.js
+
+Paso 1 |  <script type="module"> import three from https://cdn.jsdelivr.net/npm/three@0.176.0/+esm </script>
+
+Paso 2 | En el Header del HTML | <!-- Import map para Three.js como módulo ES6 -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three/build/three.module.js"
+        }
+    }
+    </script>
+
+
+
+Paso 3 | Al final del body del HTML | <!-- Tu script como módulo -->
+<script type="module" src="/poesia/poema-acrostico.js"></script>
+
+
+Paso 4 | En el archivo JS importar:
+//Ej: poema-acrostico.js
+import * as THREE from 'three';
+
+const width = window.innerWidth;
+const height = window.innerHeight;
+
+
+_____________________________________________________________________________________
+D3.js
+ <script src="https://d3js.org/d3.v7.min.js"></script>
