@@ -17,7 +17,8 @@ Hydra.js
 
 _____________________________________________________________________________________
 Rita.js
-<script src="https://cdn.jsdelivr.net/npm/rita@2.0.0/rita.min.js"></script>
+Chekeado que funciona:
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rita/2.8.0/rita.min.js"></script>
 
 
 
@@ -52,3 +53,10 @@ const height = window.innerHeight;
 _____________________________________________________________________________________
 D3.js
  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+
+_____________________________________________________________________________________
+
+GOOGLE fonts
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+

@@ -4,18 +4,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
 
-  <title>ARTERIA - POESÍA</title>
+  <title>ARTERIA - POESIA</title>
   <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
+
   <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="acrostico.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="acrostico.css">
 
-  <!-- Bibliotecas externas -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 
-  <!-- Scripts propios (NO deben ser type="module") -->
   <script src="/script.js" defer></script>
+  
+
+<script src="https://cdn.jsdelivr.net/npm/rita@2.0.0/rita.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+
 </head>
 
 <body>
@@ -31,7 +36,7 @@
       </button>
       <ul id="menu-list">
         <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
-        <li><a href="/pages/poesia.html">POESÍA</a></li>
+        <li><a href="/pages/poesia.html">POESIA</a></li>
         <li><a href="/pages/posdata.html">POSDATA</a></li>
         <li><a href="/pages/about.html">ABOUT</a></li>
       </ul>
@@ -39,25 +44,36 @@
   </header>
 
   <main>
-    <h2>Construí tu verso para el acróstico <strong>UPM</strong></h2>
+    <section id="acrostico-visuales">
+      <h2>Visual Generativo del Acróstico</h2>
+      <div id="p5-container"></div>
+    </section>
+    <section id="acrostico-rituales">
+      <h2>Visual Generativo del Acróstico</h2>
+      <div id="rita-container"></div>
+    </section>
 
-    <div id="auth-buttons">
-      <button id="login-google">Ingresar con Google</button>
-      <button id="logout" style="display:none;">Salir</button>
-    </div>
+    <section>
+      <!-- Aquí va el poema realizado a partir del acrostico con Rita.js -->
+    </section>
+    <section class="acrostico-form">
+      <h2>Acróstico colaborativo: UPM</h2>
+      <form id="acrosticForm">
+        <label>U: <input type="text" id="lineU" required placeholder="Empieza con U" /></label><br />
+        <label>P: <input type="text" id="lineP" required placeholder="Empieza con P" /></label><br />
+        <label>M: <input type="text" id="lineM" required placeholder="Empieza con M" /></label><br />
+        <button type="submit">Enviar verso</button>
+      </form>
+      <p id="mensaje"></p>
+    </section>
 
-    <p id="estado-auth"></p>
-
-    <form id="verso-form" style="display:none;">
-      <label>U: <input type="text" id="line-u" required placeholder="Verso que comience con U" /></label><br>
-      <label>P: <input type="text" id="line-p" required placeholder="Verso que comience con P" /></label><br>
-      <label>M: <input type="text" id="line-m" required placeholder="Verso que comience con M" /></label><br>
-      <button type="submit">Enviar verso</button>
-    </form>
+    <section id="versos-guardados">
+      <h3>Versos colaborativos</h3>
+      <ul id="versosList"></ul>
+    </section>
   </main>
 
-  <!-- Script final que maneja Firebase y lógica de login/envío -->
-  <script type="module" src="poema-acrostico.js"></script>
+  <!-- Script principal como módulo para trabajar con la versión modular de Firebase -->
+  <script src="poema-acrostico.js"></script>
 </body>
-
 </html>
