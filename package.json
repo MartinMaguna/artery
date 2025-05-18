@@ -1,1 +1,26 @@
-{}
+{
+  "name": "acrostico-poetico",
+  "version": "1.0.0",
+  "description": "Aplicación web para crear poesía visual colaborativa",
+  "main": "backend/acrostico-server.js",
+  "scripts": {
+    "start": "node backend/acrostico-server.js",
+    "dev": "nodemon backend/acrostico-server.js"
+  },
+  "keywords": [
+    "poesia",
+    "colaborativa",
+    "acrostico"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase": "^11.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

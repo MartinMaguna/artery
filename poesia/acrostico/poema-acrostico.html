@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ARTERIA - POESÍA</title>
+  <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="acrostico.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
+
+  <!-- Bibliotecas externas -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+
+  <!-- Scripts propios (NO deben ser type="module") -->
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/index.html">
+        <h1>ARTERIA</h1>
+      </a>
+    </div>
+    <nav>
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">
+        &#9776;
+      </button>
+      <ul id="menu-list">
+        <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+        <li><a href="/pages/poesia.html">POESÍA</a></li>
+        <li><a href="/pages/posdata.html">POSDATA</a></li>
+        <li><a href="/pages/about.html">ABOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Construí tu verso para el acróstico <strong>UPM</strong></h2>
+
+    <div id="auth-buttons">
+      <button id="login-google">Ingresar con Google</button>
+      <button id="logout" style="display:none;">Salir</button>
+    </div>
+
+    <p id="estado-auth"></p>
+
+    <form id="verso-form" style="display:none;">
+      <label>U: <input type="text" id="line-u" required placeholder="Verso que comience con U" /></label><br>
+      <label>P: <input type="text" id="line-p" required placeholder="Verso que comience con P" /></label><br>
+      <label>M: <input type="text" id="line-m" required placeholder="Verso que comience con M" /></label><br>
+      <button type="submit">Enviar verso</button>
+    </form>
+  </main>
+
+  <!-- Script final que maneja Firebase y lógica de login/envío -->
+  <script type="module" src="poema-acrostico.js"></script>
+</body>
+
+</html>

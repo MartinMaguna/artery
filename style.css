@@ -27,6 +27,11 @@ a {
 
 /* ==== HEADER ==== */
 header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -34,9 +39,8 @@ header {
   background-color: #000;
   color: #fff;
   padding: 1rem 2rem;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 8px rgba(37, 37, 37, 0.4);
 }
-
 .logo h1 {
   font-size: 2rem;
   font-weight: bold;
