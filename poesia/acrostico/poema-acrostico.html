@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
+  <meta name="keywords" content="poesía, acróstico, arte generativo" />
+  <meta name="description" content="Acróstico colaborativo UPM - ARTERIA" />
 
   <title>ARTERIA - POESIA</title>
   <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
@@ -13,14 +13,14 @@
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="acrostico.css">
 
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
 
+  <!-- Scripts externos -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rita/2.8.0/rita.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+
+  <!-- Script principal de navegación -->
   <script src="/script.js" defer></script>
-  
-
-<script src="https://cdn.jsdelivr.net/npm/rita@2.0.0/rita.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
-
 </head>
 
 <body>
@@ -38,42 +38,69 @@
         <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
         <li><a href="/pages/poesia.html">POESIA</a></li>
         <li><a href="/pages/posdata.html">POSDATA</a></li>
-        <li><a href="/pages/about.html">ABOUT</a></li>
+        <li><a href="/pages/about.html">PULSO</a></li>
       </ul>
     </nav>
-  </header>
+  </header> 
 
-  <main>
-    <section id="acrostico-visuales">
-      <h2>Visual Generativo del Acróstico</h2>
+  <main class="acrostico-container">
+    <!-- Sección 1: Canvas -->
+    <section class="canvas-section">
       <div id="p5-container"></div>
     </section>
-    <section id="acrostico-rituales">
-      <h2>Visual Generativo del Acróstico</h2>
-      <div id="rita-container"></div>
+    
+    <!-- Sección 2: Título y Subtítulo -->
+    <section class="poem-header">
+      <h1>Acróstico</h1>
+      <h2>Un Poema en Movimiento</h2>
+    </section>
+    
+    <!-- Sección 3: Poema Aleatorio -->
+    <section class="poem-random">
+      <div id="rita-container" class="poem-display"></div>
     </section>
 
-    <section>
-      <!-- Aquí va el poema realizado a partir del acrostico con Rita.js -->
-    </section>
-    <section class="acrostico-form">
-      <h2>Acróstico colaborativo: UPM</h2>
+    <!-- Sección 4: Formulario -->
+    <section class="poem-form">
+      <h3>Contribuye al poema</h3>
+      <p class="form-description">Escribe un verso usando tres palabras que inicien con U, P y M respectivamente.</p>
       <form id="acrosticForm">
-        <label>U: <input type="text" id="lineU" required placeholder="Empieza con U" /></label><br />
-        <label>P: <input type="text" id="lineP" required placeholder="Empieza con P" /></label><br />
-        <label>M: <input type="text" id="lineM" required placeholder="Empieza con M" /></label><br />
+        <div class="verse-inputs">
+          <div class="input-group">
+            <label for="lineU">U</label>
+            <input type="text" id="lineU" required placeholder="Una palabra que inicie con U..." />
+          </div>
+          <div class="input-group">
+            <label for="lineP">P</label>
+            <input type="text" id="lineP" required placeholder="Palabra que inicie con P..." />
+          </div>
+          <div class="input-group">
+            <label for="lineM">M</label>
+            <input type="text" id="lineM" required placeholder="Palabra que inicie con M..." />
+          </div>
+        </div>
         <button type="submit">Enviar verso</button>
       </form>
       <p id="mensaje"></p>
     </section>
 
-    <section id="versos-guardados">
-      <h3>Versos colaborativos</h3>
-      <ul id="versosList"></ul>
+    <!-- Sección 5: Versos Existentes -->
+    <section class="poem-verses">
+      <h3>Versos del poema</h3>
+      <div class="verses-container">
+        <div id="versosList" class="verses-list"></div>
+      </div>
+    </section>
+
+    <!-- Sección 6: Verso Final -->
+    <section class="poem-footer">
+      <p class="final-verse">Uruguay Puede Movilizarse</p>
     </section>
   </main>
 
-  <!-- Script principal como módulo para trabajar con la versión modular de Firebase -->
-  <script src="poema-acrostico.js"></script>
+  <!-- Scripts de Firebase y funcionalidad principal -->
+  <script type="module" src="./firebase-config.js"></script>
+  <script type="module" src="./poema-acrostico.js"></script>
 </body>
+
 </html>

@@ -3,225 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Poema Generativo con RiTa.js</title>
+  <title>Poema Generativo Colaborativo</title>
+  <link rel="stylesheet" href="/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rita/2.8.0/rita.min.js"></script>
-  <style>
-    body {
-      font-family: 'Georgia', serif;
-      background-color: #f5f5f5;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      max-width: 600px;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      color: #2c3e50;
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
-    .poem {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 30px;
-      text-align: left;
-    }
-    button {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #2980b9;
-    }
-    .author {
-      font-style: italic;
-      color: #7f8c8d;
-      margin-top: 20px;
-    }
-    .verse {
-      margin-bottom: 15px;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
     <h1>Susurros del Código</h1>
     <div id="poem" class="poem"></div>
     <button id="generate">Generar Nuevo Poema</button>
-    <p class="author">- Poesía Algorítmica, 2025</p>
+
+    <div class="formulario">
+      <h2>Agrega tu verso</h2>
+      <textarea id="userVerse" placeholder="Escribe tu verso aquí..."></textarea>
+      <button id="submitVerse">Enviar verso</button>
+    </div>
+
+    <h2>Versos de la comunidad</h2>
+    <div id="communityPoem"></div>
+
+    <p class="author">- Poesía Algorítmica Colaborativa, 2025</p>
   </div>
 
-  <script>
-    // Gramática para el poema - usamos strings directamente en lugar de referencias
-    function generatePoem() {
-      // Creamos el poema usando elementos aleatorios en lugar de gramática formal de RiTa
-      // Esto evita el error "No valid sentence-starts remaining"
-      
-      // Arrays de elementos poéticos
-      const saludos = [
-        "Entre luminosas sombras",
-        "Bajo efímeros cielos",
-        "Con profundos suspiros",
-        "Hacia inquietos horizontes",
-        "Desde silenciosos silencios"
-      ];
-      
-      const paisajes = [
-        "el viento murmura secretos",
-        "las estrellas dibujan caminos",
-        "el tiempo suspende su vuelo",
-        "los recuerdos tejen historias",
-        "las palabras encuentran su eco"
-      ];
-      
-      const reflexiones = [
-        "Quizás el alba sea solo",
-        "Tal vez en la memoria habite",
-        "Como si el olvido pudiera",
-        "Mientras la nostalgia sueña con",
-        "Aunque el silencio busque"
-      ];
-      
-      const sentimientos = [
-        "un espejismo de eco olvidado",
-        "la memoria de palabra perdida",
-        "el reflejo de algoritmo distante",
-        "la promesa de código eterno",
-        "el susurro de sintaxis invisible"
-      ];
-      
-      const acciones = [
-        "navegar entre líneas invisibles",
-        "danzar sin dejar rastro",
-        "desvanecerse como sombra fugitiva",
-        "transformarse más allá del tiempo",
-        "susurrar entre sueños y realidad"
-      ];
-      
-      const cierres = [
-        "Y así, silenciosamente, el código se hace poesía",
-        "Quizás mañana, inevitablemente, las palabras se transforman en algoritmos",
-        "Mientras tanto, sutilmente, los versos se pierden en la memoria digital",
-        "En el fondo, persistentemente, el lenguaje encuentra su propio eco",
-        "Al final, recursivamente, la sintaxis revela nuevos significados"
-      ];
-      
-      // Seleccionar elementos aleatorios
-      const saludo = saludos[Math.floor(Math.random() * saludos.length)];
-      const paisaje = paisajes[Math.floor(Math.random() * paisajes.length)];
-      const reflexion = reflexiones[Math.floor(Math.random() * reflexiones.length)];
-      const sentimiento = sentimientos[Math.floor(Math.random() * sentimientos.length)];
-      const accion1 = acciones[Math.floor(Math.random() * acciones.length)];
-      const accion2 = acciones[Math.floor(Math.random() * acciones.length)];
-      const cierre = cierres[Math.floor(Math.random() * cierres.length)];
-      
-      // Construir las líneas del poema
-      let lines = [
-        `${saludo} ${paisaje}.`,
-        `${reflexion} ${sentimiento}.`,
-        `${accion1}, ${accion2}.`,
-        `${cierre}.`
-      ];
-      
-      // Usar RiTa para transformaciones
-      // Markov para algunas modificaciones léxicas
-      let markov = RiTa.markov(2);
-      markov.addText("código sintaxis lenguaje algoritmo patrón estructura digital virtual memoria datos flujo iteración recursión bucle función variable constante");
-      
-      // Aplicar modificaciones a algunas palabras
-      for (let i = 0; i < lines.length; i++) {
-        if (Math.random() > 0.5) {
-          let words = RiTa.tokenize(lines[i]);
-          for (let j = 0; j < words.length; j++) {
-            if (words[j].length > 4 && Math.random() > 0.8) {
-              // Generar palabras del modelo Markov
-              try {
-                let suggestion = markov.generate({ maxLength: 1 });
-                if (suggestion && suggestion.length > 0) {
-                  let newWords = RiTa.tokenize(suggestion[0]);
-                  if (newWords.length > 0) {
-                    words[j] = newWords[Math.floor(Math.random() * newWords.length)];
-                  }
-                }
-              } catch (e) {
-                console.log("Error en Markov:", e);
-                // Continuar sin modificar la palabra
-              }
-            }
-          }
-          try {
-            lines[i] = RiTa.untokenize(words);
-          } catch (e) {
-            console.log("Error en untokenize:", e);
-            // Mantener la línea original
-          }
-        }
-      }
-      
-      // Añadir algunas transformaciones poéticas
-      for (let i = 0; i < lines.length; i++) {
-        if (Math.random() > 0.7) {
-          let type = Math.floor(Math.random() * 3);
-          switch(type) {
-            case 0: // Repetición
-              let words = RiTa.tokenize(lines[i]);
-              if (words.length > 3) {
-                let wordToRepeat = words[Math.floor(Math.random() * words.length)];
-                lines[i] = `${lines[i]}... ${wordToRepeat}... ${wordToRepeat}...`;
-              }
-              break;
-            case 1: // Patrones de sonido
-              try {
-                let words = RiTa.tokenize(lines[i]);
-                let lastWord = words[words.length - 1];
-                // En lugar de buscar rimas que pueden causar errores, añadimos palabras similares
-                let similares = ["enigma", "silencio", "código", "memoria", "patrón", "ritmo"];
-                lines[i] = `${lines[i]} — ${similares[Math.floor(Math.random() * similares.length)]}`;
-              } catch (e) {
-                console.log("Error en patrón de sonido:", e);
-              }
-              break;
-            case 2: // Aliteración
-              let alliterations = ["sueño", "memoria", "luz", "código", "tiempo", "patrón"];
-              let selectedWords = [];
-              for (let k = 0; k < 3; k++) {
-                selectedWords.push(alliterations[Math.floor(Math.random() * alliterations.length)]);
-              }
-              lines[i] = `${lines[i]} (${selectedWords.join(", ")})`;
-              break;
-          }
-        }
-      }
-      
-      // Formatear el poema final
-      let finalPoem = '';
-      for (let line of lines) {
-        finalPoem += `<div class="verse">${line}</div>`;
-      }
-      
-      document.getElementById('poem').innerHTML = finalPoem;
-    }
-
-    // Generar poema al cargar y cuando se haga clic en el botón
-    document.addEventListener('DOMContentLoaded', generatePoem);
-    document.getElementById('generate').addEventListener('click', generatePoem);
-  </script>
+  <script type="module" src="/firebase.js"></script>
+  <script type="module" src="/prueba/prueba.js"></script>
 </body>
 </html>

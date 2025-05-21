@@ -56,6 +56,12 @@ D3.js
 
 
 _____________________________________________________________________________________
+lottie
+Sirve para trabajar con animaciones realizadas en After Effects y exportadas en formato json lugin Bodymovin .
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
+
+_____________________________________________________________________________________
 
 GOOGLE fonts
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
