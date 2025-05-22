@@ -13,13 +13,13 @@ body {
   width: 100vw;
   min-height: 100vh;
   max-width: 100vw;
-  font-family: 'Crimson Pro', 'Georgia', serif;
   color: #2d2d2d;
   letter-spacing: 0.01em;
   background: #f6f5f2;
 }
 
 .kindle-container, .kindle-book {
+  font-family: 'Crimson Pro', 'Georgia', serif;
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
