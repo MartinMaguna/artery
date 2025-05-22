@@ -1,1037 +1,221 @@
-/* ==== KINDLE STYLE LAYOUT ==== */
-:root {
-  --color-papel: #f9f6f1;
-  --color-tinta: #2c2c2c;
-  --color-acento: #8b4513;
-  --font-serif: 'Crimson Pro', Georgia, serif;
-  --font-header: 'Special Elite', monospace;
-  --page-width: 800px;
-  --page-height: calc(var(--page-width) * 1.414); /* Proporción A4 */
+/***** ACROSTICO.CSS - REDISEÑO KINDLE STYLE *****/
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f6f5f2;
+  overflow: hidden;
 }
 
 body {
-  background-color: var(--color-papel);
-  color: var(--color-tinta);
-  font-family: var(--font-serif);
-  line-height: 1.6;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  font-family: 'Crimson Pro', 'Georgia', serif;
+  color: #2d2d2d;
+  letter-spacing: 0.01em;
+  background: #f6f5f2;
 }
 
-.kindle-style {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.content-wrapper {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: var(--color-papel);
-  border: 1px solid var(--color-tinta);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* ==== VISUAL SECTION ==== */
-#acrostico-visual {
-  width: 100%;
-  height: 60vh;
-  margin-bottom: 2rem;
-  background-color: #000;
-  border-radius: 8px;
+.kindle-container, .kindle-book {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  max-width: 100vw;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-
-#p5-container {
-  width: 100%;
-  height: 100%;
-  cursor: none;
-}
-
-body:not(#p5-container) {
-  cursor: default;
-}
-
-
-/* ==== POEM DISPLAY ==== */
-.poem-display {
-  margin-bottom: 4rem;
-}
-
-.poem-container {
-  font-family: var(--font-serif);
-  line-height: 1.8;
-  color: var(--color-tinta);
-  padding: 2rem;
-  background: var(--color-papel);
-  border: 1px solid var(--color-tinta);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-#rita-container {
-  font-size: 1.2rem;
-  text-align: left;
-}
-
-#rita-container p {
-  margin-bottom: 1.5rem;
-}
-
-/* ==== FORM SECTION ==== */
-.acrostico-form {
-  margin: 4rem 0;
-  padding: 2rem;
-  background: var(--color-papel);
-  border: 1px solid var(--color-tinta);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.acrostico-form h3 {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--color-tinta);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.form-description {
-  text-align: center;
-  color: var(--color-acento);
-  margin-bottom: 2rem;
-  font-family: var(--font-serif);
-  font-style: italic;
-}
-
-.verse-input {
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.verse-input label {
-  position: absolute;
-  left: -2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--color-acento);
-  font-weight: 600;
-}
-
-.verse-input input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  border: 1px solid var(--color-tinta);
-  border-radius: 4px;
-  background: var(--color-papel);
-  color: var(--color-tinta);
-  transition: all 0.3s ease;
-}
-
-.verse-input input:focus {
-  outline: none;
-  border-color: var(--color-acento);
-  box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.1);
-}
-
-.acrostico-form button {
-  display: block;
-  width: 200px;
-  margin: 2rem auto;
-  padding: 0.8rem 1.5rem;
-  background: var(--color-acento);
-  color: var(--color-papel);
-  border: none;
-  border-radius: 4px;
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.acrostico-form button:hover {
-  transform: translateY(-1px);
-}
-
-#mensaje {
-  text-align: center;
-  font-family: var(--font-serif);
-  color: var(--color-acento);
-  min-height: 1.5em;
-  margin-top: 1rem;
-}
-
-/* ==== VERSES LIST ==== */
-#versos-guardados {
-  padding: 2rem;
-  background: var(--color-papel);
-  border: 1px solid var(--color-tinta);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-#versos-guardados h3 {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--color-tinta);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.verses-container {
-  max-height: 400px;
-  overflow-y: auto;
-  padding: 1rem;
-  border: 1px solid var(--color-tinta);
-  border-radius: 4px;
-  background: var(--color-papel);
-}
-
-#versosList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#versosList li {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  padding: 1rem;
-  border-bottom: 1px solid var(--color-tinta);
-  color: var(--color-tinta);
-}
-
-#versosList li:last-child {
-  border-bottom: none;
-}
-
-/* ==== DARK MODE ==== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-papel: #1a1a1a;
-    --color-tinta: #e0e0e0;
-    --color-acento: #d4a373;
-  }
-
-  .content-wrapper,
-  .poem-container,
-  .acrostico-form,
-  #versos-guardados {
-    background: #222;
-  }
-
-  .verse-input input {
-    background: #333;
-    color: #e0e0e0;
-  }
-
-  .verses-container {
-    background: #222;
-  }
-}
-
-/* ==== RESPONSIVE ==== */
-@media (max-width: 768px) {
-  .content-wrapper {
-    padding: 1rem;
-  }
-
-  .poem-header h1 {
-    font-size: 2rem;
-  }
-
-  .poem-header h2 {
-    font-size: 1.2rem;
-  }
-
-  .verse-input label {
-    position: static;
-    display: block;
-    margin-bottom: 0.5rem;
-    transform: none;
-  }
-
-  .acrostico-form {
-    padding: 1rem;
-  }
-}
-
-/* Contenedor principal */
-.acrostico-container {
-  max-width: 800px;
-  margin: 4rem auto;
-  padding: 2rem;
-}
-
-/* Sección del Canvas */
-.canvas-section {
-  margin: 4rem auto;
-  width: 66.666%;
-  aspect-ratio: 1;
-  background-color: var(--color-papel);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-#p5-container {
-  width: 100%;
-  height: 100%;
-  cursor: none;
-}
-
-/* Sección 2: Título y Subtítulo */
-.poem-header {
-  text-align: center;
-  margin: 4rem 0;
-}
-
-.poem-header h1 {
-  font-family: var(--font-serif);
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.poem-header h2 {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--color-tinta);
-}
-
-/* Sección 3: Poema Aleatorio */
-.poem-random {
-  margin: 3rem auto;
-  max-width: 800px;
-  text-align: center;
-}
-
-.poem-display {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin: 2rem 0;
-  display: grid;
-  grid-template-rows: repeat(4, auto);
-  gap: 2rem;
-}
-
-.verse-line {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #f6f5f2;
 }
 
-.verse-word {
-  padding: 0.5rem;
-  background-color: var(--color-papel);
-  border-radius: 4px;
-}
-
-/* Sección 4: Formulario */
-.poem-form {
-  max-width: 500px;
-  margin: 6rem auto;
-  text-align: center;
-}
-
-.poem-form h3 {
-  font-size: 1.2rem;
-  font-weight: normal;
-  font-style: italic;
-  color: var(--color-acento);
-  margin-bottom: 2rem;
-}
-
-.form-description {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--color-tinta);
-}
-
-.verse-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.input-group label {
-  font-size: 1.5rem;
-  font-weight: 600;
-  width: 2rem;
-  text-align: center;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 0.8rem 0;
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-tinta);
-  color: var(--color-tinta);
-  transition: all 0.3s ease;
-}
-
-.input-group input::placeholder {
-  color: rgba(44, 44, 44, 0.5);
-  font-style: italic;
-}
-
-.input-group input:focus {
-  outline: none;
-  border-bottom-color: var(--color-acento);
-}
-
-.poem-form button {
-  background: transparent;
-  border: 1px solid var(--color-acento);
-  color: var(--color-acento);
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  padding: 0.8rem 2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 2rem;
-}
-
-.poem-form button:hover {
-  background: var(--color-acento);
-  color: var(--color-papel);
-}
-
-/* ==== POEM VERSES ==== */
-.poem-verses {
-  font-size: 1.2rem;
-  line-height: 2;
-  text-align: left;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.verse {
-  margin: 1rem 0;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--color-tinta);
-}
-
-.verse:focus {
-  outline: 2px solid var(--color-acento);
-  outline-offset: 4px;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
-/* Asegurar contraste adecuado para modo oscuro */
-@media (prefers-color-scheme: dark) {
-  .verse:focus {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-}
-
-/* Ocultar visualmente pero mantener accesible para lectores de pantalla */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Variables CSS con mejores contrastes */
-:root {
-  --text-color: #1a1a1a;
-  --secondary-text: #444444;
-  --bg-color: #ffffff;
-  --form-bg: #f8f8f8;
-  --input-bg: #ffffff;
-  --border-color: #666666;
-  --accent-color: #2c5282;
-  --accent-hover: #1a365d;
-  --focus-outline: #2c5282;
-  --error-color: #c53030;
-  --success-color: #2f855a;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .canvas-section {
-    width: 100%;
-    margin: 2rem auto;
-  }
-
-  .poem-header h1 {
-    font-size: 2rem;
-  }
-
-  .poem-header h2 {
-    font-size: 1.2rem;
-  }
-
-  .verse-inputs {
-    gap: 0.5rem;
-  }
-
-  .input-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .input-group label {
-    width: auto;
-    text-align: left;
-  }
-
-  .poem-form {
-    padding: 1rem;
-  }
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: #ffffff;
-    --secondary-text: #cccccc;
-    --bg-color: #1a1a1a;
-    --form-bg: #2d2d2d;
-    --input-bg: #333333;
-    --border-color: #666666;
-    --accent-color: #63b3ed;
-    --accent-hover: #4299e1;
-    --focus-outline: #63b3ed;
-  }
-
-  .verse:focus {
-    background-color: rgba(99, 179, 237, 0.2);
-  }
-
-  #mensaje.error {
-    background-color: rgba(197, 48, 48, 0.1);
-    color: #fc8181;
-  }
-
-  #mensaje.success {
-    background-color: rgba(47, 133, 90, 0.1);
-    color: #68d391;
-  }
-}
-
-/* Cursor personalizado (solo visible en el canvas) */
-#cursor {
-  width: 20px;
-  height: 20px;
-  background-color: rgba(0, 255, 0, 0.6);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  filter: blur(2px);
-  z-index: 9999;
-  transition: transform 0.1s ease;
-  display: none;
-}
-
-/* ==== CANVAS ACCESSIBILITY ==== */
-.canvas-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.canvas-container:focus-within {
-  outline: 3px solid var(--accent-color);
-  outline-offset: 4px;
-}
-
-/* Asegurar que el canvas es focuseable */
-#p5-container canvas {
-  outline: none;
-}
-
-#p5-container canvas:focus {
-  outline: none; /* Removemos el outline del canvas porque ya tenemos el del contenedor */
-}
-
-/* Estilo para el feedback de interacción */
-#interaction-feedback {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-family: var(--font-serif);
-  z-index: 100;
-  max-width: 80%;
-  text-align: center;
-}
-
-/* Asegurar alto contraste en modo oscuro */
-@media (prefers-color-scheme: dark) {
-  #interaction-feedback {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-  }
-  
-  .canvas-container:focus-within {
-    outline-color: var(--accent-color);
-  }
-}
-
-/* Mejorar la visibilidad del foco para usuarios de teclado */
-*:focus {
-  outline: 2px solid var(--focus-outline);
-  outline-offset: 2px;
-}
-
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-*:focus-visible {
-  outline: 2px solid var(--focus-outline);
-  outline-offset: 2px;
-}
-
-/* Mejoras de accesibilidad para el formulario */
-.input-group input:focus {
-  outline: 2px solid var(--focus-outline);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.2);
-}
-
-.input-group label {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-}
-
-.poem-form button {
-  background-color: var(--accent-color);
-  color: #ffffff;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.poem-form button:focus {
-  outline: 2px solid var(--focus-outline);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.2);
-}
-
-.poem-form button:hover {
-  background-color: var(--accent-hover);
-}
-
-/* Mejoras para los versos del poema */
-.verse {
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-.verse:focus {
-  outline: 2px solid var(--focus-outline);
-  outline-offset: 2px;
-  background-color: rgba(44, 82, 130, 0.1);
-}
-
-/* Mensajes de estado */
-#mensaje {
-  padding: 0.75rem;
-  border-radius: 4px;
-  font-weight: 500;
-}
-
-#mensaje.error {
-  background-color: #fff5f5;
-  color: var(--error-color);
-  border: 1px solid var(--error-color);
-}
-
-#mensaje.success {
-  background-color: #f0fff4;
-  color: var(--success-color);
-  border: 1px solid var(--success-color);
-}
-
-/* Skip-to-main content link para navegación por teclado */
-.skip-to-main-content {
-  position: absolute;
-  top: -999px;
-  left: 50%;
-  background: var(--accent-color);
-  color: white;
-  padding: 1rem;
-  transform: translateX(-50%);
-  transition: top 0.3s ease;
-  z-index: 1000;
-}
-
-.skip-to-main-content:focus {
-  top: 0;
-}
-
-/* Mejorar la visibilidad de los mensajes de estado para lectores de pantalla */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Restaurar estilos originales del header */
-header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #000;
-  color: #fff;
-  padding: 1rem 2rem;
-}
-
-.logo h1 {
-  font-family: var(--font-header);
-  font-size: 2rem;
-  font-weight: bold;
-  color: inherit;
-  margin: 0;
-}
-
-nav button {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: inherit;
-}
-
-#menu-list {
-  list-style: none;
-  display: none;
-  flex-direction: column;
-  margin-top: 0.5rem;
-}
-
-#menu-list li {
-  border-top: 1px solid #444;
-}
-
-#menu-list li a {
-  font-family: var(--font-header);
-  display: block;
-  padding: 0.5rem 1rem;
-  color: inherit;
-  transition: background-color 0.3s;
-  border-radius: 0.25rem;
-}
-
-#menu-list li a:hover {
-  background-color: #555;
-}
-
-@media (min-width: 768px) {
-  nav button {
-    display: none;
-  }
-
-  #menu-list {
-    display: flex;
-    flex-direction: row;
-    margin-top: 0;
-  }
-
-  #menu-list li {
-    border: none;
-  }
-
-  #menu-list li a {
-    padding: 0.5rem 1rem;
-  }
-}
-
-/* Dark mode para header y nav */
-@media (prefers-color-scheme: dark) {
-  header {
-    background-color: #1a1a1a;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  #menu-list {
-    background-color: #1a1a1a;
-  }
-}
-
-/* Contenedor principal del libro */
-.kindle-container {
-  min-height: 100vh;
-  padding: 2rem;
-  background-color: #e9e5dc;
-}
-
-.kindle-book {
-  position: relative;
-  max-width: var(--page-width);
-  margin: 0 auto;
-  background: var(--color-papel);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
-
-/* Páginas */
 .pages {
-  position: relative;
-  min-height: var(--page-height);
-  background: var(--color-papel);
-  border-radius: 4px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .page {
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
   display: none;
-  padding: 3rem;
-  min-height: var(--page-height);
-  background: var(--color-papel);
-  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fdfcf7;
+  box-sizing: border-box;
+  padding: 2.5rem 1.2rem 3.5rem 1.2rem;
+  box-shadow: 0 0 0.5rem 0 rgba(0,0,0,0.03);
+  border-radius: 0;
+  transition: background 0.3s;
 }
 
 .page.active {
-  display: block;
-}
-
-/* Portada */
-.page.cover {
-  text-align: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
 }
 
-.cover h1 {
-  font-size: 4rem;
-  font-weight: normal;
-  color: var(--color-tinta);
-  margin-bottom: 1rem;
-}
-
-.cover h2 {
-  font-size: 2rem;
-  font-weight: normal;
-  font-style: italic;
-  color: var(--color-acento);
-}
-
-.cover-decoration {
-  margin-top: 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-family: var(--font-header);
-  color: var(--color-acento);
-}
-
-/* Contenido de página */
 .page-content {
-  max-width: 600px;
+  width: 100%;
+  max-width: 650px;
   margin: 0 auto;
-  line-height: 2;
+  text-align: center;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Crimson Pro', 'Georgia', serif;
 }
 
 .page-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: var(--color-tinta);
+  font-size: 1.18rem;
+  margin: 1.3rem 0;
+  color: #2d2d2d;
+  text-align: center;
+  line-height: 1.7;
+  background: transparent;
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.5rem;
+  transition: background 0.2s;
 }
 
-/* Número de página */
+.page-content p.final-verse {
+  font-weight: 600;
+  color: #a67c52;
+  font-size: 1.25rem;
+}
+
 .page-number {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  color: var(--color-acento);
-  font-family: var(--font-serif);
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #b3a78c;
+  letter-spacing: 0.08em;
 }
 
-/* Navegación */
 .page-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  font-size: 3rem;
-  color: var(--color-acento);
-  cursor: pointer;
-  padding: 1rem;
-  opacity: 0.6;
-  transition: opacity 0.3s;
+  background: #f6f5f2;
+  border: 1px solid #e0dfd7;
+  font-size: 2.2rem;
+  color: #a67c52;
   z-index: 10;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+  transition: background 0.2s, border 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.page-nav.prev { left: 0.7rem; }
+.page-nav.next { right: 0.7rem; }
+.page-nav:active, .page-nav:focus { background: #f1e9d2; border-color: #d6c7a1; }
 
-.page-nav:hover {
-  opacity: 1;
-}
-
-.page-nav.prev {
-  left: -4rem;
-}
-
-.page-nav.next {
-  right: -4rem;
-}
-
-/* Indicador de página */
 .page-indicator {
-  text-align: center;
-  margin-top: 1rem;
-  font-family: var(--font-serif);
-  color: var(--color-acento);
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: #a67c52;
+  background: #f6f5f2;
+  padding: 0.3rem 1.2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+  letter-spacing: 0.08em;
 }
 
-/* Página del formulario */
-.form-page {
-  background: var(--color-papel);
+/* Formulario de versos */
+.page.form-page .page-content {
+  max-width: 420px;
+  background: #fdfcf7;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.04);
+  padding: 2rem 1rem 1.5rem 1rem;
 }
-
-.form-page .page-content {
-  max-width: 400px;
+.page.form-page h3 {
+  font-size: 1.2rem;
+  color: #a67c52;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
 }
-
-.form-page h3 {
-  text-align: center;
-  font-size: 1.5rem;
-  color: var(--color-acento);
-  margin-bottom: 2rem;
-  font-style: italic;
-}
-
 .verse-inputs {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.1rem;
+  margin-bottom: 1.2rem;
 }
-
-.input-group input {
+.input-group input[type="text"] {
   width: 100%;
-  padding: 0.8rem 0;
-  font-family: var(--font-serif);
   font-size: 1.1rem;
-  background: transparent;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #e0dfd7;
+  border-radius: 0.3rem;
+  background: #f9f8f5;
+  color: #2d2d2d;
+  font-family: 'Crimson Pro', 'Georgia', serif;
+  transition: border 0.2s;
+}
+.input-group input[type="text"]:focus {
+  border: 1.5px solid #a67c52;
+  outline: none;
+}
+.page.form-page button[type="submit"] {
+  background: #a67c52;
+  color: #fff;
   border: none;
-  border-bottom: 1px solid var(--color-tinta);
-  color: var(--color-tinta);
-}
-
-.input-group input::placeholder {
-  color: rgba(44, 44, 44, 0.5);
-  font-style: italic;
-}
-
-button[type="submit"] {
-  display: block;
-  margin: 2rem auto;
-  padding: 0.8rem 2rem;
-  background: transparent;
-  border: 1px solid var(--color-acento);
-  color: var(--color-acento);
-  font-family: var(--font-serif);
-  font-size: 1rem;
+  border-radius: 0.3rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-family: 'Crimson Pro', 'Georgia', serif;
   cursor: pointer;
-  transition: all 0.3s;
+  margin-top: 0.7rem;
+  transition: background 0.2s;
+}
+.page.form-page button[type="submit"]:hover,
+.page.form-page button[type="submit"]:focus {
+  background: #8d6842;
+}
+#mensaje {
+  margin-top: 1rem;
+  color: #a67c52;
+  font-size: 1rem;
+  min-height: 1.2em;
+  text-align: center;
 }
 
-button[type="submit"]:hover {
-  background: var(--color-acento);
-  color: var(--color-papel);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .kindle-container {
-    padding: 1rem;
+/* Responsive adjustments */
+@media (min-width: 600px) {
+  .page-content p {
+    font-size: 1.25rem;
   }
-
-  .page-nav {
-    font-size: 2rem;
-  }
-
-  .page-nav.prev {
-    left: -3rem;
-  }
-
-  .page-nav.next {
-    right: -3rem;
+  .page.form-page .page-content {
+    max-width: 500px;
   }
 }
-
-@media (max-width: 768px) {
-  :root {
-    --page-width: 100%;
+@media (min-width: 900px) {
+  .page-content {
+    max-width: 700px;
   }
-
-  .kindle-container {
-    padding: 0;
-  }
-
   .page {
-    padding: 2rem;
-  }
-
-  .page-nav {
-    position: fixed;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 1rem 0.5rem;
-  }
-
-  .page-nav.prev {
-    left: 0;
-  }
-
-  .page-nav.next {
-    right: 0;
+    padding: 3.5rem 2.5rem 4rem 2.5rem;
   }
 }
