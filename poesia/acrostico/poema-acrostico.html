@@ -8,9 +8,9 @@
   <meta name="description" content="Acróstico colaborativo UPM - ARTERIA" />
 
   <title>ARTERIA - POESIA</title>
-  <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../../asset/arteria_logo.png" type="image/x-icon">
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="../../style.css" />
   <link rel="stylesheet" href="acrostico.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
@@ -20,13 +20,19 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
 
   <!-- Script principal de navegación -->
-  <script src="/script.js" defer></script>
+  <script src="../../script.js" defer></script>
 </head>
 
 <body>
+  <!-- Skip to main content -->
+  <a href="#main-content" class="skip-to-main-content">Saltar al contenido principal</a>
+
+  <!-- Cursor personalizado -->
+  <div id="cursor"></div>
+
   <header>
     <div class="logo">
-      <a href="/index.html">
+      <a href="../../index.html">
         <h1>ARTERIA</h1>
       </a>
     </div>
@@ -35,67 +41,108 @@
         &#9776;
       </button>
       <ul id="menu-list">
-        <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
-        <li><a href="/pages/poesia.html">POESIA</a></li>
-        <li><a href="/pages/posdata.html">POSDATA</a></li>
-        <li><a href="/pages/about.html">PULSO</a></li>
+        <li><a href="../../pages/ensayos.html">ENSAYOS</a></li>
+        <li><a href="../../pages/poesia.html">POESIA</a></li>
+        <li><a href="../../pages/posdata.html">POSDATA</a></li>
+        <li><a href="../../pages/about.html">PULSO</a></li>
       </ul>
     </nav>
   </header> 
 
-  <main class="acrostico-container">
-    <!-- Sección 1: Canvas -->
-    <section class="canvas-section">
-      <div id="p5-container"></div>
-    </section>
-    
-    <!-- Sección 2: Título y Subtítulo -->
-    <section class="poem-header">
-      <h1>Acróstico</h1>
-      <h2>Un Poema en Movimiento</h2>
-    </section>
-    
-    <!-- Sección 3: Poema Aleatorio -->
-    <section class="poem-random">
-      <div id="rita-container" class="poem-display"></div>
-    </section>
+  <main id="main-content" class="kindle-container" tabindex="-1">
+    <!-- Libro digital -->
+    <div class="kindle-book">
+      <!-- Controles de navegación -->
+      <button class="page-nav prev" aria-label="Página anterior">‹</button>
+      <button class="page-nav next" aria-label="Página siguiente">›</button>
+      
+      <!-- Páginas -->
+      <div class="pages">
+        <!-- Portada -->
+        <div class="page cover active" id="page-0">
+          <h1>Acróstico</h1>
+          <h2>Un Poema en Movimiento</h2>
+        </div>
 
-    <!-- Sección 4: Formulario -->
-    <section class="poem-form">
-      <h3>Contribuye al poema</h3>
-      <p class="form-description">Escribe un verso usando tres palabras que inicien con U, P y M respectivamente.</p>
-      <form id="acrosticForm">
-        <div class="verse-inputs">
-          <div class="input-group">
-            <label for="lineU">U</label>
-            <input type="text" id="lineU" required placeholder="Una palabra que inicie con U..." />
+        <!-- Página 1 -->
+        <div class="page" id="page-1">
+          <div class="page-content">
+            <p>Una Política Macabra</p>
+            <p>Un Pacto de Miseria</p>
+            <p>Un Pacto Maquiavélico</p>
+            <p>Un Pacto de Muerte</p>
           </div>
-          <div class="input-group">
-            <label for="lineP">P</label>
-            <input type="text" id="lineP" required placeholder="Palabra que inicie con P..." />
+          <div class="page-number">1</div>
+        </div>
+
+        <!-- Página 2 -->
+        <div class="page" id="page-2">
+          <div class="page-content">
+            <p>Un Plan Maravilloso</p>
+            <p>Urgente Propuesta de Marcha</p>
+            <p>Una Privilegiada Minoría</p>
+            <p>Usted Miente Presidente</p>
           </div>
-          <div class="input-group">
-            <label for="lineM">M</label>
-            <input type="text" id="lineM" required placeholder="Palabra que inicie con M..." />
+          <div class="page-number">2</div>
+        </div>
+
+        <!-- Continuar con el resto de páginas, 4 versos por página -->
+        <!-- ... más páginas ... -->
+
+        <!-- Última página con el verso final -->
+        <div class="page" id="page-final">
+          <div class="page-content">
+            <p class="final-verse">Uruguay Puede Movilizarse</p>
+          </div>
+          <div class="page-number">10</div>
+        </div>
+
+        <!-- Sección del formulario -->
+        <div class="page form-page" id="page-form">
+          <div class="page-content">
+            <h3>Contribuye al poema</h3>
+            <form id="acrosticForm">
+              <div class="verse-inputs">
+                <div class="input-group">
+                  <input 
+                    type="text" 
+                    id="lineU" 
+                    name="lineU"
+                    required 
+                    placeholder="Una palabra con U..." 
+                  />
+                </div>
+                <div class="input-group">
+                  <input 
+                    type="text" 
+                    id="lineP" 
+                    name="lineP"
+                    required 
+                    placeholder="Una palabra con P..." 
+                  />
+                </div>
+                <div class="input-group">
+                  <input 
+                    type="text" 
+                    id="lineM" 
+                    name="lineM"
+                    required 
+                    placeholder="Una palabra con M..." 
+                  />
+                </div>
+              </div>
+              <button type="submit">contribuir</button>
+            </form>
+            <div id="mensaje"></div>
           </div>
         </div>
-        <button type="submit">Enviar verso</button>
-      </form>
-      <p id="mensaje"></p>
-    </section>
-
-    <!-- Sección 5: Versos Existentes -->
-    <section class="poem-verses">
-      <h3>Versos del poema</h3>
-      <div class="verses-container">
-        <div id="versosList" class="verses-list"></div>
       </div>
-    </section>
 
-    <!-- Sección 6: Verso Final -->
-    <section class="poem-footer">
-      <p class="final-verse">Uruguay Puede Movilizarse</p>
-    </section>
+      <!-- Indicador de página -->
+      <div class="page-indicator" aria-live="polite">
+        Página <span id="current-page">1</span> de <span id="total-pages">12</span>
+      </div>
+    </div>
   </main>
 
   <!-- Scripts de Firebase y funcionalidad principal -->

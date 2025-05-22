@@ -9,10 +9,10 @@ import {
 } from './firebase-config.js';
 
 // DOM Elements
-const versosList = document.getElementById('versosList');
 const ritaContainer = document.getElementById('rita-container');
 const acrosticForm = document.getElementById('acrosticForm');
 const mensajeElement = document.getElementById('mensaje');
+const interactionFeedback = document.getElementById('interaction-feedback');
 
 // Array para almacenar versos válidos
 let versosColaborativos = [];
@@ -43,16 +43,12 @@ let bacterias = [];
 const q = query(collection(db, 'versosUPM'), orderBy('timestamp', 'desc'));
 onSnapshot(q, (snapshot) => {
   versosColaborativos = [];
-  versosList.innerHTML = '';
-
+  
   snapshot.forEach((doc) => {
     const data = doc.data();
     const verso = data.verso;
     if (typeof verso === 'string' && verso.trim() !== '') {
       versosColaborativos.push(verso);
-      const li = document.createElement('li');
-      li.textContent = verso;
-      versosList.appendChild(li);
     }
   });
 
@@ -63,55 +59,103 @@ onSnapshot(q, (snapshot) => {
 acrosticForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const lineU = document.getElementById('lineU').value.trim();
-  const lineP = document.getElementById('lineP').value.trim();
-  const lineM = document.getElementById('lineM').value.trim();
+  const lineU = document.getElementById('lineU');
+  const lineP = document.getElementById('lineP');
+  const lineM = document.getElementById('lineM');
 
-  if (!lineU.toUpperCase().startsWith('U')) {
+  // Restablecer estado de validación
+  [lineU, lineP, lineM].forEach(input => {
+    input.setAttribute('aria-invalid', 'false');
+  });
+
+  let hasError = false;
+
+  if (!lineU.value.trim().toUpperCase().startsWith('U')) {
     mostrarMensaje('El primer verso debe comenzar con U', 'error');
-    return;
+    lineU.setAttribute('aria-invalid', 'true');
+    lineU.focus();
+    hasError = true;
   }
-  if (!lineP.toUpperCase().startsWith('P')) {
+  if (!lineP.value.trim().toUpperCase().startsWith('P')) {
     mostrarMensaje('El segundo verso debe comenzar con P', 'error');
-    return;
+    if (!hasError) {
+      lineP.setAttribute('aria-invalid', 'true');
+      lineP.focus();
+      hasError = true;
+    }
   }
-  if (!lineM.toUpperCase().startsWith('M')) {
+  if (!lineM.value.trim().toUpperCase().startsWith('M')) {
     mostrarMensaje('El tercer verso debe comenzar con M', 'error');
-    return;
+    if (!hasError) {
+      lineM.setAttribute('aria-invalid', 'true');
+      lineM.focus();
+      hasError = true;
+    }
   }
+
+  if (hasError) return;
 
   try {
     await addDoc(collection(db, 'versosUPM'), {
-      verso: lineU,
+      verso: lineU.value.trim(),
       letra: 'U',
       timestamp: serverTimestamp()
     });
     await addDoc(collection(db, 'versosUPM'), {
-      verso: lineP,
+      verso: lineP.value.trim(),
       letra: 'P',
       timestamp: serverTimestamp()
     });
     await addDoc(collection(db, 'versosUPM'), {
-      verso: lineM,
+      verso: lineM.value.trim(),
       letra: 'M',
       timestamp: serverTimestamp()
     });
 
     acrosticForm.reset();
-    mostrarMensaje('¡Versos enviados correctamente!', 'success');
+    mostrarMensaje('¡Versos enviados correctamente! El poema ha sido actualizado.', 'success');
+    
+    // Anunciar para lectores de pantalla
+    const feedbackMsg = `Versos añadidos: "${lineU.value.trim()}", "${lineP.value.trim()}", "${lineM.value.trim()}"`;
+    updateAccessibilityFeedback(feedbackMsg);
   } catch (error) {
     console.error("Error al guardar versos:", error);
-    mostrarMensaje('Error al guardar los versos. Inténtalo de nuevo.', 'error');
+    mostrarMensaje('Error al guardar los versos. Por favor, inténtalo de nuevo.', 'error');
   }
 });
 
 function mostrarMensaje(texto, tipo) {
+  const mensajeElement = document.getElementById('mensaje');
   mensajeElement.textContent = texto;
   mensajeElement.className = tipo;
+  mensajeElement.setAttribute('role', 'alert');
+  
   setTimeout(() => {
     mensajeElement.textContent = '';
     mensajeElement.className = '';
-  }, 3000);
+  }, 5000); // Aumentado a 5 segundos para dar más tiempo de lectura
+}
+
+// Mejorar la navegación por teclado
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    // Cerrar cualquier diálogo o mensaje de error
+    const mensaje = document.getElementById('mensaje');
+    if (mensaje && mensaje.textContent) {
+      mensaje.textContent = '';
+      mensaje.className = '';
+    }
+  }
+});
+
+// Función para actualizar la retroalimentación de accesibilidad
+function updateAccessibilityFeedback(message) {
+  const feedback = document.getElementById('interaction-feedback');
+  if (feedback) {
+    feedback.textContent = message;
+    // Asegurar que el mensaje sea leído por lectores de pantalla
+    feedback.setAttribute('role', 'alert');
+  }
 }
 
 // Visual generativo con p5.js en #p5-container
@@ -145,6 +189,9 @@ new p5((p) => {
     if (versosColaborativos.length > 0) {
       const versoAleatorio = versosColaborativos[Math.floor(p.random(versosColaborativos.length))];
       if (typeof versoAleatorio === 'string') {
+        // Actualizar retroalimentación para lectores de pantalla
+        updateAccessibilityFeedback(`Interacción con ${tipo}: "${versoAleatorio}"`);
+        
         const palabras = versoAleatorio.split(' ');
         const anguloPorPalabra = p.TWO_PI / palabras.length;
         
@@ -356,18 +403,8 @@ new p5((p) => {
     }
     
     update() {
-      // Verificar infección por estela
-      if (!this.infectado) {
-        for (let punto of estela) {
-          if (distancia(this.x, this.y, punto.x, punto.y) < 30) {
-            this.infectado = true;
-            this.tiempoInfeccion = 255;
-            break;
-          }
-        }
-      } else {
-        this.tiempoInfeccion -= 5;
-        if (this.tiempoInfeccion <= 0) return false;
+      if (!this.infectado && this.checkInfection()) {
+        updateAccessibilityFeedback('Una medusa ha sido afectada por la estela verde');
       }
 
       // Movimiento base
@@ -503,6 +540,17 @@ new p5((p) => {
     clicked() {
       return distancia(this.x, this.y, p.mouseX, p.mouseY) < this.size;
     }
+
+    checkInfection() {
+      for (let punto of estela) {
+        if (distancia(this.x, this.y, punto.x, punto.y) < 30) {
+          this.infectado = true;
+          this.tiempoInfeccion = 255;
+          return true;
+        }
+      }
+      return false;
+    }
   }
   
   class Plancton {
@@ -518,17 +566,8 @@ new p5((p) => {
     }
     
     update() {
-      if (!this.infectado) {
-        for (let punto of estela) {
-          if (distancia(this.x, this.y, punto.x, punto.y) < 30) {
-            this.infectado = true;
-            this.tiempoInfeccion = 255;
-            break;
-          }
-        }
-      } else {
-        this.tiempoInfeccion -= 5;
-        if (this.tiempoInfeccion <= 0) return false;
+      if (!this.infectado && this.checkInfection()) {
+        updateAccessibilityFeedback('Una colonia de plancton ha sido afectada por la estela verde');
       }
 
       this.energia -= 0.05;
@@ -568,6 +607,17 @@ new p5((p) => {
     clicked() {
       return distancia(this.x, this.y, p.mouseX, p.mouseY) < this.size * 2;
     }
+
+    checkInfection() {
+      for (let punto of estela) {
+        if (distancia(this.x, this.y, punto.x, punto.y) < 30) {
+          this.infectado = true;
+          this.tiempoInfeccion = 255;
+          return true;
+        }
+      }
+      return false;
+    }
   }
   
   class Pez {
@@ -586,17 +636,8 @@ new p5((p) => {
     }
     
     update() {
-      if (!this.infectado) {
-        for (let punto of estela) {
-          if (distancia(this.x, this.y, punto.x, punto.y) < 30) {
-            this.infectado = true;
-            this.tiempoInfeccion = 255;
-            break;
-          }
-        }
-      } else {
-        this.tiempoInfeccion -= 5;
-        if (this.tiempoInfeccion <= 0) return false;
+      if (!this.infectado && this.checkInfection()) {
+        updateAccessibilityFeedback('Un pez ha sido afectado por la estela verde');
       }
       return true;
     }
@@ -630,6 +671,17 @@ new p5((p) => {
       p.ellipse(0, 0, this.size * 0.8, this.size * 0.6);
       
       p.pop();
+    }
+
+    checkInfection() {
+      for (let punto of estela) {
+        if (distancia(this.x, this.y, punto.x, punto.y) < 30) {
+          this.infectado = true;
+          this.tiempoInfeccion = 255;
+          return true;
+        }
+      }
+      return false;
     }
   }
 
@@ -748,26 +800,39 @@ new p5((p) => {
   }
 
   p.mousePressed = () => {
+    let interactionOccurred = false;
+    
     // Verificar clicks en las criaturas
     for (let pez of peces) {
       if (pez.clicked()) {
         mostrarVerso(pez.x, pez.y, 'PECES');
-        return;
+        interactionOccurred = true;
+        break;
       }
     }
     
-    for (let medusa of medusas) {
-      if (medusa.clicked()) {
-        mostrarVerso(medusa.x, medusa.y, 'MEDUSAS');
-        return;
+    if (!interactionOccurred) {
+      for (let medusa of medusas) {
+        if (medusa.clicked()) {
+          mostrarVerso(medusa.x, medusa.y, 'MEDUSAS');
+          interactionOccurred = true;
+          break;
+        }
       }
     }
     
-    for (let p of plancton) {
-      if (p.clicked()) {
-        mostrarVerso(p.x, p.y, 'PLANCTON');
-        return;
+    if (!interactionOccurred) {
+      for (let p of plancton) {
+        if (p.clicked()) {
+          mostrarVerso(p.x, p.y, 'PLANCTON');
+          interactionOccurred = true;
+          break;
+        }
       }
+    }
+
+    if (!interactionOccurred) {
+      updateAccessibilityFeedback('No hay criaturas marinas cerca para interactuar');
     }
   };
 
@@ -942,10 +1007,34 @@ new p5((p) => {
       p.pop();
     }
   };
+
+  // Añadir manejo de teclado para navegación accesible
+  p.keyPressed = () => {
+    // Teclas de flecha para navegar por el canvas
+    if (p.keyCode === p.LEFT_ARROW) {
+      updateAccessibilityFeedback('Moviendo hacia la izquierda en el ecosistema marino');
+      // Simular movimiento del cursor
+      p.mouseX = Math.max(0, p.mouseX - 50);
+    } else if (p.keyCode === p.RIGHT_ARROW) {
+      updateAccessibilityFeedback('Moviendo hacia la derecha en el ecosistema marino');
+      p.mouseX = Math.min(p.width, p.mouseX + 50);
+    } else if (p.keyCode === p.UP_ARROW) {
+      updateAccessibilityFeedback('Moviendo hacia arriba en el ecosistema marino');
+      p.mouseY = Math.max(0, p.mouseY - 50);
+    } else if (p.keyCode === p.DOWN_ARROW) {
+      updateAccessibilityFeedback('Moviendo hacia abajo en el ecosistema marino');
+      p.mouseY = Math.min(p.height, p.mouseY + 50);
+    } else if (p.keyCode === p.ENTER || p.keyCode === p.RETURN) {
+      // Simular clic para interactuar con criaturas cercanas
+      p.mousePressed();
+    }
+  };
 });
 
 // Generación poética con RiTa.js
 function actualizarTextoConRita() {
+  if (!ritaContainer) return;
+  
   ritaContainer.innerHTML = '';
 
   if (versosColaborativos.length < 3) {
@@ -962,16 +1051,15 @@ function actualizarTextoConRita() {
       typeof v === 'string' && v.trim().toUpperCase().startsWith(letras[i])
     );
     if (candidatos.length > 0) {
-      versosAcrostico.push(candidatos[0]);
+      versosAcrostico.push(candidatos[Math.floor(Math.random() * candidatos.length)]);
     } else {
       versosAcrostico.push(`${letras[i]}...`);
     }
   }
 
-  // Construir el HTML del acróstico con las letras destacadas
-  const acrosticoHTML = versosAcrostico.map((verso, i) => {
-    const spanLetra = `<span style="font-weight:bold; color:#A83279">${verso.charAt(0)}</span>`;
-    return `<p>${spanLetra}${verso.slice(1)}</p>`;
+  // Construir el HTML del acróstico
+  const acrosticoHTML = versosAcrostico.map((verso) => {
+    return `<p class="verse" tabindex="0">${verso}</p>`;
   }).join('');
 
   // Añadir variación poética usando RiTa si hay suficientes versos
@@ -982,8 +1070,7 @@ function actualizarTextoConRita() {
     const nuevoVerso = rm.generate(1)[0];
     varianteRita = `
       <div class="rita-variacion">
-        <h4>Variación generada:</h4>
-        <p>${nuevoVerso}</p>
+        <p class="verse" tabindex="0">${nuevoVerso}</p>
       </div>
     `;
   }
@@ -995,3 +1082,56 @@ function actualizarTextoConRita() {
     ${varianteRita}
   `;
 }
+
+// Navegación del libro
+document.addEventListener('DOMContentLoaded', () => {
+  const pages = document.querySelectorAll('.page');
+  const prevBtn = document.querySelector('.page-nav.prev');
+  const nextBtn = document.querySelector('.page-nav.next');
+  const currentPageSpan = document.getElementById('current-page');
+  const totalPagesSpan = document.getElementById('total-pages');
+  let currentPage = 0;
+
+  // Actualizar total de páginas
+  totalPagesSpan.textContent = pages.length;
+
+  // Mostrar página actual
+  function showPage(pageIndex) {
+    pages.forEach(page => page.classList.remove('active'));
+    pages[pageIndex].classList.add('active');
+    currentPageSpan.textContent = pageIndex;
+    
+    // Actualizar estado de los botones
+    prevBtn.style.display = pageIndex === 0 ? 'none' : 'block';
+    nextBtn.style.display = pageIndex === pages.length - 1 ? 'none' : 'block';
+  }
+
+  // Event listeners para navegación
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < pages.length - 1) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Navegación con teclado
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && currentPage > 0) {
+      currentPage--;
+      showPage(currentPage);
+    } else if (e.key === 'ArrowRight' && currentPage < pages.length - 1) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Inicializar primera página
+  showPage(0);
+});

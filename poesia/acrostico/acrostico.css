@@ -1,16 +1,19 @@
 /* ==== KINDLE STYLE LAYOUT ==== */
 :root {
-  --kindle-bg: #f8f5f1;
-  --kindle-text: #2c2c2c;
-  --kindle-border: #e0d8d0;
-  --kindle-accent: #8b4513;
-  --kindle-shadow: rgba(0,0,0,0.1);
+  --color-papel: #f9f6f1;
+  --color-tinta: #2c2c2c;
+  --color-acento: #8b4513;
   --font-serif: 'Crimson Pro', Georgia, serif;
-  --font-mono: 'Special Elite', monospace;
+  --font-header: 'Special Elite', monospace;
+  --page-width: 800px;
+  --page-height: calc(var(--page-width) * 1.414); /* Proporción A4 */
 }
 
 body {
-  background-color: var(--kindle-bg);
+  background-color: var(--color-papel);
+  color: var(--color-tinta);
+  font-family: var(--font-serif);
+  line-height: 1.6;
 }
 
 .kindle-style {
@@ -24,10 +27,10 @@ body {
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background: var(--kindle-bg);
-  border: 1px solid var(--kindle-border);
+  background: var(--color-papel);
+  border: 1px solid var(--color-tinta);
   border-radius: 4px;
-  box-shadow: 0 2px 8px var(--kindle-shadow);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* ==== VISUAL SECTION ==== */
@@ -44,28 +47,13 @@ body {
 #p5-container {
   width: 100%;
   height: 100%;
+  cursor: none;
 }
 
-/* ==== POEM HEADER ==== */
-.poem-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-family: var(--font-serif);
+body:not(#p5-container) {
+  cursor: default;
 }
 
-.poem-header h1 {
-  font-size: 2.5rem;
-  color: var(--kindle-text);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.poem-header h2 {
-  font-size: 1.5rem;
-  color: var(--kindle-accent);
-  font-style: italic;
-  font-weight: 400;
-}
 
 /* ==== POEM DISPLAY ==== */
 .poem-display {
@@ -75,12 +63,12 @@ body {
 .poem-container {
   font-family: var(--font-serif);
   line-height: 1.8;
-  color: var(--kindle-text);
+  color: var(--color-tinta);
   padding: 2rem;
-  background: #fff;
-  border: 1px solid var(--kindle-border);
+  background: var(--color-papel);
+  border: 1px solid var(--color-tinta);
   border-radius: 4px;
-  box-shadow: 0 2px 8px var(--kindle-shadow);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 #rita-container {
@@ -96,23 +84,23 @@ body {
 .acrostico-form {
   margin: 4rem 0;
   padding: 2rem;
-  background: #fff;
-  border: 1px solid var(--kindle-border);
+  background: var(--color-papel);
+  border: 1px solid var(--color-tinta);
   border-radius: 4px;
-  box-shadow: 0 2px 8px var(--kindle-shadow);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .acrostico-form h3 {
   font-family: var(--font-serif);
   font-size: 1.8rem;
-  color: var(--kindle-text);
+  color: var(--color-tinta);
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .form-description {
   text-align: center;
-  color: var(--kindle-accent);
+  color: var(--color-acento);
   margin-bottom: 2rem;
   font-family: var(--font-serif);
   font-style: italic;
@@ -130,7 +118,7 @@ body {
   transform: translateY(-50%);
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  color: var(--kindle-accent);
+  color: var(--color-acento);
   font-weight: 600;
 }
 
@@ -139,16 +127,16 @@ body {
   padding: 0.8rem 1rem;
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  border: 1px solid var(--kindle-border);
+  border: 1px solid var(--color-tinta);
   border-radius: 4px;
-  background: var(--kindle-bg);
-  color: var(--kindle-text);
+  background: var(--color-papel);
+  color: var(--color-tinta);
   transition: all 0.3s ease;
 }
 
 .verse-input input:focus {
   outline: none;
-  border-color: var(--kindle-accent);
+  border-color: var(--color-acento);
   box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.1);
 }
 
@@ -157,8 +145,8 @@ body {
   width: 200px;
   margin: 2rem auto;
   padding: 0.8rem 1.5rem;
-  background: var(--kindle-accent);
-  color: #fff;
+  background: var(--color-acento);
+  color: var(--color-papel);
   border: none;
   border-radius: 4px;
   font-family: var(--font-serif);
@@ -168,14 +156,13 @@ body {
 }
 
 .acrostico-form button:hover {
-  background: #6b3410;
   transform: translateY(-1px);
 }
 
 #mensaje {
   text-align: center;
   font-family: var(--font-serif);
-  color: var(--kindle-accent);
+  color: var(--color-acento);
   min-height: 1.5em;
   margin-top: 1rem;
 }
@@ -183,16 +170,16 @@ body {
 /* ==== VERSES LIST ==== */
 #versos-guardados {
   padding: 2rem;
-  background: #fff;
-  border: 1px solid var(--kindle-border);
+  background: var(--color-papel);
+  border: 1px solid var(--color-tinta);
   border-radius: 4px;
-  box-shadow: 0 2px 8px var(--kindle-shadow);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 #versos-guardados h3 {
   font-family: var(--font-serif);
   font-size: 1.8rem;
-  color: var(--kindle-text);
+  color: var(--color-tinta);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -201,9 +188,9 @@ body {
   max-height: 400px;
   overflow-y: auto;
   padding: 1rem;
-  border: 1px solid var(--kindle-border);
+  border: 1px solid var(--color-tinta);
   border-radius: 4px;
-  background: var(--kindle-bg);
+  background: var(--color-papel);
 }
 
 #versosList {
@@ -217,8 +204,8 @@ body {
   font-size: 1.1rem;
   line-height: 1.6;
   padding: 1rem;
-  border-bottom: 1px solid var(--kindle-border);
-  color: var(--kindle-text);
+  border-bottom: 1px solid var(--color-tinta);
+  color: var(--color-tinta);
 }
 
 #versosList li:last-child {
@@ -228,11 +215,9 @@ body {
 /* ==== DARK MODE ==== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --kindle-bg: #1a1a1a;
-    --kindle-text: #e0e0e0;
-    --kindle-border: #333;
-    --kindle-accent: #d4a373;
-    --kindle-shadow: rgba(0,0,0,0.3);
+    --color-papel: #1a1a1a;
+    --color-tinta: #e0e0e0;
+    --color-acento: #d4a373;
   }
 
   .content-wrapper,
@@ -280,19 +265,17 @@ body {
 
 /* Contenedor principal */
 .acrostico-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 4rem auto;
   padding: 2rem;
-  font-family: 'Crimson Pro', serif;
-  color: var(--text-color);
 }
 
-/* Sección 1: Canvas */
+/* Sección del Canvas */
 .canvas-section {
   margin: 4rem auto;
-  width: 33.333%;
+  width: 66.666%;
   aspect-ratio: 1;
-  background-color: var(--bg-color);
+  background-color: var(--color-papel);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -300,6 +283,7 @@ body {
 #p5-container {
   width: 100%;
   height: 100%;
+  cursor: none;
 }
 
 /* Sección 2: Título y Subtítulo */
@@ -309,16 +293,18 @@ body {
 }
 
 .poem-header h1 {
+  font-family: var(--font-serif);
   font-size: 3rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .poem-header h2 {
+  font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 400;
   font-style: italic;
-  color: var(--secondary-text);
+  color: var(--color-tinta);
 }
 
 /* Sección 3: Poema Aleatorio */
@@ -332,33 +318,50 @@ body {
   font-size: 1.2rem;
   line-height: 1.8;
   margin: 2rem 0;
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  gap: 2rem;
+}
+
+.verse-line {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.verse-word {
+  padding: 0.5rem;
+  background-color: var(--color-papel);
+  border-radius: 4px;
 }
 
 /* Sección 4: Formulario */
 .poem-form {
-  max-width: 600px;
-  margin: 4rem auto;
-  padding: 2rem;
-  background-color: var(--form-bg);
-  border-radius: 8px;
+  max-width: 500px;
+  margin: 6rem auto;
+  text-align: center;
 }
 
 .poem-form h3 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-style: italic;
+  color: var(--color-acento);
+  margin-bottom: 2rem;
 }
 
 .form-description {
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--secondary-text);
+  color: var(--color-tinta);
 }
 
 .verse-inputs {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
@@ -376,109 +379,101 @@ body {
 }
 
 .input-group input {
-  flex: 1;
-  padding: 0.8rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 1rem;
-  background-color: var(--input-bg);
-  color: var(--text-color);
+  width: 100%;
+  padding: 0.8rem 0;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-tinta);
+  color: var(--color-tinta);
+  transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: rgba(44, 44, 44, 0.5);
+  font-style: italic;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-bottom-color: var(--color-acento);
 }
 
 .poem-form button {
-  display: block;
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.1rem;
+  background: transparent;
+  border: 1px solid var(--color-acento);
+  color: var(--color-acento);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
 }
 
 .poem-form button:hover {
-  background-color: var(--accent-hover);
+  background: var(--color-acento);
+  color: var(--color-papel);
 }
 
-/* Sección 5: Versos Existentes */
+/* ==== POEM VERSES ==== */
 .poem-verses {
-  max-width: 800px;
-  margin: 4rem auto;
+  font-size: 1.2rem;
+  line-height: 2;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.poem-verses h3 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
+.verse {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-tinta);
 }
 
-.verses-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.verses-list p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  padding: 1rem;
-  border-left: 3px solid var(--accent-color);
-  background-color: var(--verse-bg);
-  border-radius: 0 4px 4px 0;
-}
-
-/* Sección 6: Verso Final */
-.poem-footer {
-  text-align: center;
-  margin: 4rem 0;
-  padding: 2rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.final-verse {
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--accent-color);
-}
-
-/* Mensajes de feedback */
-#mensaje {
-  text-align: center;
-  margin-top: 1rem;
-  padding: 1rem;
+.verse:focus {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 4px;
   border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
-#mensaje.success {
-  background-color: var(--success-bg);
-  color: var(--success-text);
+/* Asegurar contraste adecuado para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .verse:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
 }
 
-#mensaje.error {
-  background-color: var(--error-bg);
-  color: var(--error-text);
+/* Ocultar visualmente pero mantener accesible para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-/* Variables CSS */
+/* Variables CSS con mejores contrastes */
 :root {
-  --text-color: #333;
-  --secondary-text: #666;
-  --bg-color: #f8f5f1;
-  --form-bg: #fff;
-  --input-bg: #fff;
-  --border-color: #ddd;
-  --accent-color: #A83279;
-  --accent-hover: #8a2963;
-  --verse-bg: #f8f5f1;
-  --success-bg: #e8f5e9;
-  --success-text: #2e7d32;
-  --error-bg: #ffebee;
-  --error-text: #c62828;
+  --text-color: #1a1a1a;
+  --secondary-text: #444444;
+  --bg-color: #ffffff;
+  --form-bg: #f8f8f8;
+  --input-bg: #ffffff;
+  --border-color: #666666;
+  --accent-color: #2c5282;
+  --accent-hover: #1a365d;
+  --focus-outline: #2c5282;
+  --error-color: #c53030;
+  --success-color: #2f855a;
 }
 
 /* Media Queries */
@@ -518,16 +513,525 @@ body {
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: #e0e0e0;
-    --secondary-text: #aaa;
+    --text-color: #ffffff;
+    --secondary-text: #cccccc;
     --bg-color: #1a1a1a;
     --form-bg: #2d2d2d;
-    --input-bg: #333;
-    --border-color: #444;
-    --verse-bg: #2d2d2d;
-    --success-bg: #1b5e20;
-    --success-text: #a5d6a7;
-    --error-bg: #b71c1c;
-    --error-text: #ffcdd2;
+    --input-bg: #333333;
+    --border-color: #666666;
+    --accent-color: #63b3ed;
+    --accent-hover: #4299e1;
+    --focus-outline: #63b3ed;
+  }
+
+  .verse:focus {
+    background-color: rgba(99, 179, 237, 0.2);
+  }
+
+  #mensaje.error {
+    background-color: rgba(197, 48, 48, 0.1);
+    color: #fc8181;
+  }
+
+  #mensaje.success {
+    background-color: rgba(47, 133, 90, 0.1);
+    color: #68d391;
+  }
+}
+
+/* Cursor personalizado (solo visible en el canvas) */
+#cursor {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 255, 0, 0.6);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(2px);
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  display: none;
+}
+
+/* ==== CANVAS ACCESSIBILITY ==== */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-container:focus-within {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+/* Asegurar que el canvas es focuseable */
+#p5-container canvas {
+  outline: none;
+}
+
+#p5-container canvas:focus {
+  outline: none; /* Removemos el outline del canvas porque ya tenemos el del contenedor */
+}
+
+/* Estilo para el feedback de interacción */
+#interaction-feedback {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  z-index: 100;
+  max-width: 80%;
+  text-align: center;
+}
+
+/* Asegurar alto contraste en modo oscuro */
+@media (prefers-color-scheme: dark) {
+  #interaction-feedback {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+  
+  .canvas-container:focus-within {
+    outline-color: var(--accent-color);
+  }
+}
+
+/* Mejorar la visibilidad del foco para usuarios de teclado */
+*:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Mejoras de accesibilidad para el formulario */
+.input-group input:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.2);
+}
+
+.input-group label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.poem-form button {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.poem-form button:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.2);
+}
+
+.poem-form button:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Mejoras para los versos del poema */
+.verse {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.verse:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+  background-color: rgba(44, 82, 130, 0.1);
+}
+
+/* Mensajes de estado */
+#mensaje {
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+#mensaje.error {
+  background-color: #fff5f5;
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+#mensaje.success {
+  background-color: #f0fff4;
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+/* Skip-to-main content link para navegación por teclado */
+.skip-to-main-content {
+  position: absolute;
+  top: -999px;
+  left: 50%;
+  background: var(--accent-color);
+  color: white;
+  padding: 1rem;
+  transform: translateX(-50%);
+  transition: top 0.3s ease;
+  z-index: 1000;
+}
+
+.skip-to-main-content:focus {
+  top: 0;
+}
+
+/* Mejorar la visibilidad de los mensajes de estado para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Restaurar estilos originales del header */
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.logo h1 {
+  font-family: var(--font-header);
+  font-size: 2rem;
+  font-weight: bold;
+  color: inherit;
+  margin: 0;
+}
+
+nav button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+#menu-list {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+#menu-list li {
+  border-top: 1px solid #444;
+}
+
+#menu-list li a {
+  font-family: var(--font-header);
+  display: block;
+  padding: 0.5rem 1rem;
+  color: inherit;
+  transition: background-color 0.3s;
+  border-radius: 0.25rem;
+}
+
+#menu-list li a:hover {
+  background-color: #555;
+}
+
+@media (min-width: 768px) {
+  nav button {
+    display: none;
+  }
+
+  #menu-list {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  #menu-list li {
+    border: none;
+  }
+
+  #menu-list li a {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Dark mode para header y nav */
+@media (prefers-color-scheme: dark) {
+  header {
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  #menu-list {
+    background-color: #1a1a1a;
+  }
+}
+
+/* Contenedor principal del libro */
+.kindle-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #e9e5dc;
+}
+
+.kindle-book {
+  position: relative;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--color-papel);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+/* Páginas */
+.pages {
+  position: relative;
+  min-height: var(--page-height);
+  background: var(--color-papel);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  padding: 3rem;
+  min-height: var(--page-height);
+  background: var(--color-papel);
+  position: relative;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Portada */
+.page.cover {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cover h1 {
+  font-size: 4rem;
+  font-weight: normal;
+  color: var(--color-tinta);
+  margin-bottom: 1rem;
+}
+
+.cover h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: italic;
+  color: var(--color-acento);
+}
+
+.cover-decoration {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: var(--font-header);
+  color: var(--color-acento);
+}
+
+/* Contenido de página */
+.page-content {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 2;
+}
+
+.page-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--color-tinta);
+}
+
+/* Número de página */
+.page-number {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: var(--color-acento);
+  font-family: var(--font-serif);
+}
+
+/* Navegación */
+.page-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  color: var(--color-acento);
+  cursor: pointer;
+  padding: 1rem;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
+.page-nav:hover {
+  opacity: 1;
+}
+
+.page-nav.prev {
+  left: -4rem;
+}
+
+.page-nav.next {
+  right: -4rem;
+}
+
+/* Indicador de página */
+.page-indicator {
+  text-align: center;
+  margin-top: 1rem;
+  font-family: var(--font-serif);
+  color: var(--color-acento);
+}
+
+/* Página del formulario */
+.form-page {
+  background: var(--color-papel);
+}
+
+.form-page .page-content {
+  max-width: 400px;
+}
+
+.form-page h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--color-acento);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.verse-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 0;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-tinta);
+  color: var(--color-tinta);
+}
+
+.input-group input::placeholder {
+  color: rgba(44, 44, 44, 0.5);
+  font-style: italic;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 1px solid var(--color-acento);
+  color: var(--color-acento);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: var(--color-acento);
+  color: var(--color-papel);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .kindle-container {
+    padding: 1rem;
+  }
+
+  .page-nav {
+    font-size: 2rem;
+  }
+
+  .page-nav.prev {
+    left: -3rem;
+  }
+
+  .page-nav.next {
+    right: -3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-width: 100%;
+  }
+
+  .kindle-container {
+    padding: 0;
+  }
+
+  .page {
+    padding: 2rem;
+  }
+
+  .page-nav {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 1rem 0.5rem;
+  }
+
+  .page-nav.prev {
+    left: 0;
+  }
+
+  .page-nav.next {
+    right: 0;
   }
 }
