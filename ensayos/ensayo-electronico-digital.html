@@ -2,51 +2,325 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
 
-    <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
-    <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
+  <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
+  <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="/style.css">
-    <script src="/script.js" defer></script>
-    <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+
+  <style>
+    /* === Estilos para la línea de tiempo === */
+    .linea-tiempo {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .linea-tiempo::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background-color: #ccc;
+    }
+
+    .evento {
+      position: relative;
+      width: 45%;
+      padding: 1rem 2rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .evento:nth-child(odd) {
+      left: 0;
+    }
+
+    .evento:nth-child(even) {
+      left: 55%;
+    }
+
+    .evento::after {
+      content: "";
+      position: absolute;
+      top: 1.5rem;
+      width: 20px;
+      height: 20px;
+      background-color: #ff005c;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px white;
+      left: -10px;
+      transform: translateX(-50%);
+    }
+
+    .evento:nth-child(even)::after {
+      left: auto;
+      right: -10px;
+      transform: translateX(50%);
+    }
+
+    .evento h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #ff005c;
+    }
+
+    .evento h4 {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .evento p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .linea-tiempo::before {
+        left: 20px;
+      }
+
+      .evento,
+      .evento:nth-child(even) {
+        width: 100%;
+        left: 0;
+        margin-left: 40px;
+      }
+
+      .evento::after,
+      .evento:nth-child(even)::after {
+        left: -30px;
+        right: auto;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <a href="/index.html">
-                <h1>ARTERIA</h1>
-            </a>
-        </div>
-        <nav>
-            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
-                aria-controls="menu-list">&#9776;</button>
-            <ul id="menu-list">
-                <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
-                <li><a href="/pages/poesia.html">POESIA</a></li>
-                <li><a href="/pages/posdata.html">POSDATA</a></li>
-                <li><a href="/pages/about.html">PULSO</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">
+      <a href="/index.html">
+        <h1>ARTERIA</h1>
+      </a>
+    </div>
+    <nav>
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+        aria-controls="menu-list">&#9776;</button>
+      <ul id="menu-list">
+        <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+        <li><a href="/pages/poesia.html">POESIA</a></li>
+        <li><a href="/pages/posdata.html">POSDATA</a></li>
+        <li><a href="/pages/about.html">PULSO</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section class="contenedor-texto">
-            <h1>Ensayo</h1>
-            <h2>Arte Electrónico-Digital</h2>
-            <img src="/asset/espinadorsal.jpg" alt="">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod rem optio impedit dolorem magnam architecto consequuntur, ratione deleniti, obcaecati repudiandae dolor illo neque voluptates ex iure facere incidunt quis dolores.</p>
-            
-        </section>
-    </main>
+  <main>
+    <section class="contenedor-texto">
+      <h1>Ensayo</h1>
+      <h2>Arte Electrónico-Digital</h2>
+      <img src="/asset/espinadorsal.jpg" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem optio impedit dolorem magnam architecto
+        consequuntur, ratione deleniti, obcaecati repudiandae dolor illo neque voluptates ex iure facere incidunt quis
+        dolores.</p>
+    </section>
 
-    <footer>
-        <p>ARTERIA</p>
-        <p>Laboratorio de Arte Electrónico-Digital.</p>
-    </footer>
+    <!-- === Línea de tiempo del arte digital === -->
+    <section class="linea-tiempo">
+      <h2>🧭 Línea de tiempo del Arte Digital</h2>
+      <p><em>Argentina y el mundo</em></p>
+
+      <div class="evento">
+        <h3>1935</h3>
+        <h4>Z1, la primera computadora</h4>
+        <p>Konrad Zuse diseña el Z1, considerado el primer computador mecánico programable del mundo. Construido entre
+          1936 y 1938 en Alemania, fue destruido en 1943 durante los bombardeos de Berlín.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1950–1953</h3>
+        <h4>Primera gráfica en un monitor en tiempo real</h4>
+        <p>Benjamin Francis Laposky crea los <em>Oscillons</em>, imágenes abstractas generadas con un osciloscopio,
+          consideradas las primeras gráficas electrónicas en tiempo real.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1956</h3>
+        <h4>Nacimiento de la Inteligencia Artificial</h4>
+        <p>Durante la Conferencia de Dartmouth se acuña el término <em>Inteligencia Artificial (IA)</em>, marcando el
+          inicio formal de esta disciplina científica.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1958</h3>
+        <h4>Primer módem para transmitir datos</h4>
+        <p>Bell Labs desarrolla el primer módem capaz de transmitir datos binarios por una línea telefónica.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1960–1961</h3>
+        <h4>Clementina, la primera computadora argentina</h4>
+        <p>Instalada en el Instituto de Cálculo de la Universidad de Buenos Aires, Clementina funcionó entre 1961 y
+          1971, impulsando la investigación científica local.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1963</h3>
+        <h4>Primera película generada por computadora</h4>
+        <p>Edward E. Zajac produce <em>Simulation of Two-Gyro Gravity-Gradient Attitude Control System</em>, considerada
+          la primera animación digital.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1965</h3>
+        <h4>Primera exposición de arte digital en Europa</h4>
+        <p>George Nees, Friedrich Nake y Michael Noll presentan <em>Computergrafik</em> en la Universidad de Stuttgart,
+          pionera del arte computacional.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1967</h3>
+        <h4><em>Hummingbird</em>, primera animación artística computarizada</h4>
+        <p>Charles Csuri crea <em>Hummingbird</em>, realizada con una IBM 1130. La obra obtiene el premio en la
+          Competencia Internacional de Cine Experimental de Bélgica.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1968</h3>
+        <h4>Cybernetic Serendipity y Computer Arts Society</h4>
+        <p>El ICA de Londres presenta la exposición <em>Cybernetic Serendipity</em> y se funda la <em>Computer Arts
+            Society (CAS)</em>, dedicada al uso creativo de computadoras en el arte.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1969</h3>
+        <h4>ARPANET, origen de Internet</h4>
+        <p>El Departamento de Defensa de EE.UU. crea ARPANET, la primera red de computadoras interconectadas,
+          precursora de Internet.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1971</h3>
+        <h4>Avances clave</h4>
+        <p>• Primer correo electrónico (Ray Tomlinson).<br>
+          • Microprocesador Intel 4004.<br>
+          • Primer libro sobre arte computacional (<em>Computergraphik–Computerkunst</em>).<br>
+          • Primera exposición individual de arte generativo (Manfred Mohr).</p>
+      </div>
+
+      <div class="evento">
+        <h3>1975</h3>
+        <h4>Innovaciones visuales y matemáticas</h4>
+        <p>• Primera cámara digital (Kodak, Steven Sasson).<br>
+          • Creación de la geometría fractal (Benoît Mandelbrot).</p>
+      </div>
+
+      <div class="evento">
+        <h3>1977</h3>
+        <h4>Las primeras microcomputadoras comerciales</h4>
+        <p>Apple II, Commodore PET y TRS-80 inauguran la era de la computación personal doméstica.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1979</h3>
+        <h4>Nace Ars Electronica</h4>
+        <p>Festival internacional de arte, ciencia y tecnología con sede en Linz, Austria, referente del arte digital y
+          los nuevos medios.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1981</h3>
+        <h4>Lanzamiento comercial de la IBM PC</h4>
+        <p>Marca un hito en la masificación del uso de computadoras personales.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1982</h3>
+        <h4>Commodore 64</h4>
+        <p>Computadora icónica de 8 bits, influyente en la cultura digital, musical y programática de los años 80.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1988</h3>
+        <h4>Desarrollo de Photoshop</h4>
+        <p>Thomas y John Knoll crean <em>Photoshop</em>, que redefine la edición de imágenes y las prácticas visuales
+          digitales.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1990</h3>
+        <h4>Nacimiento de la World Wide Web</h4>
+        <p>Tim Berners-Lee y Robert Cailliau anuncian la Web como sistema de información basado en hipertexto accesible
+          vía Internet.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1994</h3>
+        <h4>Inicio de la realidad aumentada en el arte</h4>
+        <p><em>The Golden Calf</em> introduce el uso de visión computarizada y modelado 3D en la práctica artística.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1995</h3>
+        <h4>Nacimiento del Net Art</h4>
+        <p>Vuk Ćosić acuña el término <em>net.art</em>, dando nombre a una corriente artística basada en la red.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1996</h3>
+        <h4>Arte en red</h4>
+        <p>• <em>Fin del Mundo</em>, pionero argentino de arte e Internet.<br>
+          • <em>turbulence.org</em>, espacio internacional dedicado al arte sonoro y la performance.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1998</h3>
+        <h4>Creación del MECAD (Barcelona)</h4>
+        <p>Centro de investigación, producción y difusión de prácticas creativas con medios digitales e hipermedia.</p>
+      </div>
+
+      <div class="evento">
+        <h3>2001</h3>
+        <h4>Fundación de Creative Commons</h4>
+        <p>Promueve licencias abiertas para compartir obras creativas y conocimiento.</p>
+      </div>
+
+      <div class="evento">
+        <h3>2002</h3>
+        <h4>Nacimiento de Artport</h4>
+        <p>Portal del Whitney Museum de Nueva York dedicado al arte en Internet.</p>
+      </div>
+
+      <div class="evento">
+        <h3>2013</h3>
+        <h4>Espacio Byte y The Wrong Biennale</h4>
+        <p>• <em>Espacio Byte</em>, primer museo online de arte digital de América Latina.<br>
+          • <em>The Wrong Biennale</em>, plataforma global de arte digital contemporáneo.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>ARTERIA</p>
+    <p>Laboratorio de Arte Electrónico-Digital.</p>
+  </footer>
 
 </body>
+
+</html>
