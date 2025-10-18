@@ -1,0 +1,55 @@
+/* ======== Estructura general ======== */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: small;
+}
+
+/* ======== Contenedor principal ======== */
+main.datos-poesia-sin-tierra {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100vh - 80px); /* ajusta si tu header tiene otro alto */
+  overflow: hidden;
+}
+
+/* ======== Columna izquierda (datos del poema) ======== */
+main.datos-poesia-sin-tierra > div:first-child {
+  width: 15%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  box-sizing: border-box;
+  padding: 1rem;
+  overflow: hidden; /* sin scroll vertical */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.8rem; /* texto más pequeño */
+  line-height: 1.4;
+}
+
+main.datos-poesia-sin-tierra > div:first-child h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+main.datos-poesia-sin-tierra > div:first-child p {
+  margin: 0.2rem 0;
+  opacity: 0.9;
+}
+
+/* ======== Contenedor del canvas ======== */
+.canvas-container-sintierra {
+  width: 85%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}

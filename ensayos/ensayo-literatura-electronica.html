@@ -2,65 +2,249 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Literatura Electrónico-Digital | ARTERIA</title>
+  <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
 
-    <title>ARTERIA - Literatura Electrónica</title>
-    <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
+  <style>
+    /* Estilos de la línea de tiempo (heredan del ejemplo que diste) */
+    .linea-tiempo {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      position: relative;
+    }
 
-    <link rel="stylesheet" href="/style.css">
+    .linea-tiempo::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background-color: #ccc;
+    }
 
-    <script src=https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js></script>
-    <script src="/script.js" defer></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    .evento {
+      position: relative;
+      width: 45%;
+      padding: 1rem 2rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .evento:nth-child(odd) {
+      left: 0;
+    }
+
+    .evento:nth-child(even) {
+      left: 55%;
+    }
+
+    .evento::after {
+      content: "";
+      position: absolute;
+      top: 1.5rem;
+      width: 20px;
+      height: 20px;
+      background-color: black;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px white;
+      left: -10px;
+      transform: translateX(-50%);
+    }
+
+    .evento:nth-child(even)::after {
+      left: auto;
+      right: -10px;
+      transform: translateX(50%);
+    }
+
+    .evento h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: black;
+    }
+
+    .evento h4 {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .evento p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .linea-tiempo::before {
+        left: 20px;
+      }
+
+      .evento,
+      .evento:nth-child(even) {
+        width: 100%;
+        left: 0;
+        margin-left: 40px;
+      }
+
+      .evento::after,
+      .evento:nth-child(even)::after {
+        left: -30px;
+        right: auto;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <a href="/index.html">
-                <h1>ARTERIA</h1>
-            </a>
-        </div>
-        <nav>
-            <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
-                aria-controls="menu-list">&#9776;</button>
-            <ul id="menu-list">
-                <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
-                <li><a href="/pages/poesia.html">POESIA</a></li>
-                <li><a href="/data.html">POSDATA</a></li>
-                <li><a href="/pages/about.html">PULSO</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">
+      <a href="/index.html">
+        <h1>ARTERIA</h1>
+      </a>
+    </div>
+    <nav>
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">&#9776;</button>
+      <ul id="menu-list">
+        <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
+        <li><a href="/pages/poesia.html">POESIA</a></li>
+        <li><a href="/pages/posdata.html">POSDATA</a></li>
+        <li><a href="/pages/about.html">PULSO</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section class="contenedor-texto">
-            <h1>Literatura Electrónica</h1>
-            <h2>Subtítulo</h2>
-            <img src="/asset/espinadorsal.jpg" alt="">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod rem optio impedit dolorem magnam architecto consequuntur, ratione deleniti, obcaecati repudiandae dolor illo neque voluptates ex iure facere incidunt quis dolores.</p>
-        </section>
+  <main>
+    <section class="contenedor-texto">
+      <h2>Literatura Electrónico-Digital</h2>
+      <img src="/asset/espinadorsal.jpg" alt="Obra visual representando la literatura digital">
+      <p>
+        La <strong>literatura electrónico-digital</strong> surge de la intersección entre la escritura, la tecnología y
+        el arte. Su historia combina la poesía, la programación y la experimentación con medios electrónicos que
+        transforman la idea misma de “texto”.
+      </p>
 
-    </section class="posdata-literatura-electronica">
-    <section id="timeline"></section>
-    <section id="graph"></section>
+      <p>
+        Según la investigadora <strong>Claudia Kozak</strong> (2017), la literatura digital puede definirse como “la
+        práctica artística electrónico-digital, por lo general multimedia, que exhibe una fuerte implicación del lenguaje
+        verbal con función poética”. En este sentido, la <em>poesía digital</em> forma parte de una tradición más amplia
+        dentro de las artes digitales, en la que el lenguaje se vuelve materia estética, visual y sonora.
+      </p>
+
+      <p>
+        Lo que distingue a la literatura digital de otras formas de arte electrónico es su <strong>relevancia del lenguaje
+        verbal</strong> y su carácter multimedia, que impulsa la <strong>desdiferenciación de las disciplinas
+        artísticas</strong>: un territorio donde texto, imagen, código y sonido se entrelazan.
+      </p>
+
+      <p>
+        En América Latina, investigadoras y artistas como <strong>Claudia Kozak</strong>, <strong>Belén Gache</strong>,
+        <strong>Giselle Beiguelman</strong>, <strong>Eugenio Tisselli</strong>, <strong>Mónica Nepote</strong> y
+        <strong>Mario Guzmán</strong> han desarrollado obras y redes que consolidan este campo, como
+        <a href="https://litelat.net/" target="_blank">LITELAT</a> —Red Latinoamericana de Literatura Electrónica— y el
+        <a href="https://www.cartografiadigital.cl/" target="_blank">Atlas de Literatura Digital Latinoamericana</a>.
+      </p>
+
+      <p>
+        La serie <a href="/poesia/poema-sintierra.html">Poesía Sin Tierra</a>
+        (2025), basada en el libro homónimo de Stefanía Pagano, es un ejemplo emblemático de poesía digital en la región. Este proyecto combina
+        lectura, visuales y sonido para explorar temas de resistencia y memoria desde una perspectiva político-social
+      </p>
     </section>
 
+    <!-- === Línea de tiempo de la Literatura Electrónica === -->
+    <section class="linea-tiempo">
+      <h2>Línea de tiempo de la Literatura Electrónico-Digital</h2>
 
-    </main>
+      <div class="evento">
+        <h3>1952–1953</h3>
+        <h4><em>Love Letter</em> – Christopher Strachey</h4>
+        <p>Primer programa literario generativo, desarrollado para la computadora Ferranti Mark I. Produce cartas de amor
+          automáticas y marca el inicio de la escritura algorítmica.</p>
+      </div>
 
+      <div class="evento">
+        <h3>1959</h3>
+        <h4><em>Stochastic Texts</em> – Theo Lutz</h4>
+        <p>Genera combinaciones aleatorias de frases basadas en <em>El castillo</em> de Kafka. Pionero de la poesía
+          computacional.</p>
+      </div>
 
+      <div class="evento">
+        <h3>1968</h3>
+        <h4><em>Tape Mark I</em> – Nanni Balestrini</h4>
+        <p>Poema combinatorio realizado mediante algoritmos. Amplía las posibilidades expresivas de la literatura
+          generativa.</p>
+      </div>
 
-    <footer>
-        <p>ARTERIA</p>
-        <p>Laboratorio de Arte Electrónico-Digital.</p>
-    </footer>
+      <div class="evento">
+        <h3>1983</h3>
+        <h4><em>afternoon, a story</em> – Michael Joyce</h4>
+        <p>Primera gran obra de hipertexto literario. El lector navega la historia a través de enlaces, configurando su
+          propio recorrido narrativo.</p>
+      </div>
 
-    <script src="./ensayo-literatura-electronica.js"></script>
+      <div class="evento">
+        <h3>1996</h3>
+        <h4>Electronic Literature Organization (ELO)</h4>
+        <p>Se crea la ELO para promover, archivar y estudiar la literatura digital en el ámbito internacional.</p>
+      </div>
 
+      <div class="evento">
+        <h3>2001</h3>
+        <h4><em>Poétrica</em> – Giselle Beiguelman</h4>
+        <p>Instalación interactiva brasileña que fusiona poesía, código y participación del público.</p>
+      </div>
+
+      <div class="evento">
+        <h3>2007</h3>
+        <h4>Creación de Ludión</h4>
+        <p>Exploratorio latinoamericano de poéticas y políticas tecnológicas, dirigido por Claudia Kozak.</p>
+      </div>
+
+      <div class="evento">
+        <h3>2015</h3>
+        <h4>Nace LITELAT</h4>
+        <p>Red Latinoamericana de Literatura Electrónica, coordinada por Kozak, que articula artistas, investigadores y
+          archivos digitales de la región.</p>
+      </div>
+
+      <div class="evento">
+        <h3>2020–2025</h3>
+        <h4>IA, código y poesía generativa</h4>
+        <p>La literatura electrónica se fusiona con la inteligencia artificial, el live coding y la visualización de
+          datos, inaugurando una poética del algoritmo.</p>
+      </div>
+    </section>
+
+    <section class="contenedor-texto">
+      <h3>Bibliografía y Enlaces de Interés</h3>
+      <ul>
+        <li>Kozak, C. (2017). <em>Literatura digital y artes electrónicas: desdiferenciaciones y tensiones.</em></li>
+        <li><a href="https://litelat.net/" target="_blank">LITELAT – Red Latinoamericana de Literatura Electrónica</a></li>
+        <li><a href="http://antologia.litelat.net/" target="_blank">Antología LITELAT Vol. 1</a></li>
+        <li><a href="https://www.cartografiadigital.cl/" target="_blank">Cartografía Digital de Literatura Latinoamericana</a></li>
+        <li><a href="https://www.observatorioldigital.ufscar.br/atlas-da-literatura-digital-brasileira/" target="_blank">Atlas da Literatura Digital Brasileira</a></li>
+        <li><a href="https://eliterature.org/" target="_blank">Electronic Literature Organization (ELO)</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>ARTERIA</p>
+    <p>Laboratorio de Arte Electrónico-Digital</p>
+  </footer>
 </body>
 
 </html>

@@ -5,14 +5,109 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="">
-  <meta name="description" content="">
-
+  <meta name="description" content="Ensayo sobre los procesos creativos y la escritura no original.">
   <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
   <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
-
   <link rel="stylesheet" href="/style.css">
   <script src="/script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+
+  <style>
+    /* === Estilos para la línea de tiempo === */
+    .linea-tiempo {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .linea-tiempo::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background-color: #ccc;
+    }
+
+    .evento {
+      position: relative;
+      width: 45%;
+      padding: 1rem 2rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .evento:nth-child(odd) {
+      left: 0;
+    }
+
+    .evento:nth-child(even) {
+      left: 55%;
+    }
+
+    .evento::after {
+      content: "";
+      position: absolute;
+      top: 1.5rem;
+      width: 20px;
+      height: 20px;
+      background-color: black;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px white;
+      left: -10px;
+      transform: translateX(-50%);
+    }
+
+    .evento:nth-child(even)::after {
+      left: auto;
+      right: -10px;
+      transform: translateX(50%);
+    }
+
+    .evento h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: black;
+    }
+
+    .evento h4 {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .evento p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .linea-tiempo::before {
+        left: 20px;
+      }
+
+      .evento,
+      .evento:nth-child(even) {
+        width: 100%;
+        left: 0;
+        margin-left: 40px;
+      }
+
+      .evento::after,
+      .evento:nth-child(even)::after {
+        left: -30px;
+        right: auto;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -26,7 +121,7 @@
       <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-list">&#9776;</button>
       <ul id="menu-list">
         <li><a href="/pages/ensayos.html">ENSAYOS</a></li>
-        <li><a href="/pages/poesia.html">POESIA</a></li>
+        <li><a href="/pages/poesia.html">POESÍA</a></li>
         <li><a href="/pages/posdata.html">POSDATA</a></li>
         <li><a href="/pages/about.html">PULSO</a></li>
       </ul>
@@ -35,19 +130,85 @@
 
   <main>
     <section class="contenedor-texto">
-      <h1>Ensayo</h1>
-      <h2>Arte Electrónico-Digital</h2>
-      <img src="/asset/espinadorsal.jpg" alt="">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem optio impedit dolorem magnam architecto
-        consequuntur, ratione deleniti, obcaecati repudiandae dolor illo neque voluptates ex iure facere incidunt quis
-        dolores.</p>
+      <h2>Copiar, pegar, crear</h2>
+      <img src="/asset/espinadorsal.jpg" alt="Obra digital representando la espina dorsal del arte electrónico.">
+
+      <p>Los procesos creativos que dialogan con obras de arte y artefactos culturales preexistentes han sido una práctica extendida a lo largo del tiempo. Algunas nociones asociadas a este fenómeno incluyen la apropiación, el ready-made, el pastiche, el ensamblaje, el collage, el patchwriting, la cita, el détournement, el sample, el remix, el mashup y el found footage, entre otras.</p>
+
+      <p>Marjorie Perloff (2019) y Kenneth Goldsmith (2015) han investigado y documentado algunas de estas prácticas artísticas con el objetivo de superar la idea romántica del genio y promover una nueva forma de vínculo creativo con la vasta cantidad de obras y archivos disponibles en la era digital. De este modo, introducen los conceptos de "Genio No Original" y "Escritura No Creativa".</p>
+
+      <p>Goldsmith (2015) abre su obra citando al artista conceptual Douglas Huebler: “En el mundo hay muchos objetos interesantes, no quiero añadir más”, para luego parafrasearlo y afirmar: “En el mundo hay muchos textos interesantes, no quiero añadir más” (p. 21). Según Goldsmith, enfrentamos una “cantidad sin precedentes de textos disponibles” y lo que diferencia una escritura de otra es “cómo atravesamos este matorral de información –cómo lo administramos, lo analizamos, lo organizamos y lo distribuimos–. Eso es lo que distingue mi escritura de la tuya” (p. 21).</p>
+
+      <p>Se puede decir, entonces, que la curaduría de archivos, la creación de bases de datos en formato digital y los algoritmos que programamos para administrar, organizar, distribuir y presentar esa información son los elementos que determinarán la singularidad de nuestra obra.</p>
+
+      <p>En la sinopsis de la obra de Goldsmith, se destaca que la escritura no creativa es “una tradición que toma muchas de sus estrategias del arte de vanguardia” y que “encuentra en el nuevo paisaje digital el contexto ideal para desplegar todas sus potencialidades”.</p>
+
+      <p>Nicolas Bourriaud (2002) plantea que:</p>
+
+      <blockquote>
+        Las nociones de originalidad (estar en el origen de...) e incluso de creación (hacer a partir de la nada) se difuminan lentamente en este nuevo paisaje cultural, signado por las figuras gemelas del deejay y el programador, quienes tienen la tarea de seleccionar objetos culturales e insertarlos dentro de contextos definidos (p. 2).
+      </blockquote>
+
+      <p>Algunas obras como <em>poéticas transfronterizas</em>, <em>poesía sin tierra</em> y <em>acróstico</em> se sumergen en las manifestaciones poéticas-políticas (textuales, sonoras y visuales) de los pueblos en movimiento y son procesadas a través de una composición algorítmica que dan lugar a obras ubicadas en el terreno de la poesía, la literatura y el arte digital.</p>
+
+      <p>Uno de los objetivos de este trabajo es realizar una curaduría de archivos sensibles (textuales, sonoros y visuales) procedentes de artistas, colectivos sociales y movimientos políticos de Latinoamérica con el fin de transformarlos y crear obras de arte digital a través de la programación creativa.</p>
+
+      <p>Se visitará la obra de artistas así como también las poéticas que emergen desde los pueblos en movimiento durante las asambleas, las marchas y manifestaciones. Desde las proclamas declamadas en el estrado hasta los versos y gritos que resuenan en las calles.</p>
+
+      <p>Esta poesía insurgente, efímera y dispersa en ocasiones trasciende, circula y se archiva en los servidores de las redes sociales y plataformas digitales. Se explorará entonces, los canales digitales de proyectos de comunicación popular y comunitaria, organizaciones activistas, en largometrajes documentales sobre Derechos Humanos y otras fuentes de contenido audiovisual que puedan acercarnos a este corpus poético en movimiento.</p>
+
+      <p>Los lenguajes de programación orientados a la creación artística permitirán abordar este archivo sensible y ponerlo en juego a través de la creación algorítmica.</p>
     </section>
+
+    <!-- === LÍNEA DE TIEMPO === -->
+    <section class="linea-tiempo">
+      <div class="evento">
+        <h3>1913 – Marcel Duchamp</h3>
+        <h4>Ready-made</h4>
+        <p>Con obras como <em>Rueda de bicicleta</em> y <em>Fountain</em>, Duchamp redefine el arte al elegir y recontextualizar objetos cotidianos, inaugurando el arte conceptual.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1920–1930 – Walter Benjamin</h3>
+        <h4>Deriva en trance</h4>
+        <p>Benjamin explora la ciudad como experiencia estética y política. Su pensamiento anticipa la psicogeografía y las poéticas del desplazamiento.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1950–1960 – William S. Burroughs</h3>
+        <h4>Cut-up y Fold-in</h4>
+        <p>Junto a Brion Gysin, introduce técnicas de escritura aleatoria basadas en el montaje y el azar, anticipando el hipertexto y el remix textual.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1957 – Internacional Situacionista</h3>
+        <h4>Détournement</h4>
+        <p>Guy Debord y los situacionistas proponen subvertir los signos del capitalismo mediante la reapropiación crítica de imágenes y mensajes culturales.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1960–1980 – Andy Warhol</h3>
+        <h4>Estrategias de reproducción</h4>
+        <p>La repetición y la copia se vuelven método y discurso. Warhol convierte la cultura de masas en arte mediante la serigrafía y la multiplicación.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1969–1978 – Georges Perec</h3>
+        <h4>Experimentos radicales</h4>
+        <p>Miembro del grupo Oulipo, escribe novelas bajo restricciones formales, explorando el potencial algorítmico del lenguaje.</p>
+      </div>
+
+      <div class="evento">
+        <h3>1980–1990 – Jeff Koons</h3>
+        <h4>Plagio y simulacro</h4>
+        <p>Koons eleva los objetos kitsch y comerciales a la categoría de arte, problematizando la autoría y el consumo cultural.</p>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>ARTERIA</p>
     <p>Laboratorio de Arte Electrónico-Digital.</p>
   </footer>
-
 </body>
-
 </html>
