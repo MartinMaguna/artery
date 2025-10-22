@@ -2,7 +2,7 @@ let font;
 let letterPoints = [];
 let interactionRadius = 45;
 let canvas, isHovered = false;
-let currentChar = 'A';
+let currentChar = '0';
 
 function preload() {
   font = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');
