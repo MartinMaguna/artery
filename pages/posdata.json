@@ -1,0 +1,247 @@
+{
+  "linea_tiempo": [
+    {
+      "año": "1913",
+      "titulo": "Marcel Duchamp – Ready-made",
+      "descripcion": "Con obras como Rueda de bicicleta y Fountain, Duchamp redefine el arte al elegir y recontextualizar objetos cotidianos, inaugurando el arte conceptual."
+    },
+    {
+      "año": "1920–1930",
+      "titulo": "Walter Benjamin – Deriva en trance",
+      "descripcion": "Benjamin explora la ciudad como experiencia estética y política. Su pensamiento anticipa la psicogeografía y las poéticas del desplazamiento."
+    },
+    {
+      "año": "1935",
+      "titulo": "Z1, la primera computadora",
+      "descripcion": "Konrad Zuse diseña el Z1, considerado el primer computador mecánico programable del mundo. Construido entre 1936 y 1938 en Alemania, fue destruido en 1943 durante los bombardeos de Berlín."
+    },
+    {
+      "año": "1950–1953",
+      "titulo": "Benjamin Francis Laposky – Oscillons",
+      "descripcion": "Crea las primeras gráficas electrónicas en tiempo real utilizando un osciloscopio. Consideradas las primeras imágenes abstractas generadas electrónicamente."
+    },
+    {
+      "año": "1950–1960",
+      "titulo": "William S. Burroughs – Cut-up y Fold-in",
+      "descripcion": "Junto a Brion Gysin, introduce técnicas de escritura aleatoria basadas en el montaje y el azar, anticipando el hipertexto y el remix textual."
+    },
+    {
+      "año": "1952–1953",
+      "titulo": "Love Letter – Christopher Strachey",
+      "descripcion": "Primer programa literario generativo, desarrollado para la computadora Ferranti Mark I. Produce cartas de amor automáticas y marca el inicio de la escritura algorítmica."
+    },
+    {
+      "año": "1956",
+      "titulo": "Nacimiento de la Inteligencia Artificial",
+      "descripcion": "Durante la Conferencia de Dartmouth se acuña el término Inteligencia Artificial (IA), marcando el inicio formal de esta disciplina científica."
+    },
+    {
+      "año": "1957",
+      "titulo": "Internacional Situacionista – Détournement",
+      "descripcion": "Guy Debord y los situacionistas proponen subvertir los signos del capitalismo mediante la reapropiación crítica de imágenes y mensajes culturales."
+    },
+    {
+      "año": "1958",
+      "titulo": "Primer módem para transmitir datos",
+      "descripcion": "Bell Labs desarrolla el primer módem capaz de transmitir datos binarios por una línea telefónica."
+    },
+    {
+      "año": "1959",
+      "titulo": "Stochastic Texts – Theo Lutz",
+      "descripcion": "Genera combinaciones aleatorias de frases basadas en El castillo de Kafka. Pionero de la poesía computacional."
+    },
+    {
+      "año": "1960–1980",
+      "titulo": "Andy Warhol – Estrategias de reproducción",
+      "descripcion": "La repetición y la copia se vuelven método y discurso. Warhol convierte la cultura de masas en arte mediante la serigrafía y la multiplicación."
+    },
+    {
+      "año": "1963",
+      "titulo": "Primera película generada por computadora",
+      "descripcion": "Edward E. Zajac produce Simulation of Two-Gyro Gravity-Gradient Attitude Control System, considerada la primera animación digital."
+    },
+    {
+      "año": "1965",
+      "titulo": "Primera exposición de arte digital en Europa",
+      "descripcion": "George Nees, Friedrich Nake y Michael Noll presentan Computergrafik en la Universidad de Stuttgart, pionera del arte computacional."
+    },
+    {
+      "año": "1967",
+      "titulo": "Hummingbird – Charles Csuri",
+      "descripcion": "Primera animación artística computarizada, realizada con una IBM 1130. Obtuvo el premio en la Competencia Internacional de Cine Experimental de Bélgica."
+    },
+    {
+      "año": "1968",
+      "titulo": "Cybernetic Serendipity y Computer Arts Society",
+      "descripcion": "El ICA de Londres presenta la exposición Cybernetic Serendipity y se funda la Computer Arts Society (CAS), dedicada al uso creativo de computadoras en el arte."
+    },
+    {
+      "año": "1968",
+      "titulo": "Tape Mark I – Nanni Balestrini",
+      "descripcion": "Poema combinatorio realizado mediante algoritmos. Amplía las posibilidades expresivas de la literatura generativa."
+    },
+    {
+      "año": "1969",
+      "titulo": "ARPANET, origen de Internet",
+      "descripcion": "El Departamento de Defensa de EE.UU. crea ARPANET, la primera red de computadoras interconectadas, precursora de Internet."
+    },
+    {
+      "año": "1969–1978",
+      "titulo": "Georges Perec – Experimentos radicales",
+      "descripcion": "Miembro del grupo Oulipo, escribe novelas bajo restricciones formales, explorando el potencial algorítmico del lenguaje."
+    },
+    {
+      "año": "1971",
+      "titulo": "Avances clave en arte computacional",
+      "descripcion": "• Primer correo electrónico (Ray Tomlinson). • Microprocesador Intel 4004. • Primer libro sobre arte computacional (Computergraphik–Computerkunst). • Primera exposición individual de arte generativo (Manfred Mohr)."
+    },
+    {
+      "año": "1975",
+      "titulo": "Innovaciones visuales y matemáticas",
+      "descripcion": "• Primera cámara digital (Kodak, Steven Sasson). • Creación de la geometría fractal (Benoît Mandelbrot)."
+    },
+    {
+      "año": "1977",
+      "titulo": "Primeras microcomputadoras comerciales",
+      "descripcion": "Apple II, Commodore PET y TRS-80 inauguran la era de la computación personal doméstica."
+    },
+    {
+      "año": "1979",
+      "titulo": "Nace Ars Electronica",
+      "descripcion": "Festival internacional de arte, ciencia y tecnología con sede en Linz, Austria, referente del arte digital y los nuevos medios."
+    },
+    {
+      "año": "1980–1990",
+      "titulo": "Jeff Koons – Plagio y simulacro",
+      "descripcion": "Koons eleva los objetos kitsch y comerciales a la categoría de arte, problematizando la autoría y el consumo cultural."
+    },
+    {
+      "año": "1981",
+      "titulo": "Lanzamiento comercial de la IBM PC",
+      "descripcion": "Marca un hito en la masificación del uso de computadoras personales."
+    },
+    {
+      "año": "1982",
+      "titulo": "Commodore 64",
+      "descripcion": "Computadora icónica de 8 bits, influyente en la cultura digital, musical y programática de los años 80."
+    },
+    {
+      "año": "1983",
+      "titulo": "afternoon, a story – Michael Joyce",
+      "descripcion": "Primera gran obra de hipertexto literario. El lector navega la historia a través de enlaces, configurando su propio recorrido narrativo."
+    },
+    {
+      "año": "1988",
+      "titulo": "Desarrollo de Photoshop",
+      "descripcion": "Thomas y John Knoll crean Photoshop, que redefine la edición de imágenes y las prácticas visuales digitales."
+    },
+    {
+      "año": "1990",
+      "titulo": "Nacimiento de la World Wide Web",
+      "descripcion": "Tim Berners-Lee y Robert Cailliau anuncian la Web como sistema de información basado en hipertexto accesible vía Internet."
+    },
+    {
+      "año": "1994",
+      "titulo": "Inicio de la realidad aumentada en el arte",
+      "descripcion": "The Golden Calf introduce el uso de visión computarizada y modelado 3D en la práctica artística."
+    },
+    {
+      "año": "1995",
+      "titulo": "Nacimiento del Net Art",
+      "descripcion": "Vuk Ćosić acuña el término net.art, dando nombre a una corriente artística basada en la red."
+    },
+    {
+      "año": "1996",
+      "titulo": "Electronic Literature Organization (ELO)",
+      "descripcion": "Se crea la ELO para promover, archivar y estudiar la literatura digital en el ámbito internacional."
+    },
+    {
+      "año": "1996",
+      "titulo": "Arte en red",
+      "descripcion": "• Fin del Mundo, pionero argentino de arte e Internet. • turbulence.org, espacio internacional dedicado al arte sonoro y la performance."
+    },
+    {
+      "año": "1998",
+      "titulo": "Creación del MECAD (Barcelona)",
+      "descripcion": "Centro de investigación, producción y difusión de prácticas creativas con medios digitales e hipermedia."
+    },
+    {
+      "año": "2001",
+      "titulo": "Fundación de Creative Commons",
+      "descripcion": "Promueve licencias abiertas para compartir obras creativas y conocimiento."
+    },
+    {
+      "año": "2001",
+      "titulo": "Poétrica – Giselle Beiguelman",
+      "descripcion": "Instalación interactiva brasileña que fusiona poesía, código y participación del público."
+    },
+    {
+      "año": "2002",
+      "titulo": "Nacimiento de Artport",
+      "descripcion": "Portal del Whitney Museum de Nueva York dedicado al arte en Internet."
+    },
+    {
+      "año": "2003",
+      "titulo": "Área de Lenguajes Computarizados – Facultad de Artes",
+      "descripcion": "Creación del área dedicada a los lenguajes computarizados en la Facultad de Artes."
+    },
+    {
+      "año": "2003",
+      "titulo": "CEIARTE – UNTREF",
+      "descripcion": "Centro de Experimentación e Investigación en Artes Electrónicas dedicado a la producción e investigación en arte digital."
+    },
+    {
+      "año": "2007",
+      "titulo": "Creación de Ludión",
+      "descripcion": "Exploratorio latinoamericano de poéticas y políticas tecnológicas, dirigido por Claudia Kozak."
+    },
+    {
+      "año": "2011",
+      "titulo": "Seminario de Narrativas Hipertextuales",
+      "descripcion": "Seminario enfocado en las narrativas digitales y su evolución en el contexto de las nuevas tecnologías."
+    },
+    {
+      "año": "2012",
+      "titulo": "Proyecto IDIS – FADU UBA",
+      "descripcion": "Base de Datos sobre Arte Digital en Argentina. Iniciativa para documentar y difundir el arte digital nacional."
+    },
+    {
+      "año": "2013",
+      "titulo": "Espacio Byte y The Wrong Biennale",
+      "descripcion": "• Espacio Byte, primer museo online de arte digital de América Latina. • The Wrong Biennale, plataforma global de arte digital contemporáneo."
+    },
+    {
+      "año": "2015",
+      "titulo": "Nace LITELAT",
+      "descripcion": "Red Latinoamericana de Literatura Electrónica, coordinada por Claudia Kozak, que articula artistas, investigadores y archivos digitales."
+    },
+    {
+      "año": "2016",
+      "titulo": "Red Iberoamericana de Artes Digitales y Electrónicas",
+      "descripcion": "Red que conecta a artistas, investigadores y centros dedicados al arte digital en Iberoamérica."
+    },
+    {
+      "año": "2016",
+      "titulo": "Observatorio Iberoamericano de Arte Digital y Electrónico",
+      "descripcion": "Plataforma para el análisis y promoción del arte digital en la región iberoamericana."
+    },
+    {
+      "año": "2020–2025",
+      "titulo": "IA, código y poesía generativa",
+      "descripcion": "La literatura electrónica se fusiona con la inteligencia artificial, el live coding y la visualización de datos, inaugurando una poética del algoritmo."
+    },
+    {
+      "año": "2024",
+      "titulo": "ArtFutura Montevideo",
+      "descripcion": "Festival internacional de arte digital y nuevas tecnologías que celebra su edición en Montevideo."
+    }
+  ],
+  "bibliografia_y_enlaces": [
+    "Kozak, C. (2017). Literatura digital y artes electrónicas: desdiferenciaciones y tensiones.",
+    "LITELAT – Red Latinoamericana de Literatura Electrónica",
+    "Antología LITELAT Vol. 1",
+    "Cartografía Digital de Literatura Latinoamericana",
+    "Atlas da Literatura Digital Brasileira",
+    "Electronic Literature Organization (ELO)"
+  ]
+}

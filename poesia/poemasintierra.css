@@ -53,3 +53,12 @@ main.datos-poesia-sin-tierra > div:first-child p {
   position: relative;
   overflow: hidden;
 }
+
+.botones {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
