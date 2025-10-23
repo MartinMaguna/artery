@@ -1,5 +1,14 @@
+let videos = [
+  '../asset/fervor/fervor01.mp4',
+  '../asset/fervor/fervor02.mp4',
+  '../asset/fervor/fervor03.mp4',
+  '../asset/fervor/fervor04.mp4',
+  '../asset/fervor/fervor05.mp4'
+];
+
 let video, audio;
 let shaderDisplace;
+let currentVideo = 0; // índice del video actual
 
 // Shader para glitch de color
 const displaceColorsSrc = `
@@ -25,7 +34,7 @@ void main() {
 `;
 
 function preload() {
-  video = createVideo(['../asset/videosintierra.mp4']);
+  video = createVideo([videos[currentVideo]]);
   audio = loadSound('../asset/poesiasintierra-tati.mp3');
 }
 
@@ -35,8 +44,11 @@ function setup() {
   canvas.elt.getContext('webgl', { willReadFrequently: true });
 
   video.hide();
-  video.loop();
   video.volume(0);
+  video.loop();
+
+  // Cambiar al siguiente video cuando termine
+  video.onended(nextVideo);
 
   shaderDisplace = createFilterShader(displaceColorsSrc);
 
@@ -52,6 +64,16 @@ function draw() {
   image(video, 0, 0, width, height);
   filter(shaderDisplace);
   pop();
+}
+
+function nextVideo() {
+  currentVideo = (currentVideo + 1) % videos.length; // siguiente video
+  video.remove(); // eliminar el video anterior
+  video = createVideo([videos[currentVideo]]);
+  video.hide();
+  video.volume(0);
+  video.loop();
+  video.onended(nextVideo);
 }
 
 function windowResized() {
