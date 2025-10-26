@@ -1,4 +1,4 @@
-let videos = [
+let videos = [ 
   '../asset/fervor/fervor01.mp4',
   '../asset/fervor/fervor02.mp4',
   '../asset/fervor/fervor03.mp4',
@@ -6,9 +6,10 @@ let videos = [
   '../asset/fervor/fervor05.mp4'
 ];
 
+let shuffledVideos = []; // lista mezclada
+let currentVideoIndex = 0;
 let video, audio;
 let shaderDisplace;
-let currentVideo = 0; // índice del video actual
 
 // Shader para glitch de color
 const displaceColorsSrc = `
@@ -33,8 +34,15 @@ void main() {
 }
 `;
 
+// Mezcla aleatoriamente el arreglo de videos
+function shuffleVideos() {
+  shuffledVideos = shuffle(videos.slice());
+  currentVideoIndex = 0;
+}
+
 function preload() {
-  video = createVideo([videos[currentVideo]]);
+  shuffleVideos();
+  video = createVideo([shuffledVideos[currentVideoIndex]]);
   audio = loadSound('../asset/poesiasintierra-tati.mp3');
 }
 
@@ -45,10 +53,8 @@ function setup() {
 
   video.hide();
   video.volume(0);
-  video.loop();
-
-  // Cambiar al siguiente video cuando termine
   video.onended(nextVideo);
+  video.play(); // reproducir solo una vez, no en loop
 
   shaderDisplace = createFilterShader(displaceColorsSrc);
 
@@ -67,13 +73,20 @@ function draw() {
 }
 
 function nextVideo() {
-  currentVideo = (currentVideo + 1) % videos.length; // siguiente video
-  video.remove(); // eliminar el video anterior
-  video = createVideo([videos[currentVideo]]);
+  currentVideoIndex++;
+
+  // Si se terminó la lista, volver a mezclar
+  if (currentVideoIndex >= shuffledVideos.length) {
+    shuffleVideos();
+  }
+
+  // Cargar el siguiente video
+  video.remove();
+  video = createVideo([shuffledVideos[currentVideoIndex]]);
   video.hide();
   video.volume(0);
-  video.loop();
   video.onended(nextVideo);
+  video.play(); // reproducir una sola vez
 }
 
 function windowResized() {

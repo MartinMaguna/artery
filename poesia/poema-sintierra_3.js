@@ -2,7 +2,6 @@ let video;
 let audioJandi;
 let shaderDisplace;
 
-// Lista de videos
 const videos = [
   '../asset/maos/maos01.mp4',
   '../asset/maos/maos02.mp4',
@@ -15,10 +14,12 @@ const videos = [
   '../asset/maos/maos09.mp4'
 ];
 
+let shuffledVideos = [];
 let currentVideoIndex = 0;
 let lastChangeTime = 0;
 const changeInterval = 10000; // 10 segundos
 
+// Shader de glitch
 const displaceColorsSrc = `
 precision highp float;
 uniform sampler2D tex0;
@@ -40,8 +41,15 @@ void main() {
 }
 `;
 
+// Mezcla los videos
+function shuffleVideos() {
+  shuffledVideos = shuffle(videos.slice());
+  currentVideoIndex = 0;
+}
+
 function preload() {
-  video = createVideo([videos[currentVideoIndex]]);
+  shuffleVideos();
+  video = createVideo([shuffledVideos[currentVideoIndex]]);
   video.hide();
   audioJandi = loadSound('../asset/jandi-poesiasintierra-02.mp3');
 }
@@ -52,8 +60,8 @@ function setup() {
 
   shaderDisplace = createFilterShader(displaceColorsSrc);
 
-  video.loop();
   video.volume(0);
+  video.play();
 
   if (!audioJandi.isPlaying()) {
     audioJandi.loop();
@@ -79,11 +87,19 @@ function draw() {
 
 function changeVideo() {
   video.stop();
-  currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-  video = createVideo([videos[currentVideoIndex]]);
+  video.remove();
+
+  currentVideoIndex++;
+
+  // Si se terminó la lista, volver a mezclar
+  if (currentVideoIndex >= shuffledVideos.length) {
+    shuffleVideos();
+  }
+
+  video = createVideo([shuffledVideos[currentVideoIndex]]);
   video.hide();
-  video.loop();
   video.volume(0);
+  video.play();
 }
 
 function windowResized() {

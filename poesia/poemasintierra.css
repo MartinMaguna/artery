@@ -43,7 +43,8 @@ main.datos-poesia-sin-tierra > div:first-child h3 {
 
 main.datos-poesia-sin-tierra > div:first-child p {
   margin: 0.2rem 0;
-  opacity: 0.9;
+  opacity: 1;
+  text-align: start;
 }
 
 /* ======== Contenedor del canvas ======== */
