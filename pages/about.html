@@ -104,7 +104,6 @@
 
       <script>
         const poemaContainer = document.querySelector('.poema_pulso');
-
         const versos = [
           "flujo de datos",
           "textos, imágenes, sonidos",
@@ -116,12 +115,12 @@
           "dossier genético, acopio sensible",
           "vemödalen, hastío",
           "estética de la complejidad",
-          "caos y cosmos",
+          "caos, cosmos",
           "urdimbre, colmena",
           "textos y textiles",
           "bordado tecno-poético colectivo",
-          "filigrana de estaño sobre placas",
-          "tiemblan y se sienten",
+          "filigrana de estaño",
+          "tiembla y se siente",
           "arte, cuerpo, red",
           "una arteria que pulsa"
         ];
@@ -156,14 +155,14 @@
 
           setTimeout(() => {
             poemaContainer.classList.add('poema-fade');
-          }, 10000);
+          }, 8000);
 
           setTimeout(() => {
             poemaContainer.classList.remove('poema-fade');
             poemaContainer.innerHTML = '';
             poemaContainer.appendChild(btnPulso);
             btnPulso.style.display = 'inline-flex';
-          }, 12000);
+          }, 9000);
         });
       </script>
     </section>
