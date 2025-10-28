@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const display = document.createElement("div");
     display.id = "display-text";
 display.innerHTML = `
-  Descubrí Arteria <br> en pantalla grande<br>
+  Te esperamos<br> en pantalla grande<br>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="white" style="margin-top:0.7rem;">
     <path d="M3 4h18v12H3z"/><path d="M0 18h24v2H0z"/>
   </svg>
