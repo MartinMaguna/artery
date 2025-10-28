@@ -193,6 +193,9 @@ canvas.p5Canvas {
   padding: 1rem;
   background-color: #f7f7f7;
   border-radius: 4px;
+
+  display: flex;          /* añadido */
+  flex-direction: column; /* añadido */
 }
 
 .card h2 {
@@ -201,6 +204,8 @@ canvas.p5Canvas {
 
 .card p {
   margin-bottom: 1rem;
+  text-align: start;
+  font-size: 1.rem;
 }
 
 .card .sketch-container {
@@ -210,21 +215,36 @@ canvas.p5Canvas {
   overflow: hidden;
   position: relative;
 }
+.imagen_card_poesia {
+  width: 100%;        /* ocupa todo el ancho de la card */
+  height: auto;       /* altura según la proporción real de la imagen */
+  overflow: visible;  /* deja que la imagen se muestre completa */
+  margin-bottom: 1rem;
+}
+
+.imagen_card_poesia img {
+  width: 100%;        /* se adapta al ancho del contenedor */
+  height: auto;       /* mantiene proporción original */
+  display: block;
+}
+
 
 .card .btn {
   display: inline-block;
+  text-align: center;
   background-color: #000;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.3s;
+  
+  margin-top: auto;       /* añadido: empuja el botón al fondo */
 }
 
 .card .btn:hover,
 .card .btn:focus {
   background-color: #333;
 }
-
 
 
 

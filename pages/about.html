@@ -42,58 +42,143 @@
       </div>
     </section>
 
+
     <section>
-      <div class="contenedor-texto">
-        <h2 id="titulo-arteria">ARTERIA</h2>
+      <div class="poema_pulso"></div>
 
-        <article class="poema_pulso" aria-label="Poema: ARTERIA">
-          <p>flujo de datos <br>
-            textos, imágenes, sonidos <br>
-            código, música, vídeos,<br>
-            poesia <br><br>
+      <style>
+/* Contenedor del poema */
+.poema_pulso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  text-align: center;
+  margin: 50px auto;
+  font-family: 'Courier New', monospace;
+  line-height: 1.5;
+  color: #000;
+  min-height: 500px; /* altura suficiente para el poema completo */
+  width: 80%;        /* ocupa buena parte de la pantalla */
+  max-width: 800px;  /* evita que sea demasiado ancho en pantallas grandes */
+  position: relative;
+}
 
-            archivos sensibles<br>
-            arteria en la red de redes.<br>
-            arte algorítmico, generativo<br>
-            dossier genético<br>
-            acopio sensible en un dataset<br><br>
+/* Botón Pulsar */
+.poema_pulso .btn-pulso {
+  background-color: black;
+  color: white;
+  border: none;
+  width: 120px;
+  height: 120px;
+  font-size: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: latido 2s infinite;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  margin: 20px auto;
+}
 
-            vemödalen<br><br>
+/* Animación de latido */
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); } /* latido más lento */
+}
 
-            estética de la complejidad<br>
-            caos, cosmos<br>
-            urdimbre<br>
-            colmena<br>
-            poesía<br><br>
+/* Fade out del poema */
+.poema_pulso.poema-fade {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
 
-            textos y textiles<br>
-            bordado tecno-poético colectivo<br>
-            filigrana de estaño<br>
-            sobre placas<br>
-            que tiemblan<br>
-            y se sienten<br>
-            arte, cuerpo, red<br>
-            una arteria<br>
-            que pulsa<br>
-            poesía<br>
-        </article>
-      </div>
+/* Versos con aparición gradual */
+.poema_pulso .poema-verse {
+  opacity: 0;
+  transition: opacity 1s ease;
+  margin: 5px 0;
+}
+</style>
+
+      <script>
+        const poemaContainer = document.querySelector('.poema_pulso');
+
+        const versos = [
+          "flujo de datos",
+          "textos, imágenes, sonidos",
+          "código, música, vídeos",
+          "archivos sensibles",
+          "arteria en la red de redes",
+          "ideas, conceptos, procesos",
+          "algorítmos",
+          "dossier genético, acopio sensible",
+          "vemödalen, hastío",
+          "estética de la complejidad",
+          "caos y cosmos",
+          "urdimbre, colmena",
+          "textos y textiles",
+          "bordado tecno-poético colectivo",
+          "filigrana de estaño sobre placas",
+          "tiemblan y se sienten",
+          "arte, cuerpo, red",
+          "una arteria que pulsa"
+        ];
+
+        const ultimoVerso = "p0es1a";
+
+        function seleccionarVersos(array, n) {
+          const shuffled = [...array].sort(() => 0.5 - Math.random());
+          return shuffled.slice(0, n);
+        }
+
+        // Crear botón Pulsar
+        const btnPulso = document.createElement('button');
+        btnPulso.textContent = "Pulsar";
+        btnPulso.classList.add('btn-pulso');
+        poemaContainer.appendChild(btnPulso);
+
+        btnPulso.addEventListener('click', () => {
+          const seleccion = seleccionarVersos(versos, 5);
+          const poemaFinal = ['<>', ...seleccion, ultimoVerso, '</>'];
+
+          poemaContainer.innerHTML = '';
+          btnPulso.style.display = 'none';
+
+          poemaFinal.forEach((v, index) => {
+            const p = document.createElement('p');
+            p.textContent = v;
+            p.classList.add('poema-verse');
+            poemaContainer.appendChild(p);
+            setTimeout(() => { p.style.opacity = 1; }, index * 300);
+          });
+
+          setTimeout(() => {
+            poemaContainer.classList.add('poema-fade');
+          }, 10000);
+
+          setTimeout(() => {
+            poemaContainer.classList.remove('poema-fade');
+            poemaContainer.innerHTML = '';
+            poemaContainer.appendChild(btnPulso);
+            btnPulso.style.display = 'inline-flex';
+          }, 12000);
+        });
+      </script>
     </section>
 
-  
-  </main>
-  <section>
-      <div class="contenedor-sketch">
-      <canvas id="poemaContainer"></canvas>
-    </div>
-    </section>
-  <footer>
-    <p>ARTERIA</p>
-    <p>Laboratorio de Arte Electrónico-Digital.</p>
-  </footer>
 
-  <script src="/pages/sketch-portada-about.js"></script>
-  <script src="/pages/pulso.js"></script>
+
+    </main>
+
+    <footer>
+      <p>ARTERIA</p>
+      <p>Laboratorio de Arte Electrónico-Digital.</p>
+    </footer>
+
+    <script src="/pages/sketch-portada-about.js"></script>
+    <script src="/pages/pulso.js"></script>
 
 </body>
 

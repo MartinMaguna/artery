@@ -1,0 +1,246 @@
+{
+  "arte_digital": {
+    "linea_tiempo": [
+      {
+        "anio": "1935",
+        "titulo": "Z1 — la primera computadora",
+        "descripcion": "Konrad Zuse diseña el Z1, considerado el primer computador mecánico programable del mundo. Construido entre 1936 y 1938 en Alemania, fue destruido en 1943 durante los bombardeos de Berlín."
+      },
+      {
+        "anio": "1944",
+        "titulo": "Mark I — primer ordenador electromecánico",
+        "descripcion": "Mark I (Harvard Mark I / IBM Automatic Sequence Controlled Calculator) es uno de los primeros ordenadores electromecánicos. En estas máquinas se desarrollaron, décadas después, proyectos como Love Letters de Christopher Strachey."
+      },
+      {
+        "anio": "1950–1953",
+        "titulo": "Oscillons — primeras gráficas en monitor en tiempo real",
+        "descripcion": "Benjamin Francis Laposky crea los Oscillons, imágenes abstractas generadas con un osciloscopio, consideradas entre las primeras gráficas electrónicas en tiempo real."
+      },
+      {
+        "anio": "1956",
+        "titulo": "Nacimiento de la Inteligencia Artificial",
+        "descripcion": "En la Conferencia de Dartmouth se acuña el término Inteligencia Artificial (IA), marcando el inicio formal de la disciplina científica que luego alimentará prácticas creativas computacionales."
+      },
+      {
+        "anio": "1958",
+        "titulo": "Primer módem para transmitir datos",
+        "descripcion": "Bell Labs desarrolla el primer módem capaz de transmitir datos binarios por una línea telefónica, un avance clave para la comunicación máquina a máquina."
+      },
+      {
+        "anio": "1963",
+        "titulo": "Primera película generada por computadora",
+        "descripcion": "Edward E. Zajac produce Simulation of Two-Gyro Gravity-Gradient Attitude Control System, considerada la primera animación digital."
+      },
+      {
+        "anio": "1965",
+        "titulo": "Primera exposición de arte digital en Europa",
+        "descripcion": "George Nees, Friedrich Nake y Michael Noll presentan Computergrafik en la Universidad de Stuttgart — un hito pionero del arte computacional."
+      },
+      {
+        "anio": "1967",
+        "titulo": "Hummingbird — primera animación artística computarizada",
+        "descripcion": "Charles Csuri crea Hummingbird con una IBM 1130; la obra obtiene reconocimiento en festivales de cine experimental y marca la emergencia de la animación como praxis artística computacional."
+      },
+      {
+        "anio": "1968",
+        "titulo": "Cybernetic Serendipity y Computer Arts Society",
+        "descripcion": "El ICA de Londres presenta Cybernetic Serendipity y se funda la Computer Arts Society (CAS), instituciones clave para el desarrollo y la difusión del arte por medios electrónicos."
+      },
+      {
+        "anio": "1969",
+        "titulo": "ARPANET — origen de Internet",
+        "descripcion": "El Departamento de Defensa de EE. UU. crea ARPANET, la primera red de computadoras interconectadas, precursora de Internet y del ecosistema artístico en red."
+      },
+      {
+        "anio": "1971",
+        "titulo": "Avances clave (correo, microprocesador y arte)",
+        "descripcion": "Primer correo electrónico (Ray Tomlinson). Microprocesador Intel 4004. Publicación del primer libro sobre arte computacional (Computergraphik–Computerkunst). Primera exposición individual de arte generativo (Manfred Mohr)."
+      },
+      {
+        "anio": "1975",
+        "titulo": "Fotografía digital y fractales",
+        "descripcion": "Primera cámara digital (Kodak, Steven Sasson). Benoît Mandelbrot publica la geometría fractal, herramienta teórica y visual para el arte generativo."
+      },
+      {
+        "anio": "1977",
+        "titulo": "Las primeras microcomputadoras comerciales",
+        "descripcion": "Apple II, Commodore PET y TRS-80 inauguran la era de la computación personal doméstica, democratizando el acceso a herramientas creativas digitales."
+      },
+      {
+        "anio": "1979",
+        "titulo": "Nace Ars Electronica",
+        "descripcion": "Festival internacional de arte, ciencia y tecnología con sede en Linz, Austria — referente del arte digital y los nuevos medios."
+      },
+      {
+        "anio": "1981",
+        "titulo": "Lanzamiento comercial de la IBM PC",
+        "descripcion": "Marca un hito en la masificación de las computadoras personales y en la disponibilidad de plataformas para creación digital."
+      },
+      {
+        "anio": "1982",
+        "titulo": "Commodore 64",
+        "descripcion": "Computadora icónica de 8 bits, influyente en la cultura digital, musical y programática de los años 80."
+      },
+      {
+        "anio": "1985",
+        "titulo": "MIT Media Lab",
+        "descripcion": "Fundado en 1985, el MIT Media Lab se convierte en un centro de referencia para la investigación transdisciplinaria entre arte, diseño y tecnología."
+      },
+      {
+        "anio": "1988",
+        "titulo": "Desarrollo de Photoshop",
+        "descripcion": "Thomas y John Knoll crean Photoshop, redefiniendo la edición de imágenes y las prácticas visuales digitales en el arte y los medios."
+      },
+      {
+        "anio": "1990",
+        "titulo": "Nacimiento de la World Wide Web",
+        "descripcion": "Tim Berners-Lee y Robert Cailliau anuncian la Web como sistema de información basado en hipertexto accesible vía Internet."
+      },
+      {
+        "anio": "1994",
+        "titulo": "Inicio de la realidad aumentada en el arte",
+        "descripcion": "The Golden Calf introduce el uso de visión computarizada y modelado 3D en prácticas artísticas, anticipando la RA en instalaciones y performances."
+      },
+      {
+        "anio": "1995",
+        "titulo": "Nacimiento del Net Art",
+        "descripcion": "Vuk Ćosić acuña el término net.art, consolidando una corriente artística específicamente orientada a la red y sus estéticas."
+      },
+      {
+        "anio": "1996",
+        "titulo": "Arte en red y plataformas",
+        "descripcion": "Fin del Mundo, pionero argentino de arte e Internet. Turbulence.org, plataforma internacional dedicada al arte sonoro y a la performance en red."
+      },
+      {
+        "anio": "1998",
+        "titulo": "Creación del MECAD (Barcelona)",
+        "descripcion": "Centro de investigación, producción y difusión de prácticas creativas con medios digitales e hipermedia."
+      },
+      {
+        "anio": "2001",
+        "titulo": "Processing",
+        "descripcion": "Ben Fry y Casey Reas, desde el MIT Media Lab, desarrollan Processing, facilitando la programación creativa y la educación artística computacional."
+      },
+      {
+        "anio": "2002",
+        "titulo": "Nacimiento de Artport",
+        "descripcion": "Portal del Whitney Museum de Nueva York dedicado al arte en Internet y a proyectos curatoriales en red."
+      },
+      {
+        "anio": "2003",
+        "titulo": "Área de Lenguajes Computarizados — FBA (Udelar)",
+        "descripcion": "Se crea el Área de Lenguajes Computarizados en la Facultad de Bellas Artes de la Universidad de la República, fortaleciendo la formación en arte y tecnología en Uruguay."
+      },
+      {
+        "anio": "2003",
+        "titulo": "CEIARTE — UNTREF",
+        "descripcion": "Creación del Centro de Experimentación e Investigación en Artes Electrónicas (CEIARTE) en la UNTREF, dedicado a la investigación y producción de artes electrónicas y digitales."
+      },
+      {
+        "anio": "2004",
+        "titulo": "TOPLAP",
+        "descripcion": "Se funda TOPLAP (Temporary Organisation for the Promotion of Live Algorithm Programming), comunidad internacional que promueve el Live Coding como práctica artística y performática."
+      },
+      {
+        "anio": "2011",
+        "titulo": "Algoraves",
+        "descripcion": "Alex McLean y Nick Collins acuñan el término “algorave” para eventos donde la música electrónica se genera en vivo mediante programación. El primer evento con ese nombre ocurre en Londres, como preámbulo del Simposio de SuperCollider 2012."
+      },
+      {
+        "anio": "2011",
+        "titulo": "Seminario de Narrativas Hipertextuales",
+        "descripcion": "Seminario focalizado en la evolución de las narrativas digitales y su inserción en contextos académicos y artísticos."
+      },
+        {
+        "anio": "2012",
+        "titulo": "Centro de Cultura Digital (México)",
+        "descripcion": "El Centro de Cultura Digital es un complejo cultural multifuncional ubicado en la Ciudad de México, con la vocación de promover actividades de arte digital, así como la promoción de «formas expresivas en el mundo digital» y «su influencia en la vida cultural y artística del país».​"
+      },
+      {
+        "anio": "2012",
+        "titulo": "Proyecto IDIS — Base de Datos sobre Arte Digital (FADU UBA)",
+        "descripcion": "Iniciativa para documentar y difundir el arte digital en Argentina mediante una base de datos pública y accesible."
+      },
+      {
+        "anio": "2013",
+        "titulo": "Espacio Byte y The Wrong Biennale",
+        "descripcion": "Espacio Byte, primer museo online de arte digital de América Latina, y The Wrong Biennale, plataforma global de arte digital contemporáneo."
+      },
+      {
+        "anio": "2016",
+        "titulo": "Red y Observatorio Iberoamericanos",
+        "descripcion": "Creación de la Red Iberoamericana de Artes Digitales y Electrónicas y el Observatorio Iberoamericano de Arte Digital y Electrónico."
+      },
+      {
+        "anio": "2018",
+        "titulo": "Hydra",
+        "descripcion": "Plataforma open source basada en navegador para crear imágenes en tiempo real mediante live coding, desarrollada por Olivia Jack y comunidad asociada."
+      },
+      {
+        "anio": "2019",
+        "titulo": "Wip Arte Digital",
+        "descripcion": "Es un proyecto de formación latinoamericano enfocado en la producción técnico-artística y en el abordaje conceptual y crítico de las herramientas, técnicas y metodologías contemporáneas desde la práctica y sus procesos. El objetivo de la plataforma es proporcionar espacios para que artistas, técnicos y otrxs agentes de la escena cultural puedan construir sus propias narrativas estéticas y recursos para el desarrollo personal y laboral."
+      },
+      {
+        "anio": "2020",
+        "titulo": "Festival Conurbeat Buenos Aires",
+        "descripcion": "Encuentro internacional de prácticas sonoras, experimentación electrónica y cultura digital en Buenos Aires."
+      },
+      {
+        "anio": "2024",
+        "titulo": "ArtFutura Montevideo",
+        "descripcion": "Edición del conocido festival internacional de arte digital y nuevas tecnologías celebrada en Montevideo."
+      }
+    ],
+    "categorias": [
+      {
+        "nombre": "Net Art",
+        "descripcion": "Arte concebido para y desde la red, explorando hipertextualidad, navegación y participación. Ejemplos: Olia Lialina, Jodi.org, Vuk Ćosić."
+      },
+      {
+        "nombre": "Software Art",
+        "descripcion": "El software mismo es la obra: el código, la lógica y la interacción son el núcleo estético. Ejemplos: Adrian Ward, Alex McLean, Florian Cramer."
+      },
+      {
+        "nombre": "Arte Generativo / Algorítmico / Procedural",
+        "descripcion": "Arte basado en algoritmos o sistemas que generan obras visuales, sonoras o performáticas. Enfatiza procesos autónomos o semiautónomos, azar y evolución. Ejemplos: Manfred Mohr, Vera Molnar."
+      },
+      {
+        "nombre": "Programación Creativa",
+        "descripcion": "Uso de lenguajes de programación para crear arte, música o experiencias interactivas. Ejemplos: Processing, p5.js, Hydra, Strudel."
+      },
+      {
+        "nombre": "Live Coding",
+        "descripcion": "Práctica performática donde se programa en vivo para generar música o visuales. Ejemplos: TOPLAP, Slub, Alex McLean."
+      },
+      {
+        "nombre": "Inteligencia Artificial Generativa",
+        "descripcion": "Uso de IA y modelos generativos para producir imágenes, textos o sonidos. Ejemplos: Refik Anadol, Mario Klingemann, Anna Ridler."
+      },
+      {
+        "nombre": "Instalaciones Multimedias e Interactivas",
+        "descripcion": "Obras inmersivas que combinan video, sonido y sensores, incorporando la participación del público. Ejemplos: Rafael Lozano-Hemmer, Christa Sommerer."
+      },
+      {
+        "nombre": "Realidad Aumentada y Virtual",
+        "descripcion": "Experiencias artísticas inmersivas basadas en entornos digitales o mixtos. Ejemplos: proyectos de RA/VR en museos y performance."
+      },
+      {
+        "nombre": "Robótica Artística",
+        "descripcion": "Uso de robots o sistemas mecatrónicos en obras escultóricas, performáticas o interactivas. Ejemplos: Stelarc, Ken Rinaldo, Bill Vorn."
+      },
+      {
+        "nombre": "Media-performance",
+        "descripcion": "Diálogo entre cuerpo y tecnología en escena, con proyecciones, sensores y sonido. Ejemplos: Marcel·lí Antúnez Roca, Thecla Schiphorst."
+      },
+      {
+        "nombre": "Videoarte",
+        "descripcion": "Arte basado en la imagen en movimiento desde los años 60. Ejemplos: Nam June Paik, Bill Viola, Martha Rosler."
+      },
+      {
+        "nombre": "Videoproyecciones y Videomapping",
+        "descripcion": "Uso de proyecciones para intervenir espacios o arquitecturas, creando ilusiones tridimensionales."
+      }
+    ]
+  }
+}

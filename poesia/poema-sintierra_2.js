@@ -1,9 +1,9 @@
 let videos = [ 
-  '../asset/fervor/fervor01.mp4',
-  '../asset/fervor/fervor02.mp4',
-  '../asset/fervor/fervor03.mp4',
-  '../asset/fervor/fervor04.mp4',
-  '../asset/fervor/fervor05.mp4'
+  '../asset/fervor/fervor01.webm',
+  '../asset/fervor/fervor02.webm',
+  '../asset/fervor/fervor03.webm',
+  '../asset/fervor/fervor04.webm',
+  '../asset/fervor/fervor05.webm'
 ];
 
 let shuffledVideos = []; // lista mezclada

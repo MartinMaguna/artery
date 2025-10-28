@@ -10,9 +10,9 @@
   <title>ARTERIA - Laboratorio de Arte Electrónico-Digital</title>
   <link rel="shortcut icon" href="/asset/arteria_logo.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
-    <script src="/script.js" defer></script>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+  <script src="/script.js" defer></script>
 
   <style>
     /* === Estilos para la línea de tiempo === */
@@ -32,6 +32,24 @@
       width: 4px;
       height: 100%;
       background-color: #ccc;
+    }
+
+    .botonera {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .botonera .btn {
+      padding: 0.5rem 1rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
     }
 
     .evento {
@@ -142,228 +160,18 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem optio impedit dolorem magnam architecto
         consequuntur, ratione deleniti, obcaecati repudiandae dolor illo neque voluptates ex iure facere incidunt quis
         dolores.</p>
+
+      <div class="botonera">
+        <button class="btn" id="btn-timeline">Línea de tiempo</button>
+        <button class="btn" id="btn-categorias">Categorías</button>
+      </div>
+
     </section>
 
-    <!-- === Línea de tiempo del arte digital === -->
+    <!-- === Línea de tiempo del arte digital + categorías === -->
+
     <section class="linea-tiempo">
-      <h2>Línea de tiempo del Arte Digital</h2>
-
-      <div class="evento">
-        <h3>1830-1945</h3>
-        <h4>Eureka - John Clark</h4>
-        <p>Considerada un antecedente de la literatura electrónica, la Latin Verse Machine de John Clark generaba versos
-          latinos
-          de forma automática, inspirada en el tratado Versificación artificial (1677) de John Peter. Hoy se la reconoce
-          como una precursora de la poesía computacional y de la creatividad computacional.</p>
-      </div>
-
-
-      <div class="evento">
-        <h3>1935</h3>
-        <h4>Z1, la primera computadora</h4>
-        <p>Konrad Zuse diseña el Z1, considerado el primer computador mecánico programable del mundo. Construido entre
-          1936 y 1938 en Alemania, fue destruido en 1943 durante los bombardeos de Berlín.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1950–1953</h3>
-        <h4>Primera gráfica en un monitor en tiempo real</h4>
-        <p>Benjamin Francis Laposky crea los <em>Oscillons</em>, imágenes abstractas generadas con un osciloscopio,
-          consideradas las primeras gráficas electrónicas en tiempo real.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1956</h3>
-        <h4>Nacimiento de la Inteligencia Artificial</h4>
-        <p>Durante la Conferencia de Dartmouth se acuña el término <em>Inteligencia Artificial (IA)</em>, marcando el
-          inicio formal de esta disciplina científica.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1958</h3>
-        <h4>Primer módem para transmitir datos</h4>
-        <p>Bell Labs desarrolla el primer módem capaz de transmitir datos binarios por una línea telefónica.</p>
-      </div>
-
-
-
-      <div class="evento">
-        <h3>1963</h3>
-        <h4>Primera película generada por computadora</h4>
-        <p>Edward E. Zajac produce <em>Simulation of Two-Gyro Gravity-Gradient Attitude Control System</em>, considerada
-          la primera animación digital.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1965</h3>
-        <h4>Primera exposición de arte digital en Europa</h4>
-        <p>George Nees, Friedrich Nake y Michael Noll presentan <em>Computergrafik</em> en la Universidad de Stuttgart,
-          pionera del arte computacional.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1967</h3>
-        <h4><em>Hummingbird</em>, primera animación artística computarizada</h4>
-        <p>Charles Csuri crea <em>Hummingbird</em>, realizada con una IBM 1130. La obra obtiene el premio en la
-          Competencia Internacional de Cine Experimental de Bélgica.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1968</h3>
-        <h4>Cybernetic Serendipity y Computer Arts Society</h4>
-        <p>El ICA de Londres presenta la exposición <em>Cybernetic Serendipity</em> y se funda la <em>Computer Arts
-            Society (CAS)</em>, dedicada al uso creativo de computadoras en el arte.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1969</h3>
-        <h4>ARPANET, origen de Internet</h4>
-        <p>El Departamento de Defensa de EE.UU. crea ARPANET, la primera red de computadoras interconectadas,
-          precursora de Internet.</p>
-      </div>
-
-
-      <div class="evento">
-        <h3>1971</h3>
-        <h4>Avances clave</h4>
-        <p>• Primer correo electrónico (Ray Tomlinson).<br>
-          • Microprocesador Intel 4004.<br>
-          • Primer libro sobre arte computacional (<em>Computergraphik–Computerkunst</em>).<br>
-          • Primera exposición individual de arte generativo (Manfred Mohr).</p>
-      </div>
-
-      <div class="evento">
-        <h3>1975</h3>
-        <h4>Innovaciones visuales y matemáticas</h4>
-        <p>• Primera cámara digital (Kodak, Steven Sasson).<br>
-          • Creación de la geometría fractal (Benoît Mandelbrot).</p>
-      </div>
-
-      <div class="evento">
-        <h3>1977</h3>
-        <h4>Las primeras microcomputadoras comerciales</h4>
-        <p>Apple II, Commodore PET y TRS-80 inauguran la era de la computación personal doméstica.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1979</h3>
-        <h4>Nace Ars Electronica</h4>
-        <p>Festival internacional de arte, ciencia y tecnología con sede en Linz, Austria, referente del arte digital y
-          los nuevos medios.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1981</h3>
-        <h4>Lanzamiento comercial de la IBM PC</h4>
-        <p>Marca un hito en la masificación del uso de computadoras personales.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1982</h3>
-        <h4>Commodore 64</h4>
-        <p>Computadora icónica de 8 bits, influyente en la cultura digital, musical y programática de los años 80.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1988</h3>
-        <h4>Desarrollo de Photoshop</h4>
-        <p>Thomas y John Knoll crean <em>Photoshop</em>, que redefine la edición de imágenes y las prácticas visuales
-          digitales.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1990</h3>
-        <h4>Nacimiento de la World Wide Web</h4>
-        <p>Tim Berners-Lee y Robert Cailliau anuncian la Web como sistema de información basado en hipertexto accesible
-          vía Internet.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1994</h3>
-        <h4>Inicio de la realidad aumentada en el arte</h4>
-        <p><em>The Golden Calf</em> introduce el uso de visión computarizada y modelado 3D en la práctica artística.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1995</h3>
-        <h4>Nacimiento del Net Art</h4>
-        <p>Vuk Ćosić acuña el término <em>net.art</em>, dando nombre a una corriente artística basada en la red.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1996</h3>
-        <h4>Arte en red</h4>
-        <p>• <em>Fin del Mundo</em>, pionero argentino de arte e Internet.<br>
-          • <em>turbulence.org</em>, espacio internacional dedicado al arte sonoro y la performance.</p>
-      </div>
-
-      <div class="evento">
-        <h3>1998</h3>
-        <h4>Creación del MECAD (Barcelona)</h4>
-        <p>Centro de investigación, producción y difusión de prácticas creativas con medios digitales e hipermedia.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2001</h3>
-        <h4>Fundación de Creative Commons</h4>
-        <p>Promueve licencias abiertas para compartir obras creativas y conocimiento.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2002</h3>
-        <h4>Nacimiento de Artport</h4>
-        <p>Portal del Whitney Museum de Nueva York dedicado al arte en Internet.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2003</h3>
-        <h4>2000 - Creación del Área de Lenguajes Computarizados Facultad de Artes</h4>
-        <p>Información</p>
-      </div>
-
-      <div class="evento">
-        <h3>2003</h3>
-        <h4>CEIARTE Centro de Experimentación e Investigación en Artes Electrónicas UNTREF</h4>
-        <p>Centro dedicado a la investigación, producción y difusión de las artes electrónicas y digitales.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2011</h3>
-        <h4>Seminario de Narrativas Hipertextuales</h4>
-        <p>Seminario enfocado en las narrativas digitales y su evolución en el contexto de las nuevas tecnologías.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2012</h3>
-        <h4>Proyecto IDIS Base de Datos sobre Arte Digital FADU UBA Argentina</h4>
-        <p>Iniciativa para documentar y difundir el arte digital en Argentina a través de una base de datos accesible.
-        </p>
-      </div>
-
-      <div class="evento">
-        <h3>2013</h3>
-        <h4>Espacio Byte y The Wrong Biennale</h4>
-        <p>• <em>Espacio Byte</em>, primer museo online de arte digital de América Latina.<br>
-          • <em>The Wrong Biennale</em>, plataforma global de arte digital contemporáneo.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2016</h3>
-        <h4>Red Iberoamericana de Artes Digitales y Electrónicas</h4>
-        <p>Red que conecta a artistas, investigadores y centros dedicados al arte digital en Iberoamérica.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2016</h3>
-        <h4>Observatorio Iberoamericano de Arte Digital y Electrónico</h4>
-        <p>Plataforma para el análisis y promoción del arte digital en la región iberoamericana.</p>
-      </div>
-
-      <div class="evento">
-        <h3>2024</h3>
-        <h4>ArtFutura Montevideo</h4>
-        <p>Festival internacional de arte digital y nuevas tecnologías que celebra su edición en Montevideo.</p>
-      </div>
+      <div id="visualizacion"></div>
     </section>
   </main>
 
@@ -375,6 +183,7 @@
 </body>
 
 <script src="/ensayos/portada_ensayo_arte_electronico.js"></script>
+<script src="/ensayos/visualizaciones.js"></script>
 
 
 </html>
