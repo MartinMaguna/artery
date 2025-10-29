@@ -3,15 +3,15 @@ let audioJandi;
 let shaderDisplace;
 
 const videos = [
-  '../asset/maos/maos01.mp4',
-  '../asset/maos/maos02.mp4',
-  '../asset/maos/maos03.mp4',
-  '../asset/maos/maos04.mp4',
-  '../asset/maos/maos05.mp4',
-  '../asset/maos/maos06.mp4',
-  '../asset/maos/maos07.mp4',
-  '../asset/maos/maos08.mp4',
-  '../asset/maos/maos09.mp4'
+  '../asset/maos/maos01.webm',
+  '../asset/maos/maos02.webm',
+  '../asset/maos/maos03.webm',
+  '../asset/maos/maos04.webm',
+  '../asset/maos/maos05.webm',
+  '../asset/maos/maos06.webm',
+  '../asset/maos/maos07.webm',
+  '../asset/maos/maos08.webm',
+  '../asset/maos/maos09.webm'
 ];
 
 let shuffledVideos = [];
@@ -51,7 +51,7 @@ function preload() {
   shuffleVideos();
   video = createVideo([shuffledVideos[currentVideoIndex]]);
   video.hide();
-  audioJandi = loadSound('../asset/jandi-poesiasintierra-02.mp3');
+  audioJandi = loadSound('../asset/jandi-poesiasintierra-02.m4a');
 }
 
 function setup() {

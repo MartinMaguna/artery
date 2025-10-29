@@ -25,8 +25,8 @@ void main() {
 `;
 
 function preload() {
-  video = createVideo(['../asset/videosintierra.mp4']);
-  audio = loadSound('../asset/jandi-poesiasintierra-insurgentes.mp3');
+  video = createVideo(['../asset/videosintierra.webm']);
+  audio = loadSound('../asset/jandi-poesiasintierra-insurgentes.m4a');
 }
 
 function setup() {

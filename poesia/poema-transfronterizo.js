@@ -1,8 +1,8 @@
 let audioBase, amp, espinaImg;
 
 function preload() {
-  soundFormats('mp3');
-  audioBase = loadSound('../asset/poeticastransfronterizas.mp3');
+  soundFormats('m4a');
+  audioBase = loadSound('../asset/poeticastransfronterizas.m4a');
   espinaImg = loadImage('../asset/espinadorsal.jpg');
 }
 
