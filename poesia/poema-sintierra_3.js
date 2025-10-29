@@ -1,8 +1,4 @@
-let video;
-let audioJandi;
-let shaderDisplace;
-
-const videos = [
+let videos = [
   '../asset/maos/maos01.webm',
   '../asset/maos/maos02.webm',
   '../asset/maos/maos03.webm',
@@ -15,9 +11,13 @@ const videos = [
 ];
 
 let shuffledVideos = [];
+let videosElements = [];
 let currentVideoIndex = 0;
 let lastChangeTime = 0;
 const changeInterval = 10000; // 10 segundos
+
+let audioJandi;
+let shaderDisplace;
 
 // Shader de glitch
 const displaceColorsSrc = `
@@ -44,13 +44,20 @@ void main() {
 // Mezcla los videos
 function shuffleVideos() {
   shuffledVideos = shuffle(videos.slice());
-  currentVideoIndex = 0;
 }
 
+// Precarga todos los videos
 function preload() {
   shuffleVideos();
-  video = createVideo([shuffledVideos[currentVideoIndex]]);
-  video.hide();
+
+  for (let path of shuffledVideos) {
+    let v = createVideo([path]);
+    v.hide();
+    v.volume(0);
+    v.elt.preload = "auto"; // fuerza a que se cargue el video
+    videosElements.push(v);
+  }
+
   audioJandi = loadSound('../asset/jandi-poesiasintierra-02.m4a');
 }
 
@@ -60,13 +67,12 @@ function setup() {
 
   shaderDisplace = createFilterShader(displaceColorsSrc);
 
-  video.volume(0);
-  video.play();
+  videosElements[0].play();
 
   if (!audioJandi.isPlaying()) {
     audioJandi.loop();
+    audioJandi.setVolume(0.7);
   }
-  audioJandi.setVolume(0.7);
 }
 
 function draw() {
@@ -80,26 +86,20 @@ function draw() {
 
   push();
   imageMode(CENTER);
-  image(video, 0, 0, width, height);
+  image(videosElements[currentVideoIndex], 0, 0, width, height);
   filter(shaderDisplace);
   pop();
 }
 
 function changeVideo() {
-  video.stop();
-  video.remove();
+  // Pausa el video actual
+  videosElements[currentVideoIndex].pause();
 
-  currentVideoIndex++;
+  // Cambia al siguiente
+  currentVideoIndex = (currentVideoIndex + 1) % videosElements.length;
 
-  // Si se terminó la lista, volver a mezclar
-  if (currentVideoIndex >= shuffledVideos.length) {
-    shuffleVideos();
-  }
-
-  video = createVideo([shuffledVideos[currentVideoIndex]]);
-  video.hide();
-  video.volume(0);
-  video.play();
+  // Reproduce el siguiente
+  videosElements[currentVideoIndex].play();
 }
 
 function windowResized() {
