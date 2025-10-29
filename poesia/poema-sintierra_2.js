@@ -43,7 +43,7 @@ function shuffleVideos() {
 function preload() {
   shuffleVideos();
   video = createVideo([shuffledVideos[currentVideoIndex]]);
-  audio = loadSound('../asset/poesiasintierra-tati.mp3');
+  audio = loadSound('../asset/fervor/goso_gosto_fervor.m4a');
 }
 
 function setup() {
