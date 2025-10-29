@@ -92,7 +92,7 @@ main h1 {
 
 main p {
   font-size: 1.125rem;
-  color: #555;
+  color: #222;
   text-align: justify;
   margin-bottom: 2rem;
 }
@@ -247,6 +247,125 @@ canvas.p5Canvas {
 }
 
 
+    /* === Estilos para la línea de tiempo === */
+    .linea-tiempo {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .linea-tiempo::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background-color: #ccc;
+    }
+
+    .evento {
+      position: relative;
+      width: 45%;
+      padding: 1rem 2rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .botonera {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .botonera .btn {
+      padding: 0.5rem 1rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .evento img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .evento:nth-child(odd) {
+      left: 0;
+    }
+
+    .evento:nth-child(even) {
+      left: 55%;
+    }
+
+    .evento::after {
+      content: "";
+      position: absolute;
+      top: 1.5rem;
+      width: 20px;
+      height: 20px;
+      background-color: black;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px white;
+      left: -10px;
+      transform: translateX(-50%);
+    }
+
+    .evento:nth-child(even)::after {
+      left: auto;
+      right: -10px;
+      transform: translateX(50%);
+    }
+
+    .evento h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: black;
+    }
+
+    .evento h4 {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .evento p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    @media (max-width: 768px) {
+      .linea-tiempo::before {
+        left: 20px;
+      }
+
+      .evento,
+      .evento:nth-child(even) {
+        width: 100%;
+        left: 0;
+        margin-left: 40px;
+      }
+
+      .evento::after,
+      .evento:nth-child(even)::after {
+        left: -30px;
+        right: auto;
+        transform: none;
+      }
+    }
+
+
 
 /* ==== FOOTER ==== */
 footer {
@@ -295,7 +414,7 @@ footer {
 .contenedor-texto p {
   text-align: left;
   margin: 0 auto;
-  color: #444;
+  color: #222;
   font-size: 1.1rem;
   max-width: 700px;
   line-height: 1.7;

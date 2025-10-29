@@ -12,6 +12,7 @@
         "descripcion": "Mark I (Harvard Mark I / IBM Automatic Sequence Controlled Calculator) es uno de los primeros ordenadores electromecánicos. En estas máquinas se desarrollaron, décadas después, proyectos como Love Letters de Christopher Strachey."
       },
       {
+        "imagen": "asset/gen_arte_electronico/laposky.jpg",
         "anio": "1950–1953",
         "titulo": "Oscillons — primeras gráficas en monitor en tiempo real",
         "descripcion": "Benjamin Francis Laposky crea los Oscillons, imágenes abstractas generadas con un osciloscopio, consideradas entre las primeras gráficas electrónicas en tiempo real."
